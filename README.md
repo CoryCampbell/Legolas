@@ -4,7 +4,7 @@
 
 ![db-schema]
 
-[db-schema]: ./legolas-project/static/features-list.txt
+[db-schema]: ./legolas-project/static/legolas-db-diagram.png
 ## API Documentation
 
 ## USER AUTHENTICATION/AUTHORIZATION
