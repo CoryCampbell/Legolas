@@ -1,8 +1,8 @@
-"""update created_at and updated_at fields
+"""Initial migration.
 
-Revision ID: ae83a9e97ed8
-Revises: ffdc0a98111c
-Create Date: 2023-11-18 10:29:24.360063
+Revision ID: 550a8118aa5d
+Revises: 
+Create Date: 2023-11-18 10:42:50.864627
 
 """
 from alembic import op
@@ -10,8 +10,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'ae83a9e97ed8'
-down_revision = 'ffdc0a98111c'
+revision = '550a8118aa5d'
+down_revision = None
 branch_labels = None
 depends_on = None
 
@@ -27,6 +27,15 @@ def upgrade():
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('name'),
     sa.UniqueConstraint('symbol')
+    )
+    op.create_table('users',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('username', sa.String(length=40), nullable=False),
+    sa.Column('email', sa.String(length=255), nullable=False),
+    sa.Column('hashed_password', sa.String(length=255), nullable=False),
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('email'),
+    sa.UniqueConstraint('username')
     )
     op.create_table('transactions',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -66,5 +75,6 @@ def downgrade():
     op.drop_table('watchlists')
     op.drop_table('user_stocks')
     op.drop_table('transactions')
+    op.drop_table('users')
     op.drop_table('companies')
     # ### end Alembic commands ###

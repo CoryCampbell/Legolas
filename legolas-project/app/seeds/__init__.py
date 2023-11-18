@@ -25,7 +25,7 @@ def seed():
         undo_watchlists()
         undo_user_stocks()
         undo_companies()
-    # seed_users()
+    seed_users()
     # Add other seed functions here
     seed_user_stocks()
     seed_companies()
