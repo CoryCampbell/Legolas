@@ -1,3 +1,4 @@
+from datetime import datetime
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 
 
@@ -15,5 +16,6 @@ class Transaction(db.Model):
     total = db.Column(db.Float, nullable=False)
     # Added field 'type' for transaction type
     type = db.Column(db.String, nullable=False)
-    created_at = db.Column(db.DateTime, nullable=False)
-    updated_at = db.Column(db.DateTime, nullable=False)
+    created_at = db.Column(db.DateTime, default=datetime.now, nullable=False)
+    updated_at = db.Column(db.DateTime, default=datetime.now,
+                           onupdate=datetime.now, nullable=False)
