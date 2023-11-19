@@ -1,7 +1,7 @@
 """Initial migration.
 
 Revision ID: 550a8118aa5d
-Revises: 
+Revises:
 Create Date: 2023-11-18 10:42:50.864627
 
 """
@@ -61,6 +61,7 @@ def upgrade():
     )
     op.create_table('watchlists',
     sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('name', sa.String(length=50), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('company_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['company_id'], ['companies.id'], ),
