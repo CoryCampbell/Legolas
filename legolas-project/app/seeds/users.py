@@ -10,10 +10,22 @@ def seed_users():
         username='marnie', email='marnie@aa.io', password='password')
     bobbie = User(
         username='bobbie', email='bobbie@aa.io', password='password')
+    cory = User(
+        username='cory', email='cory@aa.io', password='password')
+    ali = User(
+        username='ali', email='ali@aa.io', password='password')
+    quinn = User(
+        username='quinn', email='quinn@aa.io', password='password')
+    malcolm = User(
+        username='malcolm', email='malcolm@aa.io', password='password')
 
     db.session.add(demo)
     db.session.add(marnie)
     db.session.add(bobbie)
+    db.session.add(cory)
+    db.session.add(quinn)
+    db.session.add(ali)
+    db.session.add(malcolm)
     db.session.commit()
 
 
