@@ -20,21 +20,33 @@ def seed():
         # command, which will  truncate all tables prefixed with
         # the schema name (see comment in users.py undo_users function).
         # Make sure to add all your other model's undo functions below
-        undo_users()
-        undo_transactions()
         undo_watchlists()
+        undo_transactions()
         undo_user_stocks()
         undo_companies()
+        undo_users()
     seed_users()
     # Add other seed functions here
-    seed_user_stocks()
     seed_companies()
-    seed_watchlists()
+    seed_user_stocks()
     seed_transactions()
+    seed_watchlists()
 
 
 # Creates the `flask seed undo` command
 @seed_commands.command('undo')
 def undo():
-    undo_users()
-    # Add other undo functions here
+    if environment == "production":
+        db.session.execute(f"TRUNCATE table {SCHEMA}.watchlists RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.transactions RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.user_stocks RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.companies RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
+    else:
+        db.session.execute("DELETE FROM watchlists")
+        db.session.execute("DELETE FROM transactions")
+        db.session.execute("DELETE FROM user_stocks")
+        db.session.execute("DELETE FROM companies")
+        db.session.execute("DELETE FROM users")
+
+    db.session.commit()
