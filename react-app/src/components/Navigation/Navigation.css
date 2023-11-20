@@ -7,7 +7,7 @@
 }
 
 .logo-container {
-  border-right: 1px solid #002411;
+  border-right: 3px solid black;
 }
 
 .logo{
@@ -30,4 +30,8 @@ nav {
   align-items: center;
   padding-left: 20px;
   padding-right: 30px;
+  border-bottom: 3px solid black;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }

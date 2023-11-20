@@ -21,19 +21,19 @@ function Navigation({ isLoaded }){
 			</div>
 		</div>
 		<div className='auth-container'>
-			<ul>
-				<li>
-					<NavLink exact to="/login"><button>Log In</button></NavLink>
-				</li>
-				<li>
-				<NavLink exact to="/signup"><button>Sign Up</button></NavLink>
-				</li>
+			<div className='nav-buttons-container'>
+				<div>
+					<NavLink exact to="/login"><button className='nav-login-button'>Log In</button></NavLink>
+				</div>
+				<div>
+				<NavLink exact to="/signup"><button className='nav-signup-button'>Sign Up</button></NavLink>
+				</div>
 				{/* {isLoaded && (
 					<li>
 						<ProfileButton user={sessionUser} />
 					</li>
 				)} */}
-			</ul>
+			</div>
 		</div>
 		</nav>
 	);
