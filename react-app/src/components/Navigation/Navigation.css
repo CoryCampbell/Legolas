@@ -5,3 +5,29 @@
 .hidden {
   display: none;
 }
+
+.logo-container {
+  border-right: 1px solid #002411;
+}
+
+.logo{
+  height: 60px;
+}
+
+.navlinks-container{
+  display: flex;
+  align-items: center;
+}
+
+.nav-content {
+  padding-left: 15px;
+}
+
+nav {
+  background-color: #E9E49D;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 30px;
+}
