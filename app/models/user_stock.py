@@ -14,8 +14,8 @@ class UserStock(db.Model):
     company_id = db.Column(
         db.Integer, db.ForeignKey(add_prefix_for_prod("companies.id")), nullable=False
     )
-    price = db.Column(db.Float, nullable=False)
-    shares = db.Column(db.Float, nullable=False)
+    price = db.Column(db.Float(2), nullable=False)
+    shares = db.Column(db.Float(6), nullable=False)
 
     def to_dict(self):
         return {

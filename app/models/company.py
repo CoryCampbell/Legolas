@@ -10,7 +10,7 @@ class Company(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), nullable=False, unique=True)
     symbol = db.Column(db.String(5), nullable=False, unique=True)
-    price = db.Column(db.Float, nullable=False)
+    price = db.Column(db.Float(2), nullable=False)
     about = db.Column(db.String, nullable=False)
 
     # Relationships
