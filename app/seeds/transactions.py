@@ -4,20 +4,14 @@ from sqlalchemy.sql import text
 
 # Adds transactions, you can add other transactions here if you want
 def seed_transactions():
-    demo_transaction1 = Transaction(
-        total=189.95, user_id=1, company_id=1, type="buy")
-    demo_transaction2 = Transaction(
-        total=233.77, user_id=2, company_id=2, type="sell")
-    demo_transaction3 = Transaction(
-        total=367.49, user_id=3, company_id=3, type="buy")
-    demo_transaction4 = Transaction(
-        total=145.37, user_id=3, company_id=4, type="sell")
-    demo_transaction5 = Transaction(
-        total=13.02, user_id=2, company_id=5, type="buy")
-    demo_transaction6 = Transaction(
-        total=465.88, user_id=2, company_id=6, type="buy")
-    demo_transaction7 = Transaction(
-        total=360.69, user_id=1, company_id=7, type="buy")
+    demo_transaction1 = Transaction(total=189.95, user_id=1, company_id=1, type="buy")
+    demo_transaction8 = Transaction(total=233.77, user_id=1, company_id=2, type="buy")
+    demo_transaction2 = Transaction(total=233.77, user_id=2, company_id=2, type="buy")
+    demo_transaction3 = Transaction(total=367.49, user_id=3, company_id=3, type="buy")
+    demo_transaction4 = Transaction(total=145.37, user_id=4, company_id=4, type="buy")
+    demo_transaction5 = Transaction(total=13.02, user_id=5, company_id=5, type="buy")
+    demo_transaction6 = Transaction(total=465.88, user_id=6, company_id=6, type="buy")
+    demo_transaction7 = Transaction(total=360.69, user_id=7, company_id=7, type="buy")
 
     db.session.add(demo_transaction1)
     db.session.add(demo_transaction2)
@@ -26,6 +20,7 @@ def seed_transactions():
     db.session.add(demo_transaction5)
     db.session.add(demo_transaction6)
     db.session.add(demo_transaction7)
+    db.session.add(demo_transaction8)
     db.session.commit()
 
 
@@ -38,7 +33,8 @@ def seed_transactions():
 def undo_transactions():
     if environment == "production":
         db.session.execute(
-            f"TRUNCATE table {SCHEMA}.transactions RESTART IDENTITY CASCADE;")
+            f"TRUNCATE table {SCHEMA}.transactions RESTART IDENTITY CASCADE;"
+        )
     else:
         db.session.execute(text("DELETE FROM transactions"))
 
