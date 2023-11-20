@@ -1,12 +1,12 @@
 from flask import Blueprint, jsonify
 from app.models import UserStock
-from auth_routes import authenticate
+from flask_login import login_required
 
-user_routes = Blueprint('portfolio', __name__)
+portfolio_routes = Blueprint("portfolio", __name__)
 
 
-@user_routes.route('/')
-@authenticate
+@portfolio_routes.route("/")
+@login_required
 def current_user_portfolio():
-  """Gathers all info for the Current User's portfolio"""
-  return "test hello"
+    """Gathers all info for the Current User's portfolio"""
+    return "test hello"
