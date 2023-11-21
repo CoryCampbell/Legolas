@@ -6,15 +6,15 @@
   display: none;
 }
 
-.logo-container {
+/* .logo-container {
   border-right: 3px solid black;
-}
+} */
 
-.logo{
+.logo {
   height: 60px;
 }
 
-.navlinks-container{
+.navlinks-container {
   display: flex;
   align-items: center;
 }
@@ -24,13 +24,13 @@
 }
 
 nav {
-  background-color: #E9E49D;
+  background-color: #91d142;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-left: 20px;
   padding-right: 30px;
-  border-bottom: 3px solid black;
+  /* border-bottom: 3px solid black; */
   position: fixed;
   top: 0;
   width: 100%;

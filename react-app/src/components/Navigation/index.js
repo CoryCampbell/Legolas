@@ -16,9 +16,6 @@ function Navigation({ isLoaded }){
 					<img className='logo' src={logo} />
 				</NavLink>
 			</div>
-			<div className='nav-content'>
-			About
-			</div>
 		</div>
 		<div className='auth-container'>
 			<div className='nav-buttons-container'>
