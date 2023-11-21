@@ -27,3 +27,11 @@ class Company(db.Model):
             "price": self.price,
             "about": self.about
         }
+
+    def to_watchlist(self):
+        return {
+            "company_id": self.id,
+            "company_name": self.name,
+            "symbol": self.symbol,
+            "price": self.price
+        }
