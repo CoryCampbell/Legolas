@@ -29,11 +29,10 @@
   cursor: pointer;
   font-weight: bold;
   font-size: 16px;
-  /* color: white; */
 }
 
 .account-button:hover {
-  color: green;
+  color: #08C706;
 }
 
 .profile-dropdown button:hover {
@@ -49,13 +48,31 @@
   display: none;
 }
 
-/* .logo-container {
-  border-right: 3px solid black;
-} */
-
 .logo {
   height: 60px;
 }
+
+.logo:hover {
+  height: 60px;
+  opacity: 0;
+  display: none;
+}
+
+.logo-hover {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  opacity: 0;
+  height:  60px;
+}
+
+.logo-hover:hover {
+  opacity: 1;
+}
+
+
 
 .navlinks-container {
   display: flex;
@@ -67,7 +84,6 @@
 }
 
 nav {
-  /* background-color: #91d142; */
   display: flex;
   justify-content: space-between;
   align-items: center;
