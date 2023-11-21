@@ -5,6 +5,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
+import Portfolio from "./components/Portfolio";
 
 
 function App() {
@@ -25,9 +26,9 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          {/* <Route exact path="/">
-            <Landing />
-          </Route> */}
+          <Route exact path="/">
+            <Portfolio />
+          </Route>
         </Switch>
       )}
     </>

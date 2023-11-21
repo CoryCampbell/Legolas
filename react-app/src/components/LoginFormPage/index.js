@@ -26,6 +26,7 @@ function LoginFormPage() {
       <div className="login-img-container">
         <img
           className="login-img"
+          alt="landing page img"
           src="https://cdn.robinhood.com/assets/generated_assets/webapp/web-platform-prefetch-sdp/member/9435691b466061dc75b0.jpg"
         />
       </div>
