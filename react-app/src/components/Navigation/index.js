@@ -13,11 +13,8 @@ function Navigation({ isLoaded }){
 		<div className='navlinks-container'>
 			<div className='logo-container'>
 				<NavLink exact to="/">
-					<img className='logo' src={logo} />
+					<img className='logo' src={logo} alt='logo'/>
 				</NavLink>
-			</div>
-			<div className='nav-content'>
-			About
 			</div>
 		</div>
 		<div className='auth-container'>

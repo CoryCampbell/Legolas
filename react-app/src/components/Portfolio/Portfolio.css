@@ -1,0 +1,20 @@
+.portfolio {
+  width: 80%;
+  margin: 100px auto;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  /* background-color: #f5f5f5; */
+}
+
+.user-info {
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chart img {
+  margin-top: 30px;
+  width: 700px;
+}
