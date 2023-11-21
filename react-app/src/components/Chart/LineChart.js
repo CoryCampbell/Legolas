@@ -19,10 +19,10 @@ const LineChart = () => {
   });
 
   return (
-    <div style={{ width: 700 }}>
-      <Line data={stockData} />
-    </div>
-  );
+		<div className="graph-container">
+			<Line data={stockData} />
+		</div>
+	);
 };
 
 export default LineChart;

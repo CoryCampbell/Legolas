@@ -1,3 +1,7 @@
+:root {
+    overflow-x: hidden;
+}
+
 .main-portfolio-container {
   width: 80%;
   margin: auto;
@@ -32,12 +36,16 @@
 .main-list-container {
   position: fixed;
   left: 70%;
-  top: 15%;
+  top: 10%;
   width: 20%;
-  height: fit-content;
+  height: 88%;
   border: solid red;
-  box-sizing: border-box;
-  overflow: scroll;
+  box-sizing: content-box;
+  overflow-y: scroll;
+}
+
+.main-list-container::-webkit-scrollbar {
+    display: none;
 }
 
 .watchlist {
