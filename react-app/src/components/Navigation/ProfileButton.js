@@ -41,8 +41,9 @@ function ProfileButton({ user, isLoaded }) {
 
   return (
     <>
-      <button onClick={openMenu}>
-        <i className="fas fa-user-circle" />
+      <button className="account-button" onClick={openMenu}>
+        {/* <i className="fas fa-user-circle" /> */}
+        Account
       </button>
       <ul className={ulClassName} ref={ulRef}>
         {isLoaded && user ? (
