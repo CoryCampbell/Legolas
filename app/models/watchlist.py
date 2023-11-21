@@ -9,6 +9,7 @@ class Watchlist(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50))
-    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey(
+        add_prefix_for_prod('users.id')), nullable=False)
     company_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod(
         'companies.id')), nullable=False)
