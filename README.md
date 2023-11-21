@@ -4,7 +4,7 @@
 
 ![db-schema]
 
-[db-schema]: react-app/src/static/test-logos-and-images/Legolas-logo-final.png
+[db-schema]: react-app/src/static/test-logos-and-images/legolas-db-diagram.png
 ## API Documentation
 
 ## USER AUTHENTICATION/AUTHORIZATION
