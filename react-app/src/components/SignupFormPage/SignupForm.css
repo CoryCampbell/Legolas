@@ -73,6 +73,7 @@ form{
     margin-top: 4px;
     margin-right: 20px;
     width: 130px;
+    cursor: pointer;
 }
 .nav-signup-button{
     background-color: gold;
@@ -83,4 +84,5 @@ form{
     margin-top: 4px;
     margin-right: 35px;
     width: 130px;
+    cursor: pointer;
 }
