@@ -17,3 +17,13 @@ class Company(db.Model):
     user_stocks = db.relationship('UserStock', backref='company')
     transactions = db.relationship('Transaction', backref='company')
     watchlist_items = db.relationship('Watchlist', backref='company')
+
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "symbol": self.symbol,
+            "price": self.price,
+            "about": self.about
+        }
