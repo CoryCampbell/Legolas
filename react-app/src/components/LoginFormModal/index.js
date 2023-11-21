@@ -23,7 +23,7 @@ function LoginFormModal() {
 
   return (
     <>
-      <h1>Log In</h1>
+      <h1>Log in to Legolas</h1>
       <form onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (
@@ -33,6 +33,7 @@ function LoginFormModal() {
         <label>
           Email
           <input
+            className="email-input"
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -42,6 +43,7 @@ function LoginFormModal() {
         <label>
           Password
           <input
+            className="password-input"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
