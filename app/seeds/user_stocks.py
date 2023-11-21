@@ -4,20 +4,14 @@ from sqlalchemy.sql import text
 
 # Adds user stocks, you can add other user stocks here if you want
 def seed_user_stocks():
-    demo_user_stock1 = UserStock(
-        user_id=1, company_id=1, price=189.95, shares=3)
-    demo_user_stock2 = UserStock(
-        user_id=2, company_id=2, price=233.77, shares=2)
-    demo_user_stock3 = UserStock(
-        user_id=3, company_id=3, price=367.49, shares=1)
-    demo_user_stock4 = UserStock(
-        user_id=2, company_id=4, price=145.37, shares=5)
-    demo_user_stock5 = UserStock(
-        user_id=2, company_id=5, price=13.02, shares=1)
-    demo_user_stock6 = UserStock(
-        user_id=3, company_id=6, price=465.88, shares=7)
-    demo_user_stock7 = UserStock(
-        user_id=1, company_id=7, price=360.69, shares=4)
+    demo_user_stock1 = UserStock(user_id=1, company_id=1, price=189.95, shares=1)
+    demo_user_stock8 = UserStock(user_id=1, company_id=2, price=233.77, shares=1)
+    demo_user_stock2 = UserStock(user_id=2, company_id=2, price=233.77, shares=1)
+    demo_user_stock3 = UserStock(user_id=3, company_id=3, price=367.49, shares=1)
+    demo_user_stock4 = UserStock(user_id=4, company_id=4, price=145.37, shares=1)
+    demo_user_stock5 = UserStock(user_id=5, company_id=5, price=13.02, shares=1)
+    demo_user_stock6 = UserStock(user_id=6, company_id=6, price=465.88, shares=1)
+    demo_user_stock7 = UserStock(user_id=7, company_id=7, price=360.69, shares=1)
 
     db.session.add(demo_user_stock1)
     db.session.add(demo_user_stock2)
@@ -26,6 +20,7 @@ def seed_user_stocks():
     db.session.add(demo_user_stock5)
     db.session.add(demo_user_stock6)
     db.session.add(demo_user_stock7)
+    db.session.add(demo_user_stock8)
     db.session.commit()
 
 
@@ -38,7 +33,8 @@ def seed_user_stocks():
 def undo_user_stocks():
     if environment == "production":
         db.session.execute(
-            f"TRUNCATE TABLE {SCHEMA}.user_stocks RESTART IDENTITY CASCADE;")
+            f"TRUNCATE TABLE {SCHEMA}.user_stocks RESTART IDENTITY CASCADE;"
+        )
     else:
         db.session.execute(text("DELETE FROM user_stocks"))
 

@@ -5,23 +5,30 @@ from sqlalchemy.sql import text
 # Adds a demo user, you can add other users here if you want
 def seed_users():
     demo = User(
-        username='Demo', email='demo@aa.io', password='password')
+        first_name='Demo', last_name='User', username='Demolition', balance=100.00, email='demo@aa.io', password='password')
+
     marnie = User(
-        username='marnie', email='marnie@aa.io', password='password')
-    bobbie = User(
-        username='bobbie', email='bobbie@aa.io', password='password')
+        first_name='Marnie', last_name='Martin', username='ItsMeMarnie', balance=200.00, email='marnie@aa.io', password='password')
+
+    bobby = User(
+        first_name='Bobby', last_name='Johnson', username='OGBobbyJohnson', balance=300.00, email='bobbie@aa.io', password='password')
+
     cory = User(
-        username='Cory', email='cory@aa.io', password='password')
+        first_name='Cory', last_name='Campbell', username='CoryCampbell', email='cory@aa.io', password='password')
+
     quinn = User(
-        username='Quinn', email='quinn@aa.io', password='password')
+        first_name='Quinn', last_name='Bush', username='Quinn5545', balance=500.00, email='quinn@aa.io', password='password')
+
     ali = User(
-        username='Ali', email='ali@aa.io', password='password')
+        first_name='Ali', last_name='Keshanian', username='Ark1980', balance=600.00, email='ali@aa.io', password='password')
+
     malcolm = User(
-        username='Malcolm', email='malcolm@aa.io', password='password')
+        first_name='Malcolm', last_name='Caleb', username='malcolmc22', balance=700.00, email='malcolm@aa.io', password='password')
+
 
     db.session.add(demo)
     db.session.add(marnie)
-    db.session.add(bobbie)
+    db.session.add(bobby)
     db.session.add(cory)
     db.session.add(quinn)
     db.session.add(ali)
