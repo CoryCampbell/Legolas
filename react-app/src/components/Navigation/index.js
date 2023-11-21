@@ -8,6 +8,7 @@ import logo from "../../static/test-logos-and-images/legolas-sample2.png";
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
   const history = useHistory();
+  //   console.log(sessionUser);
   return (
     <nav>
       <div className="navlinks-container">
@@ -17,25 +18,28 @@ function Navigation({ isLoaded }) {
           </NavLink>
         </div>
       </div>
-      <div className="auth-container">
-        <div className="nav-buttons-container">
-          <div>
-            <NavLink exact to="/login">
-              <button className="nav-login-button">Log In</button>
-            </NavLink>
+      {!sessionUser ? (
+        <div className="auth-container">
+          <div className="nav-buttons-container">
+            <div>
+              <NavLink exact to="/login">
+                <button className="nav-login-button">Log In</button>
+              </NavLink>
+            </div>
+            <div>
+              <NavLink exact to="/signup">
+                <button className="nav-signup-button">Sign Up</button>
+              </NavLink>
+            </div>
           </div>
-          <div>
-            <NavLink exact to="/signup">
-              <button className="nav-signup-button">Sign Up</button>
-            </NavLink>
-          </div>
-          {isLoaded && (
-            <li>
-              <ProfileButton user={sessionUser} />
-            </li>
-          )}
         </div>
-      </div>
+      ) : (
+        isLoaded && (
+          <li className="profile-button">
+            <ProfileButton user={sessionUser} isLoaded={isLoaded} />
+          </li>
+        )
+      )}
     </nav>
   );
 }

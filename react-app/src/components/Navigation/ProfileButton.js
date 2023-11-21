@@ -5,7 +5,7 @@ import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 
-function ProfileButton({ user }) {
+function ProfileButton({ user, isLoaded }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
@@ -37,23 +37,25 @@ function ProfileButton({ user }) {
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
   const closeMenu = () => setShowMenu(false);
 
+  // console.log("user -------->", user);
+
   return (
     <>
       <button onClick={openMenu}>
         <i className="fas fa-user-circle" />
       </button>
       <ul className={ulClassName} ref={ulRef}>
-        {user ? (
+        {isLoaded && user ? (
           <>
-            <li>{user.username}</li>
-            <li>{user.email}</li>
+            <li>{user?.username}</li>
+            <li>{user?.email}</li>
             <li>
               <button onClick={handleLogout}>Log Out</button>
             </li>
           </>
         ) : (
           <>
-            <OpenModalButton
+            {/* <OpenModalButton
               buttonText="Log In"
               onItemClick={closeMenu}
               // modalComponent={<LoginFormModal />}
@@ -63,7 +65,7 @@ function ProfileButton({ user }) {
               buttonText="Sign Up"
               onItemClick={closeMenu}
               modalComponent={<SignupFormModal />}
-            />
+            /> */}
           </>
         )}
       </ul>
