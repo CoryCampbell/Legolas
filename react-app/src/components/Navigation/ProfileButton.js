@@ -49,7 +49,7 @@ function ProfileButton({ user, isLoaded }) {
       <ul className={ulClassName} ref={ulRef}>
         {isLoaded && user ? (
           <>
-            <NavLink to={`/api/transactions/${user.id}`}>History</NavLink>
+            <NavLink to={`/transactions/${user.id}`}>History</NavLink>
             <li>
               <button onClick={handleLogout}>Log Out</button>
             </li>
