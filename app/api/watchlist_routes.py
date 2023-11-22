@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from app.models import UserStock, User, Company
+from app.models import Portfolio, User, Company
 from flask_login import login_required, current_user
 from app.models import Watchlist
 from app import db

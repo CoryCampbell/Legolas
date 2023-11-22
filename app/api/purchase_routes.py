@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from datetime import datetime
-from app.models import db, User, Company, Transaction, UserStock
+from app.models import db, User, Company, Transaction, Portfolio
 from flask_login import login_required, current_user
 
 purchase_routes = Blueprint("purchases", __name__)
@@ -28,16 +28,16 @@ def purchase(company_id):
     if user.balance < company.price * number_of_shares:
         return jsonify({"error": "Insufficient funds, transaction cannot be processed"}), 400
 
-    # Update or create UserStock
-    user_stock = UserStock.query.filter_by(
+    # Update or create Portfolio
+    portfolio = Portfolio.query.filter_by(
         user_id=user_id, company_id=company_id).first()
-    if user_stock:
-        user_stock.shares += number_of_shares
-        # user_stock.price += company.price * number_of_shares
-        print(user_stock.shares, "==============> USER SHARES")
+    if portfolio:
+        portfolio.shares += number_of_shares
+        # portfolio.price += company.price * number_of_shares
+        print(portfolio.shares, "==============> USER SHARES")
         # print(new_stock.price, "==============> USER PRICE")
     else:
-        new_stock = UserStock(user_id=user_id, company_id=company_id,
+        new_stock = Portfolio(user_id=user_id, company_id=company_id,
                               shares=number_of_shares,
                               price=company.price * number_of_shares)
         print(new_stock.price, "==============> NEW STOCK")

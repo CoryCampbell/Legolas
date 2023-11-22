@@ -13,7 +13,7 @@ class Watchlist(db.Model):
         db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False
     )
 
-    watchlist_details = db.relationship('Watchlist_details', backref='watchlists')
+    watchlist_details = db.relationship('Watchlist_detail', backref='watchlist')
 
     def to_dict(self):
         return {

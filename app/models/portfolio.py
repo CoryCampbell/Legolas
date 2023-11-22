@@ -1,8 +1,8 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 
 
-class UserStock(db.Model):
-    __tablename__ = "user_stocks"
+class Portfolio(db.Model):
+    __tablename__ = "portfolio"
 
     if environment == "production":
         __table_args__ = {"schema": SCHEMA}

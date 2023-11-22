@@ -1,37 +1,41 @@
 
-from app.models import db, Watchlist_details, environment, SCHEMA
+from app.models import db, Watchlist_detail, environment, SCHEMA
 from sqlalchemy.sql import text
 
 
 # Adds watchlists, you can add other watchlists here if you want
 def seed_watchlist_details():
-    demo_watchlist_details1 = Watchlist_details(
+    demo_watchlist_details1 = Watchlist_detail(
         watchlist_id=1,
         company_id=1
     )
-    demo_watchlist_details2 = Watchlist_details(
+    demo_watchlist_details2 = Watchlist_detail(
         watchlist_id=2,
         company_id=2
     )
-    demo_watchlist_details3 = Watchlist_details(
+    demo_watchlist_details3 = Watchlist_detail(
         watchlist_id=3,
         company_id=3
     )
-    demo_watchlist_details4 = Watchlist_details(
+    demo_watchlist_details4 = Watchlist_detail(
         watchlist_id=4,
         company_id=4
     )
-    demo_watchlist_details5 = Watchlist_details(
+    demo_watchlist_details5 = Watchlist_detail(
         watchlist_id=5,
         company_id=5
     )
-    demo_watchlist_details6 = Watchlist_details(
+    demo_watchlist_details6 = Watchlist_detail(
         watchlist_id=6,
         company_id=6
     )
-    demo_watchlist_details7 = Watchlist_details(
+    demo_watchlist_details7 = Watchlist_detail(
         watchlist_id=7,
         company_id=7
+    )
+    demo_watchlist_details8 = Watchlist_detail(
+        watchlist_id=1,
+        company_id=2
     )
 
     db.session.add(demo_watchlist_details1)
@@ -41,6 +45,7 @@ def seed_watchlist_details():
     db.session.add(demo_watchlist_details5)
     db.session.add(demo_watchlist_details6)
     db.session.add(demo_watchlist_details7)
+    db.session.add(demo_watchlist_details8)
     db.session.commit()
 
 
