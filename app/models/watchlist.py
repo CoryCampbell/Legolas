@@ -12,14 +12,12 @@ class Watchlist(db.Model):
     user_id = db.Column(
         db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False
     )
-    company_id = db.Column(
-        db.Integer, db.ForeignKey(add_prefix_for_prod("companies.id")), nullable=True
-    )
+
+    watchlist_details = db.relationship('Watchlist_details', backref='watchlists')
 
     def to_dict(self):
         return {
             "id": self.id,
             "name": self.name,
-            "user_id": self.user_id,
-            "company_id": self.company_id or "NULL",
+            "user_id": self.user_id
         }

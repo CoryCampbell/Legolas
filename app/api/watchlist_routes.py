@@ -14,54 +14,63 @@ watchlist_routes = Blueprint("watchlists", __name__)
 def create_user_watchlist(user_id):
     url = request.url
     name = request.json.get("name")
+    current_user_id = current_user.id
+
+    if user_id == current_user_id:
+        # !set up for new watchlist with name, companies in data
+        watchlists = Watchlist.query.filter(Watchlist.user_id == user_id).all()
+        for i in range(len(watchlists)):
+            watchlist = watchlists[i].to_dict()
+
+            if watchlist["name"] == name:
+                return {"error": "watchlist already exists"}, 400
+
+        new_watchlist2 = Watchlist(name=name, user_id=user_id, company_id="NULL")
 
 
-    # !set up for new watchlist with name, companies in data
-    watchlists = Watchlist.query.filter(Watchlist.user_id == user_id).all()
-    for i in range(len(watchlists)):
-        watchlist = watchlists[i].to_dict()
-        print("watchlist ------->", watchlist)
-        if watchlist["name"] == name:
-            return {"error": "watchlist already exists"}, 400
+        db.session.add(new_watchlist2)
+        db.session.commit()
 
-    new_watchlist2 = Watchlist(name=name, user_id=user_id, company_id="NULL")
+        return new_watchlist2.to_dict()
 
-
-    db.session.add(new_watchlist2)
-    db.session.commit()
-
-    return new_watchlist2.to_dict()
+    return {"error": "Unauthorized"}, 403
 
 
 
 # Add a Company to a User's Watchlist By Watchlist Name
 
-#                           /watchlists/watchlist_name/add
+#                           /watchlists/1/add
 #                           /
-@watchlist_routes.route("/<int:>/add", methods=["POST"])
+@watchlist_routes.route("/<int:user_id>/add", methods=["POST"])
 @login_required
-def add_to_user_watchlist(watchlist_id):
-    company_id = request.json.get("company_id")
-    watchlist = Watchlist.query.filter(Watchlist.company_id == company_id).first()
-    watchlist_name = watchlist.name
-    user_id = current_user.id
+def add_to_user_watchlist(user_id):
+    new_company_id = request.json.get("company_id")
+    watchlist_name = request.json.get("name")
+    current_user_id = current_user.id
 
-    #cannot add same company to existing watchlist
-    watchlists = Watchlist.query.filter(Watchlist.user_id == user_id).all()
-    for i in range(len(watchlists)):
-        watchlist_check = watchlists[i].to_dict()
-        if watchlist_check["company_id"] == company_id:
-            return {"error": "Your watchlist already includes this Company"}, 400
+    #authorization check
+    if user_id == current_user_id:
 
-    new_company_to_watch = Watchlist(
-        name = watchlist_name,
-        user_id = user_id,
-        company_id = company_id
-    )
+        #cannot add same company to existing watchlist
+        watchlists = Watchlist.query.filter(Watchlist.user_id == user_id).all()
+        for i in range(len(watchlists)):
+            watchlist_check = watchlists[i].to_dict()
+            print("existing company id in watchlist: ", watchlist_check["company_id"])
+            print("companyId: ", new_company_id)
 
-    db.session.add(new_company_to_watch)
-    db.session.commit()
+            if watchlist_check["company_id"] == new_company_id:
+                print("looooook!")
+                return {"error": "Your watchlist already includes this Company"}, 400
 
-    print(new_company_to_watch)
+        new_company_to_watch = Watchlist(
+            name = watchlist_name,
+            user_id = user_id,
+            company_id = new_company_id
+        )
 
-    return new_company_to_watch.to_dict()
+        # db.session.add(new_company_to_watch)
+        # db.session.commit()
+
+        return new_company_to_watch.to_dict()
+
+    return {"error": "Unauthorized"}, 403

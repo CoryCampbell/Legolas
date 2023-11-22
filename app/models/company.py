@@ -16,7 +16,7 @@ class Company(db.Model):
     # Relationships
     user_stocks = db.relationship('UserStock', backref='company')
     transactions = db.relationship('Transaction', backref='company')
-    watchlist_items = db.relationship('Watchlist', backref='company')
+    watchlist_details = db.relationship('Watchlist_details', backref='company')
 
 
     def to_dict(self):
