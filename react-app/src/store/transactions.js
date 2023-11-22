@@ -1,33 +1,20 @@
 const GET_USER_TRANSACTIONS = "transactions/getUserTransactions";
 
 // Action Creator
-const getUserTransactions = (payload) => {
+const getUserTransactions = () => {
   return {
     type: GET_USER_TRANSACTIONS,
-    payload,
   };
 };
 
 // Thunk
 export const getUserTransactionsThunk = (user_id) => async (dispatch) => {
-  try {
-    const response = await fetch(`/api/transactions/${user_id}`, {
-      method: "GET",
-    });
-
-    if (!response.ok) {
-      // Handle error if the response status is not OK
-      throw new Error("Failed to fetch user transactions");
-    }
-
-    const userTransactions = await response.json();
-
-    dispatch(getUserTransactions(userTransactions));
-    return userTransactions;
-  } catch (error) {
-    console.error("Error fetching user transactions:", error.message);
-    // Optionally, you might want to dispatch an action for error handling
-  }
+  // console.log(user_id);
+  const response = await fetch(`/api/transactions/${user_id}`);
+  console.log("response -------->", response);
+  const data = await response.json();
+  console.log("data -------->", data);
+  // dispatch(getUserTransactions(data));
 };
 
 // Initial state
@@ -37,11 +24,12 @@ const initialState = {
 
 // Reducer
 const transactionsReducer = (state = initialState, action) => {
+  console.log("action -------->", action);
   switch (action.type) {
     case GET_USER_TRANSACTIONS:
       return {
         ...state,
-        currentUserTransactions: action.payload,
+        currentUserTransactions: action.transactions,
       };
     default:
       return state;
