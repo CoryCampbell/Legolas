@@ -13,12 +13,8 @@ watchlist_routes = Blueprint("watchlists", __name__)
 @login_required
 def create_user_watchlist(user_id):
     url = request.url
-
-    # res = request.json.get('https://api.github.com')
-    # print(user_id)
-    # print("url ----->", url)
     name = request.json.get("name")
-    # print("request.data --------->", name)
+
 
     # !set up for new watchlist with name, companies in data
     watchlists = Watchlist.query.filter(Watchlist.user_id == user_id).all()
@@ -27,19 +23,9 @@ def create_user_watchlist(user_id):
         print("watchlist ------->", watchlist)
         if watchlist["name"] == name:
             return {"error": "watchlist already exists"}, 400
-    #     company = Company.query.filter(Company.id == watchlist.company_id).first()
-    #     new_watchlist = Watchlist(
-    #         name=request.data, user_id=user_id, company_id=company.id
-    #     )
-    #     # response = request.post(url,json=new_watchlist)
-    #     return new_watchlist.to_dict()
-    #     # db.session.add(new_watchlist)
-    #     # db.session.commit()
 
-    # new watchlist with just the name
     new_watchlist2 = Watchlist(name=name, user_id=user_id, company_id="NULL")
 
-    # print("new ------->", new_watchlist2)
 
     db.session.add(new_watchlist2)
     db.session.commit()
@@ -48,32 +34,34 @@ def create_user_watchlist(user_id):
 
 
 
-@watchlist_routes.route("/<int:user_id>/add", methods=["POST"])
-@login_required
-def add_to_user_watchlist(company_id):
+# Add a Company to a User's Watchlist By Watchlist Name
 
+#                           /watchlists/watchlist_name/add
+#                           /
+@watchlist_routes.route("/<int:>/add", methods=["POST"])
+@login_required
+def add_to_user_watchlist(watchlist_id):
+    company_id = request.json.get("company_id")
     watchlist = Watchlist.query.filter(Watchlist.company_id == company_id).first()
     watchlist_name = watchlist.name
     user_id = current_user.id
+
+    #cannot add same company to existing watchlist
+    watchlists = Watchlist.query.filter(Watchlist.user_id == user_id).all()
+    for i in range(len(watchlists)):
+        watchlist_check = watchlists[i].to_dict()
+        if watchlist_check["company_id"] == company_id:
+            return {"error": "Your watchlist already includes this Company"}, 400
+
     new_company_to_watch = Watchlist(
         name = watchlist_name,
         user_id = user_id,
         company_id = company_id
     )
 
+    db.session.add(new_company_to_watch)
+    db.session.commit()
+
     print(new_company_to_watch)
 
-
-    # company_id = request.json.get('company_id')
-    # print(company_id, "COMPANY ID =============")
-
-    # if current_user.id != user_id:
-    #     return jsonify({"error": "User not authorized"}), 403
-
-    # user = User.query.filter_by(id=user_id).all()
-    # Company = Company.query.filter_by().all()
-
-    # watchlist = Watchlist.query.filter_by(user_id == user.id).all()
-
-    # existing_watchlist = Watchlist.query.filter_by(
-    #     user_id == user.id, company_id=company_id).all()
+    return new_company_to_watch.to_dict()
