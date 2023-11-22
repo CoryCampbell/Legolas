@@ -45,6 +45,25 @@ def create_user_watchlist(user_id):
     db.session.commit()
 
     return new_watchlist2.to_dict()
+
+
+
+@watchlist_routes.route("/<int:user_id>/add", methods=["POST"])
+@login_required
+def add_to_user_watchlist(company_id):
+
+    watchlist = Watchlist.query.filter(Watchlist.company_id == company_id).first()
+    watchlist_name = watchlist.name
+    user_id = current_user.id
+    new_company_to_watch = Watchlist(
+        name = watchlist_name,
+        user_id = user_id,
+        company_id = company_id
+    )
+
+    print(new_company_to_watch)
+
+
     # company_id = request.json.get('company_id')
     # print(company_id, "COMPANY ID =============")
 
