@@ -15,9 +15,9 @@ export default function Transactions() {
 
   //   console.log(getUserTransactionsThunk);
 
-  //   useEffect(() => {
-  //     dispatch(getUserTransactionsThunk(user_id));
-  //   }, [dispatch, user_id]);
+  useEffect(() => {
+    dispatch(getUserTransactionsThunk(user_id));
+  }, [dispatch, user_id]);
 
   return (
     <>

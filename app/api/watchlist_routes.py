@@ -3,6 +3,7 @@ from app.models import UserStock, User, Company
 from flask_login import login_required, current_user
 from app.models import Watchlist
 from app import db
+
 # from forms import WatchListForm
 
 watchlist_routes = Blueprint("watchlists", __name__)
@@ -14,24 +15,36 @@ def create_user_watchlist(user_id):
     url = request.url
 
     # res = request.json.get('https://api.github.com')
-    print(request.data, '--------------')
+    # print(user_id)
+    # print("url ----->", url)
+    name = request.json.get("name")
+    # print("request.data --------->", name)
 
+    # !set up for new watchlist with name, companies in data
     watchlists = Watchlist.query.filter(Watchlist.user_id == user_id).all()
     for i in range(len(watchlists)):
-        watchlist = watchlists[i]
-        company = Company.query.filter(Company.id == watchlist.company_id).first()
-        new_watchlist = Watchlist(
-            name = request.data,
-            user_id=user_id,
-            company_id=company.id
-        )
-        # response = request.post(url,json=new_watchlist)
-        return new_watchlist.to_dict()
-        # db.session.add(new_watchlist)
-        # db.session.commit()
+        watchlist = watchlists[i].to_dict()
+        print("watchlist ------->", watchlist)
+        if watchlist["name"] == name:
+            return {"error": "watchlist already exists"}, 400
+    #     company = Company.query.filter(Company.id == watchlist.company_id).first()
+    #     new_watchlist = Watchlist(
+    #         name=request.data, user_id=user_id, company_id=company.id
+    #     )
+    #     # response = request.post(url,json=new_watchlist)
+    #     return new_watchlist.to_dict()
+    #     # db.session.add(new_watchlist)
+    #     # db.session.commit()
 
+    # new watchlist with just the name
+    new_watchlist2 = Watchlist(name=name, user_id=user_id, company_id="NULL")
 
-    return 'hi'
+    # print("new ------->", new_watchlist2)
+
+    db.session.add(new_watchlist2)
+    db.session.commit()
+
+    return new_watchlist2.to_dict()
     # company_id = request.json.get('company_id')
     # print(company_id, "COMPANY ID =============")
 
