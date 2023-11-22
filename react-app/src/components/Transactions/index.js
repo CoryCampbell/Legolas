@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import getUserTransactionsThunk from "../../store/transactions.js";
+import { getUserTransactionsThunk } from "../../store/transactions.js";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min.js";
 
 export default function Transactions() {
