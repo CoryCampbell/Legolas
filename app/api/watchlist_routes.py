@@ -8,54 +8,47 @@ from app import db
 
 watchlist_routes = Blueprint("watchlists", __name__)
 
-
-
-
+# GET USER WATCHLIST BASED ON ID
 @watchlist_routes.route("/<int:watchlist_id>")
 @login_required
 def get_user_watchlist(watchlist_id):
-    print("watchlistID: ", watchlist_id)
-    print("request url: ", request.url)
+
     current_user_id = current_user.id
     watchlist = Watchlist_detail.query.filter(Watchlist_detail.id == watchlist_id).first()
-    print("watchlist: ------->", watchlist.to_dict())
+
     return watchlist.to_dict()
 
 
+# CREATE NEW WATCHLIST
 @watchlist_routes.route("/new", methods=["POST"])
 @login_required
-def create_user_watchlist(name):
-    print(name)
-    return "test"
+def create_user_watchlist():
+
+    name = request.json.get("name")
+    current_user_id = current_user.id
+
+    # !set up for new watchlist with name, companies in data
+    watchlists = Watchlist.query.filter(Watchlist.user_id == current_user_id).all()
+    for i in range(len(watchlists)):
+        watchlist = watchlists[i].to_dict()
+
+        if str(watchlist["name"]) == str(name):
+            return {"error": "watchlist already exists"}, 400
+
+    new_watchlist = Watchlist(
+        name=name,
+        user_id=current_user_id
+    )
+
+    db.session.add(new_watchlist)
+    db.session.commit()
+
+    print("NEW WATCHLIST:", new_watchlist.to_dict())
+
+    return new_watchlist.to_dict()
 
 
-# def create_user_watchlist(user_id):
-#     url = request.url
-#     name = request.json.get("name")
-#     current_user_id = current_user.id
-
-#     if user_id == current_user_id:
-#         # !set up for new watchlist with name, companies in data
-#         watchlists = Watchlist.query.filter(Watchlist.user_id == user_id).all()
-#         for i in range(len(watchlists)):
-#             watchlist = watchlists[i].to_dict()
-
-#             if str(watchlist["name"]) == str(name):
-#                 return {"error": "watchlist already exists"}, 400
-
-#         new_watchlist2 = Watchlist(name=name, user_id=user_id, company_id="NULL")
-
-
-#         db.session.add(new_watchlist2)
-#         db.session.commit()
-
-#         return new_watchlist2.to_dict()
-
-#     return {"error": "Unauthorized"}, 403
-
-
-
-# Add a Company to a User's Watchlist By Watchlist Name
+# ADD COMPANY TO WATCHLIST
 @watchlist_routes.route("/<int:watchlist_id>/add", methods=["POST"])
 @login_required
 def add_to_user_watchlist(watchlist_id):
