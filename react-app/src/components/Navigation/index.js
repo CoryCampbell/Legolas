@@ -24,7 +24,7 @@ function Navigation({ isLoaded }) {
       </div>
       <div className="search-bar">
         <FontAwesomeIcon icon={faMagnifyingGlassDollar} />
-        <input type="text" />
+        <input type="text" placeholder="search" />
       </div>
       {!sessionUser ? (
         <div className="auth-container">
