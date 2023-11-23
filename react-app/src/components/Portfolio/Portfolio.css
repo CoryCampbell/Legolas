@@ -10,7 +10,8 @@
   height: 100vh;
 }
 
-.user-info {
+.user-info,
+.company-info {
   padding: 0 20px;
   display: flex;
   align-items: center;
