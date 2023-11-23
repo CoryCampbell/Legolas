@@ -1,9 +1,10 @@
 const GET_USER_TRANSACTIONS = "transactions/getUserTransactions";
 
 // Action Creator
-const getUserTransactions = () => {
+const getUserTransactions = (payload) => {
   return {
     type: GET_USER_TRANSACTIONS,
+    payload,
   };
 };
 
@@ -14,7 +15,7 @@ export const getUserTransactionsThunk = (user_id) => async (dispatch) => {
   console.log("response -------->", response);
   const data = await response.json();
   console.log("data -------->", data);
-  // dispatch(getUserTransactions(data));
+  dispatch(getUserTransactions(data));
 };
 
 // Initial state
@@ -29,7 +30,7 @@ const transactionsReducer = (state = initialState, action) => {
     case GET_USER_TRANSACTIONS:
       return {
         ...state,
-        currentUserTransactions: action.transactions,
+        currentUserTransactions: action.payload,
       };
     default:
       return state;
