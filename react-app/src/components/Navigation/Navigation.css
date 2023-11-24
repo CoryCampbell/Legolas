@@ -1,17 +1,75 @@
 .profile-dropdown {
-  position: absolute;
+  position: fixed;
+  list-style-type: none;
+  right: 10px;
+  padding: 10px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0px 5px 10px black;
+  z-index: 1000;
+}
+
+.profile-dropdown li {
+  margin: 8px 0;
+  color: black;
+}
+
+.profile-dropdown button {
+  background-color: green;
+  color: white;
+  padding: 8px 12px;
+  border: 1px black;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.account-button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-weight: 900;
+  font-size: 12px;
+}
+
+.account-button:hover {
+  color: #08c706;
+}
+
+.profile-dropdown button:hover {
+  background-color: darkgreen;
+}
+
+.profile-button {
+  list-style-type: none;
+  padding-right: 50px;
 }
 
 .hidden {
   display: none;
 }
 
-/* .logo-container {
-  border-right: 3px solid black;
-} */
-
 .logo {
   height: 60px;
+}
+
+.logo:hover {
+  height: 60px;
+  opacity: 0;
+  display: none;
+}
+
+.logo-hover {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 20px;
+  bottom: 0;
+  opacity: 0;
+  height: 60px;
+}
+
+.logo-hover:hover {
+  opacity: 1;
 }
 
 .navlinks-container {
@@ -24,14 +82,10 @@
 }
 
 nav {
-  background-color: #91d142;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-left: 20px;
-  padding-right: 30px;
-  /* border-bottom: 3px solid black; */
-  position: fixed;
-  top: 0;
-  width: 100%;
+  width: 100vw;
+  margin-left: 20px;
+  margin-right: 20px;
 }

@@ -6,7 +6,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import Portfolio from "./components/Portfolio";
-
+import Transactions from "./components/Transactions";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,6 +25,9 @@ function App() {
           </Route>
           <Route path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route path="/transactions/:user_id">
+            <Transactions />
           </Route>
           <Route exact path="/">
             <Portfolio />

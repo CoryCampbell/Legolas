@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify
-from app.models import UserStock, User, Company
+from app.models import Portfolio, User, Company
 from flask_login import login_required, current_user
 
 portfolio_routes = Blueprint("portfolio", __name__)
@@ -15,7 +15,7 @@ def current_user_portfolio(user_id):
 
     user = User.query.filter_by(id=user_id).all()
 
-    portfolio = UserStock.query.filter_by(user_id=user_id).all()
+    portfolio = Portfolio.query.filter_by(user_id=user_id).all()
 
     if not user:
         return jsonify({"error": "User not found"}), 404

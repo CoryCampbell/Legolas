@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify
-from app.models import UserStock, User, Company, Transaction
+from app.models import Portfolio, User, Company, Transaction
 from flask_login import login_required, current_user
 
 transaction_routes = Blueprint("transactions", __name__)

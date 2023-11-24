@@ -6,19 +6,19 @@ from sqlalchemy.sql import text
 # Adds watchlists, you can add other watchlists here if you want
 def seed_watchlists():
     demo_watchlist1 = Watchlist(
-        user_id=1, name='Companies to Watch1', company_id=1)
+        user_id=1, name='Companies to Watch1')
     demo_watchlist2 = Watchlist(
-        user_id=2, name='Companies to Watch2', company_id=2)
+        user_id=2, name='Companies to Watch2')
     demo_watchlist3 = Watchlist(
-        user_id=3, name='Companies to Watch3', company_id=3)
+        user_id=3, name='Companies to Watch3')
     demo_watchlist4 = Watchlist(
-        user_id=4, name='Companies to Watch4', company_id=4)
+        user_id=4, name='Companies to Watch4')
     demo_watchlist5 = Watchlist(
-        user_id=5, name='Companies to Watch5', company_id=5)
+        user_id=5, name='Companies to Watch5')
     demo_watchlist6 = Watchlist(
-        user_id=6, name='Companies to Watch6', company_id=6)
+        user_id=6, name='Companies to Watch6')
     demo_watchlist7 = Watchlist(
-        user_id=7, name='Companies to Watch7', company_id=7)
+        user_id=7, name='Companies to Watch7')
 
     db.session.add(demo_watchlist1)
     db.session.add(demo_watchlist2)

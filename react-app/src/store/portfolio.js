@@ -1,0 +1,82 @@
+const GET_USER_PORTFOLIO = "portfolio/getUserPortfolio";
+const GET_COMPANY = 'companies/getCompany'
+const GET_WATCHLISTS = 'watchlists/userWatchlists'
+//Action Creator
+const getUserPortfolio = (payload) => {
+	return {
+		type: GET_USER_PORTFOLIO,
+		payload
+	};
+};
+
+const getCompany = (payload) => {
+	return {
+		type: GET_COMPANY,
+		payload
+	}
+}
+
+const getWatchlists = (payload) => {
+	return {
+		type: GET_WATCHLISTS,
+		payload
+	}
+}
+
+//Thunk
+export const fetchUserPortfolio = (user_id) => async (dispatch) => {
+	const response = await fetch(`/api/portfolio/${user_id}`, {
+		method: "GET"
+	});
+
+	const userPortfolio = await response.json();
+	// console.log(userPortfolio)
+	dispatch(getUserPortfolio(userPortfolio));
+	return userPortfolio;
+};
+
+export const fetchCompany = (company_id) => async (dispatch) => {
+	const res = await fetch(`/api/companies/${company_id}`)
+
+	const data = await res.json()
+	// console.log(data,'test')
+	dispatch(getCompany(data))
+	return data
+}
+
+export const fetchWatchlists = (user_id) => async (dispatch) => {
+	const res = await fetch(`/api/users/${user_id}/watchlist`)
+
+	const data = await res.json()
+	dispatch(getWatchlists(data))
+	return data
+}
+
+const initialState = {
+	currentUserPortfolio: {}
+};
+
+// Reducer
+export const portfolioReducer = (state = initialState, action) => {
+	switch (action.type) {
+		case GET_USER_PORTFOLIO:
+			return {
+				...state,
+				currentUserPortfolio: action.payload
+			};
+		case GET_COMPANY:
+			return {
+				...state,
+				company: action.payload
+			}
+		case GET_WATCHLISTS:
+			return{
+				...state,
+				watchlists: action.payload
+			}
+		default:
+			return state;
+	}
+};
+
+export default portfolioReducer;

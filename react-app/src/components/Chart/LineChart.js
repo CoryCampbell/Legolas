@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Line } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
 import { StocksData } from "../../fake-data/data";
+import "./chart.css";
 
 // ChartJS.register(CategoryScale, ArcElement, Tooltip, Legend);
 
@@ -18,10 +19,10 @@ const LineChart = () => {
   });
 
   return (
-    <div style={{ width: 700 }}>
-      <Line data={stockData} />
-    </div>
-  );
+		<div className="graph-container">
+			<Line data={stockData} />
+		</div>
+	);
 };
 
 export default LineChart;

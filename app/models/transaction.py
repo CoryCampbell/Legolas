@@ -14,11 +14,10 @@ class Transaction(db.Model):
     company_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod(
         'companies.id')), nullable=False)
     total = db.Column(db.Float(2), nullable=False)
-    # Added field 'type' for transaction type
     type = db.Column(db.String, nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.now, nullable=False)
     updated_at = db.Column(db.DateTime, default=datetime.now,
-                           onupdate=datetime.now, nullable=False)
+                        onupdate=datetime.now, nullable=False)
 
     def to_dict(self):
         return {
