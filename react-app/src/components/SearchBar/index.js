@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlassDollar } from "@fortawesome/free-solid-svg-icons";
 import "./SearchBar.css";
@@ -6,6 +7,12 @@ import "./SearchBar.css";
 const SearchBar = () => {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
+  const [showResults, setShowResults] = useState(false);
+
+  useEffect(() => {
+    setShowResults(true);
+    console.log(showResults);
+  }, [results]);
 
   const handleSearch = (e) => {
     setQuery(e.target.value);
@@ -23,22 +30,36 @@ const SearchBar = () => {
     }
   };
 
+  const handleShowResults = () => {
+    setShowResults(false);
+    setQuery("");
+  };
+
   return (
-    <div className="search-bar">
-      <FontAwesomeIcon icon={faMagnifyingGlassDollar} />
-      <input
-        type="text"
-        value={query}
-        placeholder="search"
-        onChange={handleSearch}
-      />
-      <div>
-        {results.map((company) => (
-          <div key={company.id}>
-            {company.name} ({company.symbol})
-          </div>
-        ))}
+    <div className="search-container">
+      <div className="search-bar">
+        <FontAwesomeIcon icon={faMagnifyingGlassDollar} />
+        <input
+          type="text"
+          value={query}
+          placeholder="search"
+          onChange={handleSearch}
+        />
       </div>
+      {showResults && (
+        <div className="search-results">
+          {results.map((company) => (
+            <NavLink
+              className="result-link"
+              key={company.id}
+              to={`/api/companies/${company.id}`}
+              onClick={handleShowResults}
+            >
+              {company.symbol} - {company.name}
+            </NavLink>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
