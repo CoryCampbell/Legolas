@@ -1,0 +1,32 @@
+
+.users-transactions {
+    border-bottom: 0.5px solid rgb(244 230 230);
+}
+/* css for container of navlinks */
+.users-transactions > div {
+    display: flex;
+    margin: auto;
+    width: 50%;
+}
+/* css to title of transactions */
+.users-transactions > h1 {
+    margin: auto;
+    width: 50%;
+    padding-bottom: 20px;
+}
+/* adds spacing for the navlinks */
+.transactions-container > div {
+    padding-left: 40px;
+    padding-bottom: 10px;
+    /* text-decoration: none; */
+}
+/* gets rid of default css for navlinks so we can change them */
+a:-webkit-any-link {
+    text-decoration: none;
+    color: black;
+}
+/* hovers for navlinks turn text green */
+a:-webkit-any-link:hover {
+    text-decoration: none;
+    color: green;
+}
