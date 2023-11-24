@@ -8,6 +8,8 @@ import {
   fetchUserPortfolio,
   fetchWatchlists,
 } from "../../store/portfolio";
+import OpenModalButton from "../OpenModalButton"
+import WatchListModal from "../WatchlistModal";
 
 const Portfolio = () => {
   const sessionUser = useSelector((state) => state.session.user);
@@ -55,7 +57,12 @@ const Portfolio = () => {
             </div>
             <div className="main-list-container">
               <div>Lists</div>
-			  <div><button>Create New Watchlist</button></div>
+			  <div>
+          <OpenModalButton
+            buttonText="Create a new Watchlist"
+            modalComponent={<WatchListModal />}
+            />
+          </div>
               <div className="watchlist">
                 {watchlist.map(
                   ({ symbol, price, company_name, company_id }) => (
