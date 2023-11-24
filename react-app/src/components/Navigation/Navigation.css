@@ -32,7 +32,7 @@
 }
 
 .account-button:hover {
-  color: #08C706;
+  color: #08c706;
 }
 
 .profile-dropdown button:hover {
@@ -65,14 +65,12 @@
   left: 20px;
   bottom: 0;
   opacity: 0;
-  height:  60px;
+  height: 60px;
 }
 
 .logo-hover:hover {
   opacity: 1;
 }
-
-
 
 .navlinks-container {
   display: flex;

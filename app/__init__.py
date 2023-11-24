@@ -12,6 +12,7 @@ from .api.portfolio_routes import portfolio_routes
 from .api.company_routes import company_routes
 from .api.purchase_routes import purchase_routes
 from .api.watchlist_routes import watchlist_routes
+from .api.search_companies import search_companies_routes
 from .seeds import seed_commands
 from .config import Config
 
@@ -38,6 +39,8 @@ app.register_blueprint(portfolio_routes, url_prefix="/api/portfolio")
 app.register_blueprint(company_routes, url_prefix="/api/companies")
 app.register_blueprint(purchase_routes, url_prefix="/api/purchase")
 app.register_blueprint(watchlist_routes, url_prefix="/api/watchlists")
+
+app.register_blueprint(search_companies_routes, url_prefix="/api/search")
 
 db.init_app(app)
 Migrate(app, db)
