@@ -5,8 +5,7 @@ import ProfileButton from "./ProfileButton";
 import "./Navigation.css";
 import logo from "../../static/test-logos-and-images/Legolas-logo-dark.png";
 import logoHover from "../../static/test-logos-and-images/Legolas-logo-final.png";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlassDollar } from "@fortawesome/free-solid-svg-icons";
+import SearchBar from "../SearchBar";
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
@@ -22,10 +21,7 @@ function Navigation({ isLoaded }) {
           </NavLink>
         </div>
       </div>
-      <div className="search-bar">
-        <FontAwesomeIcon icon={faMagnifyingGlassDollar} />
-        <input type="text" placeholder="search" />
-      </div>
+      <SearchBar />
       {!sessionUser ? (
         <div className="auth-container">
           <div className="nav-buttons-container">

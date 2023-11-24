@@ -5,7 +5,7 @@ from app.models import Company, db
 search_companies_routes = Blueprint("search_companies", __name__)
 
 
-@search_companies_routes('/search_companies', methods=['GET'])
+@search_companies_routes.route('/search_companies', methods=['GET'])
 def search_companies():
     # Get the search query from URL parameters
     search_query = request.args.get('query', '')
