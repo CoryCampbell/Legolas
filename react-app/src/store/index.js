@@ -3,11 +3,15 @@ import thunk from "redux-thunk";
 import sessionReducer from "./session";
 import portfolioReducer from "./portfolio";
 import transactionsReducer from "./transactions";
+import companyReducer from "./companies";
+import watchlistReducer from "./watchlists";
 
 const rootReducer = combineReducers({
-  session: sessionReducer,
-  portfolio: portfolioReducer,
-  transactions: transactionsReducer,
+	session: sessionReducer,
+	portfolio: portfolioReducer,
+	transactions: transactionsReducer,
+	companies: companyReducer,
+	watchlists: watchlistReducer
 });
 
 let enhancer;
