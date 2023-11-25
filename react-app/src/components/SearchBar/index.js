@@ -34,6 +34,7 @@ const SearchBar = () => {
   const handleShowResults = () => {
     setShowResults(false);
     setQuery("");
+    setResults([]);
   };
 
   return (
