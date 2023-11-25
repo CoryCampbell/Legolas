@@ -23,10 +23,10 @@ const Portfolio = () => {
   );
   console.log(watchlist, "test--------");
   useEffect(() => {
-    dispatch(fetchUserPortfolio(sessionUser.id));
-    dispatch(fetchWatchlists(sessionUser.id));
-    dispatch(fetchCompany(info?.company_id));
-  }, [dispatch, info?.company_id]);
+		dispatch(fetchUserPortfolio(sessionUser?.id));
+		dispatch(fetchWatchlists(sessionUser?.id));
+		dispatch(fetchCompany(info?.company_id));
+	}, [dispatch, info?.company_id, sessionUser?.id]);
 
   return (
     <div className="main-portfolio-container">
