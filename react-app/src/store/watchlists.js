@@ -26,7 +26,7 @@ export const fetchWatchlist = (watchlist_id) => async (dispatch) => {
 };
 
 export const fetchAllwatchlists = (user_id) => async (dispatch) => {
-	const res = await fetch(`/api/watchlists/1`);
+	const res = await fetch(`/api/watchlists/${user_id}`);
 
 	const data = await res.json();
 	dispatch(getAllWatchlists(data));

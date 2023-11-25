@@ -7,7 +7,7 @@ transaction_routes = Blueprint("transactions", __name__)
 
 @transaction_routes.route("/<int:user_id>")
 @login_required
-def current_user_portfolio(user_id):
+def current_user_transactions(user_id):
     """Gathers all info for the Current User's portfolio"""
 
     if current_user.id != user_id:
