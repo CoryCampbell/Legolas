@@ -11,10 +11,10 @@ watchlist_routes = Blueprint("watchlists", __name__)
 # GET USER WATCHLIST BASED ON ID
 @watchlist_routes.route("/<int:watchlist_id>")
 @login_required
-def get_user_watchlist(watchlist_id):
+def get_user_watchlist(user_id):
 
     current_user_id = current_user.id
-    watchlist = Watchlist_detail.query.filter(Watchlist_detail.id == watchlist_id).first()
+    watchlist = Watchlist.query.filter(Watchlist.user_id == current_user_id).first()
 
     return watchlist.to_dict()
 

@@ -10,7 +10,7 @@ company_routes = Blueprint("companies", __name__)
 def current_company(company_id):
     """Gathers all info for the Current User's portfolio"""
 
-    company = Company.query.get(company_id)
+    company = Company.query.get(company_id).first()
 
     if not company:
         return jsonify({"error": "Company not found"}), 404
