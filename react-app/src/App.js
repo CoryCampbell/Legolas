@@ -9,6 +9,8 @@ import Portfolio from "./components/Portfolio";
 import Transactions from "./components/Transactions";
 import Landing from "./components/Portfolio/Landing";
 import CompanyDetails from "./components/CompanyDetails/CompanyDetails";
+import Watchlist from "./components/Watchlists";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -16,6 +18,7 @@ function App() {
   useEffect(() => {
     dispatch(authenticate()).then(() => setIsLoaded(true));
   }, [dispatch]);
+
 
   return (
     <>
@@ -28,6 +31,9 @@ function App() {
           <Route exact path="/companies/:company_id">
             <CompanyDetails />
           </Route>
+        	<Route path="/watchlists/:user_id">
+						<Watchlist />
+					</Route>
           <Route exact path="/signup">
             <SignupFormPage />
           </Route>
@@ -42,6 +48,7 @@ function App() {
       {!isLoaded && <Landing />}
     </>
   );
+
 }
 
 export default App;

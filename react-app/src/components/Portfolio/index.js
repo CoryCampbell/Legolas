@@ -5,9 +5,7 @@ import LineChart from "../Chart/LineChart";
 import { useEffect } from "react";
 import { fetchUserPortfolio } from "../../store/portfolio";
 import { fetchAllCompanies, fetchCompany } from "../../store/companies";
-import { fetchAllWatchlists, fetchWatchlist } from "../../store/watchlists";
-import OpenModalButton from "../OpenModalButton";
-import WatchListModal from "../WatchlistModal";
+import Watchlist from "../Watchlists";
 
 const Portfolio = () => {
 	const dispatch = useDispatch();
@@ -36,12 +34,7 @@ const Portfolio = () => {
 						<div className="mod learning-mod">LEARNING</div>
 						<div className="mod news-mod">NEWS</div>
 					</div>
-					<div className="main-list-container">
-						<div>Lists</div>
-						<div>
-							<OpenModalButton buttonText="Create a new Watchlist" modalComponent={<WatchListModal />} />
-						</div>
-					</div>
+					<Watchlist />
 				</>
 			) : (
 				<Landing />
