@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import Portfolio from "./components/Portfolio";
 import Transactions from "./components/Transactions";
 import Landing from "./components/Portfolio/Landing";
+import Watchlist from "./components/Watchlists";
 
 function App() {
 	const dispatch = useDispatch();
@@ -28,7 +29,7 @@ function App() {
 						<SignupFormPage />
 					</Route>
 					<Route path="/watchlists/:user_id">
-						<SignupFormPage />
+						<Watchlist />
 					</Route>
 					<Route path="/transactions/:user_id">
 						<Transactions />
