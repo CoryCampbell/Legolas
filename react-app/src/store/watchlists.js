@@ -1,5 +1,5 @@
 const GET_WATCHLIST = "watchlists/getWatchlist";
-const GET_ALL_WATCHLISTS = "watchlists/getAllwatchlists";
+const GET_ALL_WATCHLISTS = "watchlists/getAllWatchlists";
 
 //Action Creator
 const getWatchlist = (payload) => {
@@ -21,7 +21,6 @@ export const fetchWatchlist = (watchlist_id) => async (dispatch) => {
 	const res = await fetch(`/api/watchlists/1`);
 
 	const data = await res.json();
-	// console.log(data,'test')
 	dispatch(getWatchlist(data));
 	return data;
 };
@@ -30,7 +29,6 @@ export const fetchAllwatchlists = (user_id) => async (dispatch) => {
 	const res = await fetch(`/api/watchlists/1`);
 
 	const data = await res.json();
-	// console.log(data,'test')
 	dispatch(getAllWatchlists(data));
 	return data;
 };

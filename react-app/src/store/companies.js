@@ -22,7 +22,6 @@ export const fetchCompany = (company_id) => async (dispatch) => {
 	const res = await fetch(`/api/companies/1`);
 
 	const data = await res.json();
-	// console.log(data,'test')
 	dispatch(getCompany(data));
 	return data;
 };
@@ -31,7 +30,6 @@ export const fetchAllCompanies = (company_id) => async (dispatch) => {
 	const res = await fetch(`/api/companies/1`);
 
 	const data = await res.json();
-	// console.log(data,'test')
 	dispatch(getCompany(data));
 	return data;
 };

@@ -13,9 +13,9 @@ def current_user_portfolio(user_id):
     if current_user.id != user_id:
         return jsonify({"error": "User not authorized"}), 403
 
-    user = User.query.filter_by(id=user_id).all()
+    user = User.query.filter_by(id=user_id).first()
 
-    portfolio = Portfolio.query.filter_by(user_id=user_id).all()
+    portfolio = Portfolio.query.filter_by(user_id=user_id).first()
 
     if not user:
         return jsonify({"error": "User not found"}), 404

@@ -10,12 +10,11 @@ const getUserTransactions = (payload) => {
 
 // Thunk
 export const getUserTransactionsThunk = (user_id) => async (dispatch) => {
-  // console.log(user_id);
-  const response = await fetch(`/api/transactions/${user_id}`);
-  console.log("response -------->", response);
-  const data = await response.json();
-  console.log("data -------->", data);
-  dispatch(getUserTransactions(data));
+	const response = await fetch(`/api/transactions/${user_id}`);
+	console.log("response -------->", response);
+	const data = await response.json();
+	console.log("data -------->", data);
+	dispatch(getUserTransactions(data));
 };
 
 // Initial state

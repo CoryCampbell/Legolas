@@ -10,7 +10,7 @@ import SearchBar from "../SearchBar";
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
   const history = useHistory();
-  //   console.log(sessionUser);
+
   return (
     <nav>
       <div className="navlinks-container">

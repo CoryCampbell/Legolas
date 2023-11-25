@@ -3,8 +3,9 @@ import Landing from "./Landing";
 import "./Portfolio.css";
 import LineChart from "../Chart/LineChart";
 import { useEffect } from "react";
-import { fetchUserPortfolio, fetchWatchlists } from "../../store/portfolio";
+import { fetchUserPortfolio } from "../../store/portfolio";
 import { fetchAllCompanies, fetchCompany } from "../../store/companies";
+import { fetchAllWatchlists, fetchWatchlist } from "../../store/watchlists";
 import OpenModalButton from "../OpenModalButton";
 import WatchListModal from "../WatchlistModal";
 
@@ -13,12 +14,10 @@ const Portfolio = () => {
 	const dispatch = useDispatch();
 	const info = useSelector((state) => Object.values(state.portfolio.currentUserPortfolio))[0];
 	const company = useSelector((state) => state.companies.currentCompany);
-	console.log("COMPANY ======>", company);
-	const watchlist = useSelector((state) => state.portfolio.watchlists?.watchlists);
-	console.log(watchlist, "test--------");
+	const watchlist = useSelector((state) => state.watchlists?.currentWatchlist);
 	useEffect(() => {
 		dispatch(fetchUserPortfolio(sessionUser?.id));
-		dispatch(fetchWatchlists(sessionUser?.id));
+		dispatch(fetchWatchlist(sessionUser?.id));
 		dispatch(fetchCompany(info?.company_id));
 	}, [dispatch, info?.company_id, sessionUser?.id]);
 
@@ -54,16 +53,7 @@ const Portfolio = () => {
 							<div>
 								<OpenModalButton buttonText="Create a new Watchlist" modalComponent={<WatchListModal />} />
 							</div>
-							<div className="watchlist">
-								{watchlist.map(({ symbol, price, company_name, company_id }) => (
-									<div>
-										Watchlist 1
-										<p>
-											{symbol} --graph here -- {price}
-										</p>
-									</div>
-								))}
-							</div>
+							<div className="watchlist">{watchlist}</div>
 							<div className="watchlist">Watchlist 2</div>
 							<div className="watchlist">Watchlist 3</div>
 						</div>

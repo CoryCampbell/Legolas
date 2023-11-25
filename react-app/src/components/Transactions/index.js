@@ -10,12 +10,8 @@ export default function Transactions() {
     (state) => state.transactions.currentUserTransactions
   );
   const sessionUser = useSelector((state) => state.session.user);
-  console.log(sessionUser, "ses user");
-  const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
-  // console.log(transactions);
-
-  //   console.log(getUserTransactionsThunk);
 
   useEffect(() => {
     dispatch(getUserTransactionsThunk(user_id));

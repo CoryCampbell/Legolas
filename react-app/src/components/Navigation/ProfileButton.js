@@ -38,7 +38,6 @@ function ProfileButton({ user, isLoaded }) {
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
   const closeMenu = () => setShowMenu(false);
 
-  // console.log("user -------->", user);
 
   return (
     <>
