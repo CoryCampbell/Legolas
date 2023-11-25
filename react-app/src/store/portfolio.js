@@ -9,7 +9,7 @@ const getUserPortfolio = (payload) => {
 
 //Thunk
 export const fetchUserPortfolio = (user_id) => async (dispatch) => {
-	const response = await fetch(`/api/portfolio/${user_id}`, {
+	const response = await fetch(`api/portfolio/${user_id}`, {
 		method: "GET"
 	});
 

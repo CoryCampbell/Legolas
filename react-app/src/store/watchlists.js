@@ -18,7 +18,7 @@ const getAllWatchlists = (payload) => {
 
 //Thunk
 export const fetchWatchlist = (watchlist_id) => async (dispatch) => {
-	const res = await fetch(`/api/watchlists/1`);
+	const res = await fetch(`/api/watchlists/${watchlist_id}`);
 
 	const data = await res.json();
 	dispatch(getWatchlist(data));
