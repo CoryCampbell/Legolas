@@ -25,7 +25,7 @@ export const fetchWatchlist = (watchlist_id) => async (dispatch) => {
 	return data;
 };
 
-export const fetchAllwatchlists = (user_id) => async (dispatch) => {
+export const fetchAllWatchlists = (user_id) => async (dispatch) => {
 	const res = await fetch(`/api/watchlists/${user_id}`);
 
 	const data = await res.json();
@@ -50,7 +50,7 @@ export const watchlistReducer = (state = initialState, action) => {
 		case GET_ALL_WATCHLISTS:
 			return {
 				...state,
-				allwatchlists: action.payload
+				allWatchlists: action.payload
 			};
 
 		default:

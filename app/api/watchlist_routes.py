@@ -1,22 +1,34 @@
 from flask import Blueprint, jsonify, request
-from app.models import Portfolio, User, Company, Watchlist_detail
+from app.models import Portfolio, User, Company, Watchlist_detail, Watchlist
 from flask_login import login_required, current_user
-from app.models import Watchlist
 from app import db
 
 # from forms import WatchListForm
 
 watchlist_routes = Blueprint("watchlists", __name__)
 
-# GET USER WATCHLIST BASED ON ID
+# GET WATCHLIST BASED ON WATCHLIST ID
 @watchlist_routes.route("/<int:watchlist_id>")
 @login_required
-def get_user_watchlist(user_id):
+def get_user_watchlist(watchlist_id):
 
-    current_user_id = current_user.id
-    watchlist = Watchlist.query.filter(Watchlist.user_id == current_user_id).first()
+    # USED TO GET THE WATCHLIST ID
+    watchlist = Watchlist.query.filter(Watchlist.id == watchlist_id).first()
 
-    return jsonify(watchlist.to_dict())
+    # USED TO GET ALL COMPANIES INCLUDED IN WATCHLIST
+    all_watchlist_companies = [list for list in Watchlist_detail.query.filter(Watchlist_detail.watchlist_id == watchlist.id)]
+
+    # USED TO GET ALL DETAILS OF ALL COMPANIES IN WATCHLIST
+    all_company_details = []
+
+    for company in all_watchlist_companies:
+        company_details = Company.query.filter(Company.id == company.company_id).first()
+        all_company_details.append(company_details.to_dict())
+
+    return jsonify(all_company_details)
+
+
+
 
 
 # CREATE NEW WATCHLIST
