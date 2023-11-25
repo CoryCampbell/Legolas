@@ -15,4 +15,4 @@ def current_company(company_id):
     if not company:
         return jsonify({"error": "Company not found"}), 404
 
-    return company.to_dict()
+    return jsonify(company.to_dict())

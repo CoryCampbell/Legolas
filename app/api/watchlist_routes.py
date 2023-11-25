@@ -16,7 +16,7 @@ def get_user_watchlist(user_id):
     current_user_id = current_user.id
     watchlist = Watchlist.query.filter(Watchlist.user_id == current_user_id).first()
 
-    return watchlist.to_dict()
+    return jsonify(watchlist.to_dict())
 
 
 # CREATE NEW WATCHLIST

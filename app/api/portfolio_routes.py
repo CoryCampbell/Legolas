@@ -10,7 +10,7 @@ portfolio_routes = Blueprint("portfolio", __name__)
 def current_user_portfolio(user_id):
     """Gathers all info for the Current User's portfolio"""
 
-    print(user_id)
+    print("USER ID===================> ", user_id)
     if current_user.id != user_id:
         return jsonify({"error": "User not authorized"}), 403
 
@@ -20,6 +20,6 @@ def current_user_portfolio(user_id):
         return jsonify({"error": "User not found"}), 404
 
     portfolio = Portfolio.query.filter_by(user_id=user_id).first()
+    print("portfolio +==============>", portfolio)
 
-
-    return jsonify(portfolio)
+    return jsonify(portfolio.to_dict())
