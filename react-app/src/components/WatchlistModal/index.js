@@ -5,10 +5,12 @@ function WatchListModal() {
     const [watchlistName, setWatchlistName] = useState("");
     const [companySymbols, setCompanySymbols] = useState([])
     const { closeModal } = useModal()
+
     const handleSubmit = async (e) => {
-        e.preventDefault();
-        closeModal()
-    }
+			e.preventDefault();
+			closeModal();
+		};
+
     return (
         <>
         <h1>Create a Watchlist</h1>

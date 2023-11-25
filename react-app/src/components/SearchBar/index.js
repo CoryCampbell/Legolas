@@ -10,9 +10,8 @@ const SearchBar = () => {
   const [showResults, setShowResults] = useState(false);
 
   useEffect(() => {
-    setShowResults(true);
-    console.log(showResults);
-  }, [results]);
+		setShowResults(true);
+	}, [showResults]);
 
   const handleSearch = (e) => {
     setQuery(e.target.value);

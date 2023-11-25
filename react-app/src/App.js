@@ -27,6 +27,9 @@ function App() {
 					<Route path="/signup">
 						<SignupFormPage />
 					</Route>
+					<Route path="/watchlists/:user_id">
+						<SignupFormPage />
+					</Route>
 					<Route path="/transactions/:user_id">
 						<Transactions />
 					</Route>
