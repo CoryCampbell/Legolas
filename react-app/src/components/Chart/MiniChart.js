@@ -6,12 +6,14 @@ import "./chart.css";
 
 // ChartJS.register(CategoryScale, ArcElement, Tooltip, Legend);
 
+
+
 const MiniChart = () => {
 	const [stockData, setStockData] = useState({
 		labels: StocksData.map((data) => data.year),
 		datasets: [
 			{
-				label: "Stock Price",
+				label: null,
 				data: StocksData.map((data) => data.highestPrice),
 				backgroundColor: ["#91d142"]
 			}
