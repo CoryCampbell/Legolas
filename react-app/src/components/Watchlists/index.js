@@ -3,17 +3,16 @@ import { useEffect } from "react";
 import { fetchAllWatchlists, fetchWatchlist } from "../../store/watchlists";
 import OpenModalButton from "../OpenModalButton";
 import WatchListModal from "../WatchlistModal";
+import MiniChart from "../Chart/MiniChart";
+import "./watchlist.css";
 
 const Watchlist = () => {
 	const dispatch = useDispatch();
 
 	const sessionUser = useSelector((state) => state.session.user);
-	console.log("sessionUser", sessionUser);
 
-	const watchlistsState = useSelector((state) => state.watchlists.allWatchlists);
-	const watchlists = [watchlistsState];
-
-	console.log("allWatchlists =======>", watchlists);
+	const watchlists = useSelector((state) => Object.values(state.watchlists.allWatchlists));
+	console.log("watchlists", watchlists);
 
 	useEffect(() => {
 		dispatch(fetchAllWatchlists(sessionUser?.id));
@@ -24,18 +23,32 @@ const Watchlist = () => {
 			{sessionUser && (
 				<>
 					<div className="main-list-container">
-						<div>Lists</div>
-						<div>
-							<OpenModalButton buttonText="Create a new Watchlist" modalComponent={<WatchListModal />} />
+						<div className="shares-owned-preview-container">
+							<div className="my-shares-header">My Shares</div>
+							<div className="share-container">
+								<div>shares name</div>
+								<MiniChart className={"user-chart"} />
+								<div className="shares-stats-container">
+									<div>share price</div>
+									<div>percent change</div>
+								</div>
+							</div>
 						</div>
-						{watchlists.map((list) => (
-							<div key={list}>
-								<div className="ticker">{list.symbol}</div>
+						<div className="list-header">
+							Lists
+							<div>
+								<OpenModalButton buttonText="Create a new Watchlist" modalComponent={<WatchListModal />} />
+							</div>
+						</div>
+						{watchlists?.map((list) => (
+							<div key={list} className="watchlist-container">
+								{list.name}
+								{/* <div className="ticker">{list.symbol}watchlist ticker symbol</div>
 								<div className="mini-graph">graph</div>
 								<div className="list-stats-container">
-									<div className="current-share-price">share price</div>
+									<div className="current-share-price">{list.price}share price</div>
 									<div className="current-percent-change">percent change</div>
-								</div>
+								</div> */}
 							</div>
 						))}
 					</div>

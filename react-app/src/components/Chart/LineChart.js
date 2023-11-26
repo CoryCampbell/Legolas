@@ -19,7 +19,7 @@ const LineChart = () => {
   });
 
   return (
-		<div className="graph-container">
+		<div className="generic-graph-container">
 			<Line data={stockData} />
 		</div>
 	);
