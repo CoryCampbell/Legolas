@@ -1,3 +1,34 @@
 .watchlist-details-container {
   padding-top: 67px;
+  border: solid black;
+  height: 100vh;
+}
+
+.current-watchlist-left-container {
+  border: solid red;
+  box-sizing: border-box;
+  width: 35%;
+  height: 90vh;
+  margin-left: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.current-watchlist-header-container {
+  border: solid blue;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  width: 100%;
+  height: 10%;
+}
+
+.watchlist-table-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }

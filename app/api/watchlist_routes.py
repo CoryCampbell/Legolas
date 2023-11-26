@@ -7,24 +7,13 @@ from app import db
 
 watchlist_routes = Blueprint("watchlists", __name__)
 
-# GET ALL WATCHLISTS OF A CURRENT USER
-@watchlist_routes.route("/<int:user_id>")
-@login_required
-def get_all_user_watchlists(user_id):
-
-    all_user_watchlists = [list.to_dict() for list in Watchlist.query.filter(Watchlist.user_id == user_id)]
-
-    return jsonify(all_user_watchlists)
-
-
-
-# GET ALL WATCHLIST COMPANY DETAILS BASED ON WATCHLIST ID
+# GET ALL COMPANY DETAILS FROM A WATCHLIST BASED ON WATCHLIST ID
 @watchlist_routes.route("/current/<int:watchlist_id>")
 @login_required
 def get_user_watchlist_details(watchlist_id):
 
     print("WATCHLIST ID============ ", watchlist_id)
-    # USED TO GET THE WATCHLIST ID
+    # USED TO GET THE WATCHLIST
     watchlist = Watchlist.query.filter(Watchlist.id == watchlist_id).first()
 
     # USED TO GET ALL COMPANIES INCLUDED IN WATCHLIST
@@ -40,6 +29,19 @@ def get_user_watchlist_details(watchlist_id):
 
     print("============> all company details: ", all_company_details)
     return jsonify(all_company_details)
+
+
+# GET ALL WATCHLISTS OF A CURRENT USER
+@watchlist_routes.route("/<int:user_id>")
+@login_required
+def get_all_user_watchlists(user_id):
+
+    all_user_watchlists = [list.to_dict() for list in Watchlist.query.filter(Watchlist.user_id == user_id)]
+
+    return jsonify(all_user_watchlists)
+
+
+
 
 
 
