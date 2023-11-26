@@ -19,7 +19,7 @@ const Watchlist = () => {
 	}, [dispatch, sessionUser?.id]);
 
 	return (
-		<div className="main-portfolio-container">
+		<div className="main-watchlist-container">
 			{sessionUser && (
 				<>
 					<div className="main-list-container">
