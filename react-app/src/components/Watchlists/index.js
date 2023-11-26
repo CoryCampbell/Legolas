@@ -1,10 +1,11 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { fetchAllWatchlists, fetchWatchlist } from "../../store/watchlists";
+import { fetchAllWatchlists, fetchWatchlist, fetchWatchlistDetails } from "../../store/watchlists";
 import OpenModalButton from "../OpenModalButton";
 import WatchListModal from "../WatchlistModal";
 import MiniChart from "../Chart/MiniChart";
 import "./watchlist.css";
+import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 
 const Watchlist = () => {
 	const dispatch = useDispatch();
@@ -43,17 +44,12 @@ const Watchlist = () => {
 								<OpenModalButton buttonText="+" modalComponent={<WatchListModal />} />
 							</div>
 						</div>
-						{watchlists?.map((list) => (
-							<div key={list} className="watchlist-container">
-								{list.name}
-								{/* <div className="ticker">{list.symbol}watchlist ticker symbol</div>
-								<div className="mini-graph">graph</div>
-								<div className="list-stats-container">
-									<div className="current-share-price">{list.price}share price</div>
-									<div className="current-percent-change">percent change</div>
-								</div> */}
-							</div>
-						))}
+						{sessionUser &&
+							watchlists?.map((list) => (
+								<div key={list.id} className="watchlist-container">
+									<NavLink to={`/watchlists/current/${list?.id}`}>{list?.name}</NavLink>
+								</div>
+							))}
 					</div>
 				</>
 			)}
@@ -62,3 +58,11 @@ const Watchlist = () => {
 };
 
 export default Watchlist;
+
+
+/* <div className="ticker">{list.symbol}watchlist ticker symbol</div>
+		<div className="mini-graph">graph</div>
+		<div className="list-stats-container">
+		<div className="current-share-price">{list.price}share price</div>
+		<div className="current-percent-change">percent change</div>
+	</div> */

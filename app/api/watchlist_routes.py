@@ -19,10 +19,11 @@ def get_all_user_watchlists(user_id):
 
 
 # GET ALL WATCHLIST COMPANY DETAILS BASED ON WATCHLIST ID
-@watchlist_routes.route("/<int:watchlist_id>")
+@watchlist_routes.route("/current/<int:watchlist_id>")
 @login_required
 def get_user_watchlist_details(watchlist_id):
 
+    print("WATCHLIST ID============ ", watchlist_id)
     # USED TO GET THE WATCHLIST ID
     watchlist = Watchlist.query.filter(Watchlist.id == watchlist_id).first()
 
@@ -36,6 +37,8 @@ def get_user_watchlist_details(watchlist_id):
         company_details = Company.query.filter(Company.id == company.company_id).first()
         all_company_details.append(company_details.to_dict())
 
+
+    print("============> all company details: ", all_company_details)
     return jsonify(all_company_details)
 
 

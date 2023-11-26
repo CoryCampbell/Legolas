@@ -15,6 +15,7 @@ import WatchlistDetails from "./components/WatchlistDetails";
 function App() {
 	const dispatch = useDispatch();
 	const [isLoaded, setIsLoaded] = useState(false);
+
 	useEffect(() => {
 		dispatch(authenticate()).then(() => setIsLoaded(true));
 	}, [dispatch]);
@@ -30,11 +31,11 @@ function App() {
 					<Route exact path="/companies/:company_id">
 						<CompanyDetails />
 					</Route>
-					<Route path="/watchlists/:user_id">
-						<Watchlist />
-					</Route>
-					<Route path="/watchlists/current/:watchlist_id">
+					<Route exact path="/watchlists/current/:watchlist_id">
 						<WatchlistDetails />
+					</Route>
+					<Route exact path="/watchlists/:user_id">
+						<Watchlist />
 					</Route>
 					<Route exact path="/signup">
 						<SignupFormPage />

@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { fetchUserPortfolio } from "../../store/portfolio";
 import { fetchAllCompanies, fetchCompany } from "../../store/companies";
 import Watchlist from "../Watchlists";
+import { fetchAllWatchlists } from "../../store/watchlists";
 
 const Portfolio = () => {
 	const dispatch = useDispatch();
@@ -15,6 +16,7 @@ const Portfolio = () => {
 
 	useEffect(() => {
 		dispatch(fetchUserPortfolio(sessionUser?.id));
+		dispatch(fetchAllWatchlists(sessionUser?.id));
 	}, [dispatch, sessionUser?.id]);
 
 	return (

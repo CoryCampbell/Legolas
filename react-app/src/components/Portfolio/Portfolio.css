@@ -40,3 +40,7 @@
   border: solid orange;
   box-sizing: border-box;
 }
+
+.main-landing-container {
+  margin-top: 67px;
+}

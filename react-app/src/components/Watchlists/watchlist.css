@@ -50,10 +50,11 @@
 }
 
 .main-list-container {
-  position: static;
+  position: fixed;
   left: 70%;
+  top: 75px;
   width: 20%;
-  max-height: 84%;
+  height: 84%;
   border: solid red;
   box-sizing: content-box;
   overflow-y: scroll;
