@@ -7,10 +7,21 @@ from app import db
 
 watchlist_routes = Blueprint("watchlists", __name__)
 
-# GET WATCHLIST BASED ON WATCHLIST ID
+# GET ALL WATCHLISTS OF A CURRENT USER
+@watchlist_routes.route("/<int:user_id>")
+@login_required
+def get_all_user_watchlists(user_id):
+
+    all_user_watchlists = [list.to_dict() for list in Watchlist.query.filter(Watchlist.user_id == user_id)]
+
+    return jsonify(all_user_watchlists)
+
+
+
+# GET ALL WATCHLIST COMPANY DETAILS BASED ON WATCHLIST ID
 @watchlist_routes.route("/<int:watchlist_id>")
 @login_required
-def get_user_watchlist(watchlist_id):
+def get_user_watchlist_details(watchlist_id):
 
     # USED TO GET THE WATCHLIST ID
     watchlist = Watchlist.query.filter(Watchlist.id == watchlist_id).first()
@@ -26,7 +37,6 @@ def get_user_watchlist(watchlist_id):
         all_company_details.append(company_details.to_dict())
 
     return jsonify(all_company_details)
-
 
 
 

@@ -1,4 +1,11 @@
-.graph-container {
+.generic-graph-container {
   width: 100%;
   border: solid purple;
+}
+
+.mini-graph-container {
+  width: 60px;
+  height: 50px;
+  border: solid red;
+  box-sizing: border-box;
 }
