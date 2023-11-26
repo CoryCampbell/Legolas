@@ -12,40 +12,40 @@ function Navigation({ isLoaded }) {
   const history = useHistory();
 
   return (
-    <nav>
-      <div className="navlinks-container">
-        <div className="logo-container">
-          <NavLink exact to="/">
-            <img className="logo" src={logo} alt="logo" />
-            <img className="logo-hover" src={logoHover} alt="logo" />
-          </NavLink>
-        </div>
-      </div>
-      <SearchBar />
-      {!sessionUser ? (
-        <div className="auth-container">
-          <div className="nav-buttons-container">
-            <div>
-              <NavLink exact to="/login">
-                <button className="nav-login-button">Log In</button>
-              </NavLink>
-            </div>
-            <div>
-              <NavLink exact to="/signup">
-                <button className="nav-signup-button">Sign Up</button>
-              </NavLink>
-            </div>
-          </div>
-        </div>
-      ) : (
-        isLoaded && (
-          <li className="profile-button">
-            <ProfileButton user={sessionUser} isLoaded={isLoaded} />
-          </li>
-        )
-      )}
-    </nav>
-  );
+		<nav className="navigation-container">
+			<div className="navlinks-container">
+				<div className="logo-container">
+					<NavLink exact to="/">
+						<img className="logo" src={logo} alt="logo" />
+						<img className="logo-hover" src={logoHover} alt="logo" />
+					</NavLink>
+				</div>
+			</div>
+			<SearchBar />
+			{!sessionUser ? (
+				<div className="auth-container">
+					<div className="nav-buttons-container">
+						<div>
+							<NavLink exact to="/login">
+								<button className="nav-login-button">Log In</button>
+							</NavLink>
+						</div>
+						<div>
+							<NavLink exact to="/signup">
+								<button className="nav-signup-button">Sign Up</button>
+							</NavLink>
+						</div>
+					</div>
+				</div>
+			) : (
+				isLoaded && (
+					<li className="profile-button">
+						<ProfileButton user={sessionUser} isLoaded={isLoaded} />
+					</li>
+				)
+			)}
+		</nav>
+	);
 }
 
 export default Navigation;

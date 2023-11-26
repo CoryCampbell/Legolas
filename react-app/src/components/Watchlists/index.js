@@ -25,8 +25,11 @@ const Watchlist = () => {
 					<div className="main-list-container">
 						<div className="shares-owned-preview-container">
 							<div className="my-shares-header">My Shares</div>
-							<div className="share-container">
-								<div>shares name</div>
+							<div className="main-share-container">
+								<div className="shares-info-container">
+									<div>shares symbol</div>
+									<div>shares owned</div>
+								</div>
 								<MiniChart className={"user-chart"} />
 								<div className="shares-stats-container">
 									<div>share price</div>
@@ -37,7 +40,7 @@ const Watchlist = () => {
 						<div className="list-header">
 							Lists
 							<div>
-								<OpenModalButton buttonText="Create a new Watchlist" modalComponent={<WatchListModal />} />
+								<OpenModalButton buttonText="+" modalComponent={<WatchListModal />} />
 							</div>
 						</div>
 						{watchlists?.map((list) => (

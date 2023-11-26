@@ -1,23 +1,23 @@
-.list-header-container {
-  display: flex;
-  flex-direction: row;
-}
-
 .watchlist-container {
-  border: solid black;
+  display: flex;
+  align-items: center;
+  height: 50px;
+  padding-left: 10px;
 }
 
 .shares-owned-preview-container {
-  border: solid black;
+  background-color: greenyellow;
   height: 100px;
 }
 
 .list-header {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   border: solid black;
   height: 50px;
   padding-left: 10px;
+  padding-right: 10px;
 }
 
 .user-chart {
@@ -29,12 +29,22 @@
   display: flex;
   align-items: center;
   height: 50px;
+    padding-left: 10px;
 }
 
-.share-container {
+.main-share-container {
   border: solid brown;
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.shares-info-container {
+    padding-left: 10px;
+}
+
+button {
+  width: 25px;
+  height: 25px;
 }

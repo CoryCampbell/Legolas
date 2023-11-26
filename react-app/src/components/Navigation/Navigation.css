@@ -1,3 +1,8 @@
+.navigation-container {
+  position: fixed;
+  background-color: white;
+}
+
 .profile-dropdown {
   position: fixed;
   list-style-type: none;
