@@ -49,6 +49,16 @@
   height: 25px;
 }
 
-.main-watchlist-container {
-  padding-top: 67px;
+.main-list-container {
+  position: static;
+  left: 70%;
+  width: 20%;
+  max-height: 84%;
+  border: solid red;
+  box-sizing: content-box;
+  overflow-y: scroll;
+}
+
+.main-list-container::-webkit-scrollbar {
+    display: none;
 }
