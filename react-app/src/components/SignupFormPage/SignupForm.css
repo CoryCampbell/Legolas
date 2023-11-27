@@ -43,7 +43,9 @@ form {
 .signup-email-input,
 .signup-password-input,
 .signup-username-input,
-.signup-confirm-pass-input {
+.signup-confirm-pass-input,
+.signup-first-name-input,
+.signup-last-name-input {
   display: block;
   border-radius: 5px 5px 5px 5px;
   border-color: lightgray;
