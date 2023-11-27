@@ -43,45 +43,57 @@ const WatchlistDetails = () => {
 
   return (
     <>
-      {sessionUser && currentWatchlistDetails.length && (
+      {sessionUser && (
         <div className="watchlist-details-container">
           <div className="current-watchlist-left-container">
             <div className="current-watchlist-header-container">
               <div className="current-watchlist-header">{currentWatchlist}</div>
             </div>
-            <div className="watchlist-table-container">
-              <table>
-                <thead className="legend-row">
-                  <th>Name</th>
-                  <th>Symbol</th>
-                  <th>Price</th>
-                </thead>
-                <tbody>
-                  {currentWatchlistDetails.length &&
-                    currentWatchlistDetails?.map((company) => (
-                      <tr key={company.id} className="company-row-container">
-                        <NavLink exact to={`/companies/${company.id}`}>
-                          <td className="listdet-company-name">
-                            {company.name}
+            {currentWatchlistDetails ? (
+              <div className="watchlist-table-container">
+                <table>
+                  <thead className="legend-row">
+                    <th>Name</th>
+                    <th>Symbol</th>
+                    <th>Price</th>
+                  </thead>
+                  <tbody>
+                    {currentWatchlistDetails.length ? (
+                      currentWatchlistDetails?.map((company) => (
+                        <tr key={company.id} className="company-row-container">
+                          <NavLink exact to={`/companies/${company.id}`}>
+                            <td className="listdet-company-name">
+                              {company.name}
+                            </td>
+                            <td className="listdet-company-symbol">
+                              {company.symbol}
+                            </td>
+                            <td className="listdet-company-price">
+                              {company.price}
+                            </td>
+                          </NavLink>
+                          <td className="listdet-company-delete">
+                            <OpenModalButton
+                              buttonText="X"
+                              modalComponent={
+                                <DeleteCompanyFromWatchListModal
+                                  companyId={company.id}
+                                  watchlistId={watchlist_id}
+                                />
+                              }
+                            ></OpenModalButton>
                           </td>
-                          <td className="listdet-company-symbol">
-                            {company.symbol}
-                          </td>
-                          <td className="listdet-company-price">
-                            {company.price}
-                          </td>
-                        </NavLink>
-                        <td className="listdet-company-delete">
-                          <OpenModalButton
-                            buttonText="X"
-                            modalComponent={<DeleteCompanyFromWatchListModal companyId={company.id} watchlistId={watchlist_id}/>}
-                          ></OpenModalButton>
-                        </td>
-                      </tr>
-                    ))}
-                </tbody>
-              </table>
-            </div>
+                        </tr>
+                      ))
+                    ) : (
+                      <p>Add companies to your watchlist to view here</p>
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            ) : (
+              <p>no data</p>
+            )}
           </div>
           <Watchlist />
         </div>
@@ -91,3 +103,51 @@ const WatchlistDetails = () => {
 };
 
 export default WatchlistDetails;
+
+//   return (
+//     <>
+//       {sessionUser && currentWatchlistDetails.length && (
+//         <div className="watchlist-details-container">
+//           <div className="current-watchlist-left-container">
+//             <div className="current-watchlist-header-container">
+//               <div className="current-watchlist-header">{currentWatchlist}</div>
+//             </div>
+//             <div className="watchlist-table-container">
+//               <table>
+//                 <thead className="legend-row">
+//                   <th>Name</th>
+//                   <th>Symbol</th>
+//                   <th>Price</th>
+//                 </thead>
+//                 <tbody>
+//                   {currentWatchlistDetails.length &&
+//                     currentWatchlistDetails?.map((company) => (
+//                       <tr key={company.id} className="company-row-container">
+//                         <NavLink exact to={`/companies/${company.id}`}>
+//                           <td className="listdet-company-name">
+//                             {company.name}
+//                           </td>
+//                           <td className="listdet-company-symbol">
+//                             {company.symbol}
+//                           </td>
+//                           <td className="listdet-company-price">
+//                             {company.price}
+//                           </td>
+//                         </NavLink>
+//                         <td className="listdet-company-delete">
+//                           <OpenModalButton
+//                             buttonText="X"
+//                             modalComponent={<DeleteCompanyFromWatchListModal companyId={company.id} watchlistId={watchlist_id}/>}
+//                           ></OpenModalButton>
+//                         </td>
+//                       </tr>
+//                     ))}
+//                 </tbody>
+//               </table>
+//             </div>
+//           </div>
+//           <Watchlist />
+//         </div>
+//       )}
+//     </>
+//   );
