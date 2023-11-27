@@ -74,6 +74,34 @@ def create_user_watchlist():
 
     return new_watchlist.to_dict()
 
+# Delete a watchlist
+@watchlist_routes.route('/<int:watchlist_id>/delete', methods=["DELETE"])
+@login_required
+def delete_watchlist(watchlist_id):
+    user_id = current_user.id
+    watchlist = Watchlist.query.filter_by(id=watchlist_id, user_id=user_id).first()
+    if watchlist:
+        db.session.delete(watchlist)
+        db.session.commit()
+        return 'Watchlist sucessfully deleted'
+    else:
+        return {"error": "Watchlist not found or does not belong to the user"}, 404
+
+# Delete company from watchlist
+@watchlist_routes.route("/<int:watchlist_id>/delete/<int:company_id>", methods=["DELETE"])
+@login_required
+def delete_from_user_watchlist(watchlist_id, company_id):
+    user_id = current_user.id
+    owned_watchlist = Watchlist.query.filter_by(id=watchlist_id, user_id=user_id).first()
+    watchlist = Watchlist_detail.query.filter_by(watchlist_id=owned_watchlist.id, company_id=company_id).first()
+    print(watchlist,'test-----------------')
+    if watchlist:
+        db.session.delete(watchlist)
+        db.session.commit()
+        return 'Company succesfully deleted from watchlist'
+    else:
+        return {"error": "Watchlist not found or does not belong to the user"}, 404
+
 
 # ADD COMPANY TO WATCHLIST
 @watchlist_routes.route("/<int:watchlist_id>/add", methods=["POST"])
