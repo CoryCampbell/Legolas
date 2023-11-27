@@ -11,7 +11,8 @@ const Watchlist = () => {
 	const dispatch = useDispatch();
 
 	const sessionUser = useSelector((state) => state.session.user);
-	const watchlists = useSelector((state) => Object.values(state.watchlists.allWatchlists));
+	const watchlists = useSelector((state) => state.watchlists.allWatchlists);
+	let watchlistArray = Object.values(watchlists);
 	console.log("========> watchlists", watchlists);
 
 	useEffect(() => {
@@ -44,7 +45,8 @@ const Watchlist = () => {
 							</div>
 						</div>
 						{sessionUser &&
-							watchlists?.map((list) => (
+							watchlistArray &&
+							watchlistArray?.map((list) => (
 								<div key={list?.id} className="watchlist-container">
 									<NavLink exact to={`/watchlists/current/${list?.id}`}>
 										{list?.name}
@@ -59,11 +61,3 @@ const Watchlist = () => {
 };
 
 export default Watchlist;
-
-
-/* <div className="ticker">{list.symbol}watchlist ticker symbol</div>
-		<div className="mini-graph">graph</div>
-		<div className="list-stats-container">
-		<div className="current-share-price">{list.price}share price</div>
-		<div className="current-percent-change">percent change</div>
-	</div> */
