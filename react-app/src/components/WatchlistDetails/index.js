@@ -9,15 +9,26 @@ import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 
 const WatchlistDetails = () => {
 	const { watchlist_id } = useParams();
+	console.log("watchlist_id", watchlist_id);
+
 	const dispatch = useDispatch();
 
 	const sessionUser = useSelector((state) => state.session.user);
 
-	const watchlists = useSelector((state) => Object.values(state.watchlists.allWatchlists));
+	const watchlists = useSelector((state) => state.watchlists.allWatchlists);
 	console.log("watchlists", watchlists);
 
-	let currentWatchlist = useSelector((state) => state.watchlists.currentWatchlist);
-	console.log("currentWatchlist ========>", currentWatchlist);
+	const currentWatchlistDetails = useSelector((state) => state.watchlists.currentWatchlist);
+	console.log("currentWatchlistDetails ========>", currentWatchlistDetails);
+
+	let currentWatchlist;
+
+	if (watchlists.length) {
+		watchlists?.forEach((watchlist) => {
+			console.log("watchlist", watchlist.name);
+			if (watchlist.id == watchlist_id) currentWatchlist = watchlist.name;
+		});
+	}
 
 	useEffect(() => {
 		dispatch(fetchAllWatchlists(sessionUser?.id));
@@ -26,28 +37,30 @@ const WatchlistDetails = () => {
 
 	return (
 		<>
-			{sessionUser && currentWatchlist && (
+			{sessionUser && currentWatchlistDetails.length && (
 				<div className="watchlist-details-container">
 					<div className="current-watchlist-left-container">
 						<div className="current-watchlist-header-container">
-							<div>{currentWatchlist.name}</div>
+							<div>{currentWatchlist}</div>
 						</div>
 						<div className="watchlist-table-container">
 							<table>
-								<tr>
-									<th>Name</th>
-									<th>Symbol</th>
-									<th>Price</th>
-									<th>Today</th>
-									<th>Market Cap</th>
-								</tr>
-								{currentWatchlist.length &&
-									currentWatchlist?.map((company) => (
-										<tr key={company.id}>
-											<th>{company.name}</th>
-											<th>{company.symbol}</th>
-										</tr>
-									))}
+								<tbody>
+									<tr>
+										<th>Name</th>
+										<th>Symbol</th>
+										<th>Price</th>
+										<th>Today</th>
+										<th>Market Cap</th>
+									</tr>
+									{currentWatchlistDetails.length &&
+										currentWatchlistDetails?.map((company) => (
+											<tr key={company.id}>
+												<th>{company.name}</th>
+												<th>{company.symbol}</th>
+											</tr>
+										))}
+								</tbody>
 							</table>
 						</div>
 					</div>

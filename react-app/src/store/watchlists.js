@@ -49,9 +49,16 @@ export const watchlistReducer = (state = initialState, action) => {
 			};
 
 		case GET_ALL_WATCHLISTS:
+			console.log("action.payload", action.payload);
 			return {
 				...state,
 				allWatchlists: action.payload
+
+				// 	allWatchlists: {
+				// 		action.payload.map((watchlist) => {
+				// 		[watchlist.name]: watchlist
+				// 	})
+				// };
 			};
 
 		default:

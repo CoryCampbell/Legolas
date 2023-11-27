@@ -5,6 +5,7 @@
 .main-portfolio-container {
   width: 80%;
   margin: auto;
+  padding-top: 67px;
   display: flex;
   flex-direction: row;
   height: 100vh;
