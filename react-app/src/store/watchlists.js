@@ -1,6 +1,8 @@
 const GET_WATCHLIST = "watchlists/getWatchlist";
 const GET_ALL_WATCHLISTS = "watchlists/getAllWatchlists";
 const ADD_NEW_WATCHLIST = "watchlists/getAllWatchlists";
+const DELETE_COMPANY ='watchlists/deleteCompany';
+const DELETE_WATCHLIST ='watchlists/deleteWatchlist'
 
 //Action Creator
 const getWatchlist = (payload) => {
@@ -24,6 +26,20 @@ const addNewWatchlist = (payload) => {
 	};
 };
 
+const deleteCompany = (comnpanyId, watchlistId) => {
+	return {
+		type: DELETE_COMPANY,
+		comnpanyId,
+		watchlistId
+	}
+}
+
+const deleteWatchlist = (watchlistId) => {
+	return {
+		type: DELETE_WATCHLIST,
+		watchlistId
+	}
+}
 //Thunk
 export const fetchWatchlistDetails = (watchlist_id) => async (dispatch) => {
 	console.log("watchlist_id", watchlist_id);
@@ -59,6 +75,34 @@ export const addNewWatchlistThunk = (watchlistName) => async (dispatch) => {
 	return data;
 };
 
+export const deleteCompanyThunk = (companyid, watchlistId) => async (dispatch) => {
+	const res = await fetch(`/api/watchlists/${watchlistId}/delete/${companyid}`, {
+		method: 'DELETE'
+	});
+
+	if (res.ok) {
+		const data = await res.json();
+		dispatch(deleteCompany(companyid, watchlistId))
+	} else {
+		const errors = await res.json();
+		return errors
+	}
+}
+
+export const deleteWatchlistThunk = (watchlistId) => async (dispatch) => {
+	const res = await fetch(`/api/watchlists/${watchlistId}/delete`, {
+		method: 'DELETE'
+	})
+
+	if (res.ok) {
+		const data = await res.json();
+		dispatch(deleteWatchlist(watchlistId))
+	} else {
+		const errors = await res.json();
+		return errors
+	}
+}
+
 const initialState = {
 	allWatchlists: {},
 	currentWatchlist: {}
@@ -85,13 +129,18 @@ export const watchlistReducer = (state = initialState, action) => {
 				// 	})
 				// };
 			};
-
-		case ADD_NEW_WATCHLIST:
-			return {
-				...state,
-				allWatchlists: allWatchlistsAfterAddition
-			};
-
+		case DELETE_COMPANY:
+			const newState = {...state}
+			const obj = newState.currentWatchlist
+			console.log('oldstate', newState)
+			const toDelete = newState.currentWatchlist.find((ele)=> ele.id == action.comnpanyId)
+			for (let key in newState) {
+				if (newState[key] == toDelete) delete newState[key]
+			}
+			console.log(action.comnpanyId,'action')
+			console.log(toDelete, 'toDelete')
+			console.log('newstate',newState)
+			return newState
 		default:
 			return state;
 	}
