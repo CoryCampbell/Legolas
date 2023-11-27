@@ -50,11 +50,10 @@ def get_all_user_watchlists(user_id):
 @watchlist_routes.route("/new", methods=["POST"])
 @login_required
 def create_user_watchlist():
-
+    print("==================> REQUEST BODY: ", request)
     name = request.json.get("name")
     current_user_id = current_user.id
 
-    # !set up for new watchlist with name, companies in data
     watchlists = Watchlist.query.filter(Watchlist.user_id == current_user_id).all()
     for i in range(len(watchlists)):
         watchlist = watchlists[i].to_dict()
@@ -70,9 +69,13 @@ def create_user_watchlist():
     db.session.add(new_watchlist)
     db.session.commit()
 
-    print("NEW WATCHLIST:", new_watchlist.to_dict())
+    print("NEW WATCHLIST ==============> :", new_watchlist.to_dict())
 
     return new_watchlist.to_dict()
+
+
+
+
 
 # Delete a watchlist
 @watchlist_routes.route('/<int:watchlist_id>/delete', methods=["DELETE"])
@@ -86,6 +89,10 @@ def delete_watchlist(watchlist_id):
         return 'Watchlist sucessfully deleted'
     else:
         return {"error": "Watchlist not found or does not belong to the user"}, 404
+
+
+
+
 
 # Delete company from watchlist
 @watchlist_routes.route("/<int:watchlist_id>/delete/<int:company_id>", methods=["DELETE"])
@@ -101,6 +108,8 @@ def delete_from_user_watchlist(watchlist_id, company_id):
         return 'Company succesfully deleted from watchlist'
     else:
         return {"error": "Watchlist not found or does not belong to the user"}, 404
+
+
 
 
 # ADD COMPANY TO WATCHLIST

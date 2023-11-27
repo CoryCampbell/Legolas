@@ -1,5 +1,6 @@
 const GET_WATCHLIST = "watchlists/getWatchlist";
 const GET_ALL_WATCHLISTS = "watchlists/getAllWatchlists";
+const ADD_NEW_WATCHLIST = "watchlists/getAllWatchlists";
 
 //Action Creator
 const getWatchlist = (payload) => {
@@ -12,6 +13,13 @@ const getWatchlist = (payload) => {
 const getAllWatchlists = (payload) => {
 	return {
 		type: GET_ALL_WATCHLISTS,
+		payload
+	};
+};
+
+const addNewWatchlist = (payload) => {
+	return {
+		type: ADD_NEW_WATCHLIST,
 		payload
 	};
 };
@@ -34,6 +42,23 @@ export const fetchAllWatchlists = (user_id) => async (dispatch) => {
 	return data;
 };
 
+export const addNewWatchlistThunk = (watchlistName) => async (dispatch) => {
+	// console.log("=====================> watchlistName", watchlistName);
+	const res = await fetch(`/api/watchlists/new`, {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json"
+		},
+		body: JSON.stringify({
+			name: watchlistName
+		})
+	});
+
+	const data = await res.json();
+	dispatch(addNewWatchlist(data));
+	return data;
+};
+
 const initialState = {
 	allWatchlists: {},
 	currentWatchlist: {}
@@ -41,6 +66,7 @@ const initialState = {
 
 // Reducer
 export const watchlistReducer = (state = initialState, action) => {
+	const allWatchlistsAfterAddition = { ...state.allWatchlists };
 	switch (action.type) {
 		case GET_WATCHLIST:
 			return {
@@ -59,6 +85,12 @@ export const watchlistReducer = (state = initialState, action) => {
 				// 		[watchlist.name]: watchlist
 				// 	})
 				// };
+			};
+
+		case ADD_NEW_WATCHLIST:
+			return {
+				...state,
+				allWatchlists: allWatchlistsAfterAddition
 			};
 
 		default:

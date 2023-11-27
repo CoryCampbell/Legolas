@@ -34,6 +34,9 @@ function App() {
 					<Route exact path="/watchlists/current/:watchlist_id">
 						<WatchlistDetails />
 					</Route>
+					<Route exact path="/watchlists/new">
+						<WatchlistDetails />
+					</Route>
 					<Route exact path="/watchlists/users/:user_id">
 						<Watchlist />
 					</Route>
