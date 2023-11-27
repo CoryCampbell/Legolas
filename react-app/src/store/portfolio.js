@@ -25,7 +25,7 @@ const initialState = {
 
 // Reducer
 export const portfolioReducer = (state = initialState, action) => {
-//   console.log("portoflio ------->", action.type);
+  console.log("portoflio ------->", action.type);
   switch (action.type) {
     case GET_USER_PORTFOLIO:
       return {
