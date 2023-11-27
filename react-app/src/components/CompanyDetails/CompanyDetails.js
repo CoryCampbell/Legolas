@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCompany } from "../../store/companies";
-import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import {
+  useHistory,
+  useParams,
+} from "react-router-dom/cjs/react-router-dom.min";
 import LineChart from "../Chart/LineChart";
 import "./CompanyDetails.css";
 
@@ -10,7 +13,9 @@ export default function CompanyDetails() {
   const [selectedOption, setSelectedOption] = useState("dollars");
   const [dollarAmount, setDollarAmount] = useState("");
   const [sharesAmount, setSharesAmount] = useState("");
+  const [showButtons, setShowButtons] = useState(false);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const sessionUser = useSelector((state) => state.session.user);
   //   console.log("sessionUser", sessionUser);
@@ -27,6 +32,44 @@ export default function CompanyDetails() {
 
   const handleShareChange = (event) => {
     setSharesAmount(event.target.value);
+  };
+
+  const handleReviewOrder = () => {
+    setShowButtons(true);
+  };
+
+  const handleConfirmOrder = async () => {
+    // TODO Implement the logic to confirm the order and send the transaction to the backend, and wherever else it needs to be updated
+
+    const numberOfShares = selectedOption === "shares" ? sharesAmount || 0 : 0;
+
+    console.log(sharesAmount);
+    try {
+      const res = await fetch(`/api/purchases/${company_id}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          number_of_shares: numberOfShares,
+        }),
+      });
+      console.log("res------>", res);
+      const data = await res.json();
+
+      console.log("data ------>", data);
+
+      setDollarAmount("");
+      setSharesAmount("");
+      setShowButtons(false);
+      history.push("/");
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
+  const handleCancelOrder = () => {
+    setShowButtons(false);
   };
 
   useEffect(() => {
@@ -113,8 +156,18 @@ export default function CompanyDetails() {
                 )}
                 <div className="review-order-box">
                   <div className="rev-button">
-                    <button>Review Order</button>
+                    {!showButtons && (
+                      <button onClick={handleReviewOrder}>Review Order</button>
+                    )}
                   </div>
+                  {showButtons && (
+                    <div className="confirm-cancel-buttons">
+                      <button onClick={handleConfirmOrder}>
+                        Confirm Order
+                      </button>
+                      <button onClick={handleCancelOrder}>Cancel Order</button>
+                    </div>
+                  )}
                 </div>
                 <div className="buy-power-box">
                   <div className="buy-power">

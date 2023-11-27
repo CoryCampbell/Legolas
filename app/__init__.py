@@ -37,7 +37,7 @@ app.register_blueprint(auth_routes, url_prefix="/api/auth")
 app.register_blueprint(transaction_routes, url_prefix="/api/transactions")
 app.register_blueprint(portfolio_routes, url_prefix="/api/portfolio")
 app.register_blueprint(company_routes, url_prefix="/api/companies")
-app.register_blueprint(purchase_routes, url_prefix="/api/purchase")
+app.register_blueprint(purchase_routes, url_prefix="/api/purchases")
 app.register_blueprint(watchlist_routes, url_prefix="/api/watchlists")
 
 app.register_blueprint(search_companies_routes, url_prefix="/api/search")
@@ -69,8 +69,7 @@ def inject_csrf_token(response):
         "csrf_token",
         generate_csrf(),
         secure=True if os.environ.get("FLASK_ENV") == "production" else False,
-        samesite="Strict" if os.environ.get(
-            "FLASK_ENV") == "production" else None,
+        samesite="Strict" if os.environ.get("FLASK_ENV") == "production" else None,
         httponly=True,
     )
     return response
