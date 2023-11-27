@@ -12,7 +12,7 @@ const Watchlist = () => {
 
 	const sessionUser = useSelector((state) => state.session.user);
 	const watchlists = useSelector((state) => Object.values(state.watchlists.allWatchlists));
-	console.log("watchlists", watchlists);
+	console.log("========> watchlists", watchlists);
 
 	useEffect(() => {
 		dispatch(fetchAllWatchlists(sessionUser?.id));
