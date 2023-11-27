@@ -27,7 +27,8 @@ def purchase(company_id):
 
     if user.balance < company.price * float(number_of_shares):
         return (
-            jsonify({"error": "Insufficient funds, transaction cannot be processed"}),
+            jsonify(
+                {"error": "Insufficient funds, transaction cannot be processed"}),
             400,
         )
 
@@ -69,7 +70,6 @@ def purchase(company_id):
 
     print(user.balance, "==============> USER BALANCE")
 
-    # Commit changes
     try:
         db.session.commit()
         return jsonify({"message": "Shares purchased successfully"}), 200
