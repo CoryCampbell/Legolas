@@ -44,9 +44,9 @@ export default function CompanyDetails() {
   };
 
   const handleConfirmOrder = async () => {
-    const numberOfShares = selectedOption === "shares" ? sharesAmount || 0 : 0;
+    // const numberOfShares = selectedOption === "shares" ? sharesAmount || 0 : 0;
 
-    // console.log(sharesAmount);
+    console.log(sharesAmount);
     try {
       const res = await fetch(`/api/purchases/${company_id}`, {
         method: "POST",
@@ -54,18 +54,18 @@ export default function CompanyDetails() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          number_of_shares: numberOfShares,
+          number_of_shares: sharesAmount,
         }),
       });
-      //   console.log("res------>", res);
+      console.log("res------>", res);
       const data = await res.json();
 
-      //   console.log("data ------>", data);
+      console.log("data ------>", data);
 
       setDollarAmount("");
       setSharesAmount("");
       setShowButtons(false);
-      history.push("/");
+      //   history.push("/");
     } catch (error) {
       console.error("Error:", error);
     }
