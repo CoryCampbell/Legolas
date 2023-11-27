@@ -5,46 +5,63 @@ import OpenModalButton from "../OpenModalButton";
 import WatchListModal from "../WatchlistModal";
 import "./watchlistDetails.css";
 import Watchlist from "../Watchlists";
+import { NavLink, useParams } from "react-router-dom/cjs/react-router-dom.min";
 
 const WatchlistDetails = () => {
+	const { watchlist_id } = useParams();
+	console.log("watchlist_id", watchlist_id);
+
 	const dispatch = useDispatch();
 
 	const sessionUser = useSelector((state) => state.session.user);
 
-	const watchlists = useSelector((state) => Object.values(state.watchlists.allWatchlists));
+	const watchlists = useSelector((state) => state.watchlists.allWatchlists);
 	console.log("watchlists", watchlists);
 
-	let currentWatchlist = useSelector((state) => state.watchlists.currentWatchlist);
-	console.log("currentWatchlist ========>", currentWatchlist);
+	const currentWatchlistDetails = useSelector((state) => state.watchlists.currentWatchlist);
+	console.log("currentWatchlistDetails ========>", currentWatchlistDetails);
+
+	let currentWatchlist;
+
+	if (watchlists.length) {
+		watchlists?.forEach((watchlist) => {
+			console.log("watchlist", watchlist.name);
+			if (watchlist.id == watchlist_id) currentWatchlist = watchlist.name;
+		});
+	}
 
 	useEffect(() => {
 		dispatch(fetchAllWatchlists(sessionUser?.id));
-		dispatch(fetchWatchlistDetails(currentWatchlist?.id));
-	}, [dispatch, currentWatchlist?.id, sessionUser?.id]);
+		dispatch(fetchWatchlistDetails(watchlist_id));
+	}, [dispatch, watchlist_id, sessionUser?.id]);
 
 	return (
 		<>
-			{sessionUser && currentWatchlist && (
+			{sessionUser && currentWatchlistDetails.length && (
 				<div className="watchlist-details-container">
 					<div className="current-watchlist-left-container">
 						<div className="current-watchlist-header-container">
-							<div>{currentWatchlist.name}</div>
+							<div className="current-watchlist-header">{currentWatchlist}</div>
 						</div>
 						<div className="watchlist-table-container">
 							<table>
-								<tr>
+								<thead className="legend-row">
 									<th>Name</th>
 									<th>Symbol</th>
 									<th>Price</th>
-									<th>Today</th>
-									<th>Market Cap</th>
-								</tr>
-								{/* {currentWatchlist.map((company) => (
-									<tr>
-										<th>{company.name}</th>
-										<th>{company.symbol}</th>
-									</tr>
-								))} */}
+								</thead>
+								<tbody>
+									{currentWatchlistDetails.length &&
+										currentWatchlistDetails?.map((company) => (
+											<tr key={company.id} className="company-row-container">
+												<NavLink exact to={`/companies/${company.id}`}>
+													<td className="listdet-company-name">{company.name}</td>
+													<td className="listdet-company-symbol">{company.symbol}</td>
+													<td className="listdet-company-price">{company.price}</td>
+												</NavLink>
+											</tr>
+										))}
+								</tbody>
 							</table>
 						</div>
 					</div>

@@ -12,13 +12,11 @@ const Watchlist = () => {
 
 	const sessionUser = useSelector((state) => state.session.user);
 	const watchlists = useSelector((state) => Object.values(state.watchlists.allWatchlists));
-	const currentWatchlist = watchlists[0];
 	console.log("watchlists", watchlists);
 
 	useEffect(() => {
 		dispatch(fetchAllWatchlists(sessionUser?.id));
-		dispatch(fetchWatchlistDetails(currentWatchlist?.id));
-	}, [dispatch, sessionUser?.id, currentWatchlist?.id]);
+	}, [dispatch, sessionUser?.id]);
 
 	return (
 		<div className="main-watchlist-container">
@@ -29,13 +27,13 @@ const Watchlist = () => {
 							<div className="my-shares-header">My Shares</div>
 							<div className="main-share-container">
 								<div className="shares-info-container">
-									<div>shares symbol</div>
-									<div>shares owned</div>
+									<div>symbol</div>
+									<div>#owned</div>
 								</div>
 								<MiniChart className={"user-chart"} />
 								<div className="shares-stats-container">
-									<div>share price</div>
-									<div>percent change</div>
+									<div>$/share</div>
+									<div>% -/+</div>
 								</div>
 							</div>
 						</div>
@@ -48,7 +46,9 @@ const Watchlist = () => {
 						{sessionUser &&
 							watchlists?.map((list) => (
 								<div key={list?.id} className="watchlist-container">
-									<NavLink to={`/watchlists/current/${list?.id}`}>{list?.name}</NavLink>
+									<NavLink exact to={`/watchlists/current/${list?.id}`}>
+										{list?.name}
+									</NavLink>
 								</div>
 							))}
 					</div>

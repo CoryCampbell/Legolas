@@ -14,11 +14,6 @@ const Portfolio = () => {
 	const sessionUser = useSelector((state) => state.session.user);
 	console.log("sessionUser", sessionUser);
 
-	useEffect(() => {
-		dispatch(fetchUserPortfolio(sessionUser?.id));
-		dispatch(fetchAllWatchlists(sessionUser?.id));
-	}, [dispatch, sessionUser?.id]);
-
 	return (
 		<div className="main-portfolio-container">
 			{sessionUser ? (
@@ -31,10 +26,42 @@ const Portfolio = () => {
 
 						<div>Buying Power: ${sessionUser.balance}</div>
 
-						<div className="mod discover-mod">DISCOVER</div>
-						<div className="mod trending-mod">TRENDING</div>
-						<div className="mod learning-mod">LEARNING</div>
-						<div className="mod news-mod">NEWS</div>
+						<div className="mod discover-mod">
+							DISCOVER
+							<div>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+								dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+								ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+								fugiat nulla
+							</div>
+						</div>
+						<div className="mod trending-mod">
+							TRENDING
+							<div>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+								dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+								ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+								fugiat nulla
+							</div>
+						</div>
+						<div className="mod learning-mod">
+							LEARNING
+							<div>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+								dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+								ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+								fugiat nulla
+							</div>
+						</div>
+						<div className="mod news-mod">
+							NEWS
+							<div>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+								dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+								ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+								fugiat nulla
+							</div>
+						</div>
 					</div>
 					<Watchlist />
 				</>

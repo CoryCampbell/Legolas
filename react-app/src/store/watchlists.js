@@ -18,6 +18,7 @@ const getAllWatchlists = (payload) => {
 
 //Thunk
 export const fetchWatchlistDetails = (watchlist_id) => async (dispatch) => {
+	console.log("watchlist_id", watchlist_id);
 	const res = await fetch(`/api/watchlists/current/${watchlist_id}`);
 
 	const data = await res.json();
@@ -26,7 +27,7 @@ export const fetchWatchlistDetails = (watchlist_id) => async (dispatch) => {
 };
 
 export const fetchAllWatchlists = (user_id) => async (dispatch) => {
-	const res = await fetch(`/api/watchlists/${user_id}`);
+	const res = await fetch(`/api/watchlists/users/${user_id}`);
 
 	const data = await res.json();
 	dispatch(getAllWatchlists(data));
@@ -48,9 +49,16 @@ export const watchlistReducer = (state = initialState, action) => {
 			};
 
 		case GET_ALL_WATCHLISTS:
+			console.log("action.payload", action.payload);
 			return {
 				...state,
 				allWatchlists: action.payload
+
+				// 	allWatchlists: {
+				// 		action.payload.map((watchlist) => {
+				// 		[watchlist.name]: watchlist
+				// 	})
+				// };
 			};
 
 		default:

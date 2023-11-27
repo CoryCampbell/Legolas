@@ -32,7 +32,7 @@ def get_user_watchlist_details(watchlist_id):
 
 
 # GET ALL WATCHLISTS OF A CURRENT USER
-@watchlist_routes.route("/<int:user_id>")
+@watchlist_routes.route("/users/<int:user_id>")
 @login_required
 def get_all_user_watchlists(user_id):
 
