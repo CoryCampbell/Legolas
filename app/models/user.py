@@ -19,6 +19,7 @@ class User(db.Model, UserMixin):
 
     # Relationships
     transactions = db.relationship("Transaction", backref="user")
+    stocks_owned = db.relationship("Stocks_owned", backref="user")
     stocks = db.relationship("Portfolio", backref="user")
     watchlist = db.relationship("Watchlist", backref="user")
 

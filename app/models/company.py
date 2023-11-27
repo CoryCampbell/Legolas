@@ -16,6 +16,7 @@ class Company(db.Model):
     # Relationships
     portfolio = db.relationship('Portfolio', backref='company')
     transactions = db.relationship('Transaction', backref='company')
+    stocks_owned = db.relationship('Stocks_owned', backref='company')
 
 
     def to_dict(self):

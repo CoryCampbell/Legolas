@@ -1,22 +1,49 @@
 from flask import Blueprint, jsonify, request
-from app.models import Portfolio, User, Company, Watchlist_detail
+from app.models import Portfolio, User, Company, Watchlist_detail, Watchlist
 from flask_login import login_required, current_user
-from app.models import Watchlist
 from app import db
 
 # from forms import WatchListForm
 
 watchlist_routes = Blueprint("watchlists", __name__)
 
-# GET USER WATCHLIST BASED ON ID
-@watchlist_routes.route("/<int:watchlist_id>")
+# GET ALL COMPANY DETAILS FROM A WATCHLIST BASED ON WATCHLIST ID
+@watchlist_routes.route("/current/<int:watchlist_id>")
 @login_required
-def get_user_watchlist(watchlist_id):
+def get_user_watchlist_details(watchlist_id):
 
-    current_user_id = current_user.id
-    watchlist = Watchlist_detail.query.filter(Watchlist_detail.id == watchlist_id).first()
+    print("WATCHLIST ID============ ", watchlist_id)
+    # USED TO GET THE WATCHLIST
+    watchlist = Watchlist.query.filter(Watchlist.id == watchlist_id).first()
 
-    return watchlist.to_dict()
+    # USED TO GET ALL COMPANIES INCLUDED IN WATCHLIST
+    all_watchlist_companies = [list for list in Watchlist_detail.query.filter(Watchlist_detail.watchlist_id == watchlist.id)]
+
+    # USED TO GET ALL DETAILS OF ALL COMPANIES IN WATCHLIST
+    all_company_details = []
+
+    for company in all_watchlist_companies:
+        company_details = Company.query.filter(Company.id == company.company_id).first()
+        all_company_details.append(company_details.to_dict())
+
+
+    print("============> all company details: ", all_company_details)
+    return jsonify(all_company_details)
+
+
+# GET ALL WATCHLISTS OF A CURRENT USER
+@watchlist_routes.route("/<int:user_id>")
+@login_required
+def get_all_user_watchlists(user_id):
+
+    all_user_watchlists = [list.to_dict() for list in Watchlist.query.filter(Watchlist.user_id == user_id)]
+
+    return jsonify(all_user_watchlists)
+
+
+
+
+
 
 
 # CREATE NEW WATCHLIST
@@ -46,6 +73,34 @@ def create_user_watchlist():
     print("NEW WATCHLIST:", new_watchlist.to_dict())
 
     return new_watchlist.to_dict()
+
+# Delete a watchlist
+@watchlist_routes.route('/<int:watchlist_id>/delete', methods=["DELETE"])
+@login_required
+def delete_watchlist(watchlist_id):
+    user_id = current_user.id
+    watchlist = Watchlist.query.filter_by(id=watchlist_id, user_id=user_id).first()
+    if watchlist:
+        db.session.delete(watchlist)
+        db.session.commit()
+        return 'Watchlist sucessfully deleted'
+    else:
+        return {"error": "Watchlist not found or does not belong to the user"}, 404
+
+# Delete company from watchlist
+@watchlist_routes.route("/<int:watchlist_id>/delete/<int:company_id>", methods=["DELETE"])
+@login_required
+def delete_from_user_watchlist(watchlist_id, company_id):
+    user_id = current_user.id
+    owned_watchlist = Watchlist.query.filter_by(id=watchlist_id, user_id=user_id).first()
+    watchlist = Watchlist_detail.query.filter_by(watchlist_id=owned_watchlist.id, company_id=company_id).first()
+    print(watchlist,'test-----------------')
+    if watchlist:
+        db.session.delete(watchlist)
+        db.session.commit()
+        return 'Company succesfully deleted from watchlist'
+    else:
+        return {"error": "Watchlist not found or does not belong to the user"}, 404
 
 
 # ADD COMPANY TO WATCHLIST

@@ -38,8 +38,8 @@ def purchase(company_id):
         # print(new_stock.price, "==============> USER PRICE")
     else:
         new_stock = Portfolio(user_id=user_id, company_id=company_id,
-                              shares=number_of_shares,
-                              price=company.price * number_of_shares)
+                            shares=number_of_shares,
+                            price=company.price * number_of_shares)
         print(new_stock.price, "==============> NEW STOCK")
         db.session.add(new_stock)
 

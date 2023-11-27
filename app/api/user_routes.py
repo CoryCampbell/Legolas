@@ -23,27 +23,3 @@ def user(id):
     """
     user = User.query.get(id)
     return user.to_dict()
-
-@user_routes.route('/<int:id>/watchlist')
-@login_required
-def watchlists(id):
-    """
-    Query for getting a user's watchlist by the user's ID
-    """
-    user = User.query.get(id)
-    print(type(user),'user here ----------------')
-    watchlists = Watchlist.query.filter(Watchlist.user_id == user.id).all()
-    for i in range(len(watchlists)):
-        watchlist = watchlists[i]
-        company = Company.query.filter(Company.id == watchlist.company_id)
-        print([comp.to_watchlist() for comp in company], 'test-----------')
-        if i == len(watchlists) - 1 :
-            return {'watchlists': [comp.to_watchlist() for comp in company]}
-
-    # [watchlist.company_id for watchlist in watchlists]
-    # companies = Company.query.filter(Company.id == [watchlist.company_id for watchlist in watchlists])
-    # print(companies,' look ----------')
-    # print(type(watchlists), 'look here -----------------')
-    # see_watchlists = [watchlist.to_dict() for watchlist in watchlists]
-    # print(see_watchlists, 'see here ------------')
-    # return {'watchlists' : [watchlist.to_dict() for watchlist in watchlists]}

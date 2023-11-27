@@ -3,6 +3,7 @@ from .users import seed_users, undo_users
 from .companies import seed_companies, undo_companies
 from .transactions import seed_transactions, undo_transactions
 from .portfolio import seed_portfolio, undo_portfolio
+from .stocks_owned import seed_stocks_owned, undo_stocks_owned
 from .watchlists import seed_watchlists, undo_watchlists
 from .watchlist_details import seed_watchlist_details, undo_watchlist_details
 
@@ -25,10 +26,12 @@ def seed():
         undo_watchlists()
         undo_transactions()
         undo_portfolio()
+        undo_stocks_owned()
         undo_companies()
         undo_users()
     seed_users()
     seed_companies()
+    seed_stocks_owned()
     seed_portfolio()
     seed_transactions()
     seed_watchlists()
@@ -43,6 +46,7 @@ def undo():
         db.session.execute(f"TRUNCATE table {SCHEMA}.watchlists RESTART IDENTITY CASCADE;")
         db.session.execute(f"TRUNCATE table {SCHEMA}.transactions RESTART IDENTITY CASCADE;")
         db.session.execute(f"TRUNCATE table {SCHEMA}.portfolio RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.stocks_owned RESTART IDENTITY CASCADE;")
         db.session.execute(f"TRUNCATE table {SCHEMA}.companies RESTART IDENTITY CASCADE;")
         db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
     else:
@@ -50,6 +54,7 @@ def undo():
         db.session.execute("DELETE FROM watchlists")
         db.session.execute("DELETE FROM transactions")
         db.session.execute("DELETE FROM portfolio")
+        db.session.execute("DELETE FROM stocks_owned")
         db.session.execute("DELETE FROM companies")
         db.session.execute("DELETE FROM users")
 

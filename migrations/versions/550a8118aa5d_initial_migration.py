@@ -72,6 +72,21 @@ def upgrade():
 
 
 
+    op.create_table('stocks_owned',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.Column('company_id', sa.Integer(), nullable=False),
+    sa.Column('amt_shares', sa.Float(6), nullable=False),
+    sa.Column('stock_price', sa.Float(6), nullable=False),
+    sa.ForeignKeyConstraint(['company_id'], ['companies.id'], ),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
+    if environment == "production":
+        op.execute(f"ALTER TABLE transactions SET SCHEMA {SCHEMA};")
+
+
+
     op.create_table('portfolio',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
@@ -118,6 +133,7 @@ def downgrade():
     op.drop_table('watchlists')
     op.drop_table('portfolio')
     op.drop_table('transactions')
+    op.drop_table('stocks_owned')
     op.drop_table('users')
     op.drop_table('companies')
     # ### end Alembic commands ###

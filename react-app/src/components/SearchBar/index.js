@@ -9,10 +9,11 @@ const SearchBar = () => {
   const [results, setResults] = useState([]);
   const [showResults, setShowResults] = useState(false);
 
+  // console.log("result--------->", results);
+
   useEffect(() => {
     setShowResults(true);
-    console.log(showResults);
-  }, [results]);
+  }, [showResults]);
 
   const handleSearch = (e) => {
     setQuery(e.target.value);
@@ -33,6 +34,7 @@ const SearchBar = () => {
   const handleShowResults = () => {
     setShowResults(false);
     setQuery("");
+    setResults([]);
   };
 
   return (
@@ -52,7 +54,7 @@ const SearchBar = () => {
             <NavLink
               className="result-link"
               key={company.id}
-              to={`/api/companies/${company.id}`}
+              to={`/companies/${company.id}`}
               onClick={handleShowResults}
             >
               {company.symbol} - {company.name}

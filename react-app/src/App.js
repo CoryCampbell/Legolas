@@ -7,35 +7,50 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import Portfolio from "./components/Portfolio";
 import Transactions from "./components/Transactions";
+import Landing from "./components/Portfolio/Landing";
+import CompanyDetails from "./components/CompanyDetails/CompanyDetails";
+import Watchlist from "./components/Watchlists";
+import WatchlistDetails from "./components/WatchlistDetails";
 
 function App() {
-  const dispatch = useDispatch();
-  const [isLoaded, setIsLoaded] = useState(false);
-  useEffect(() => {
-    dispatch(authenticate()).then(() => setIsLoaded(true));
-  }, [dispatch]);
+	const dispatch = useDispatch();
+	const [isLoaded, setIsLoaded] = useState(false);
 
-  return (
-    <>
-      <Navigation isLoaded={isLoaded} />
-      {isLoaded && (
-        <Switch>
-          <Route path="/login">
-            <LoginFormPage />
-          </Route>
-          <Route path="/signup">
-            <SignupFormPage />
-          </Route>
-          <Route path="/transactions/:user_id">
-            <Transactions />
-          </Route>
-          <Route exact path="/">
-            <Portfolio />
-          </Route>
-        </Switch>
-      )}
-    </>
-  );
+	useEffect(() => {
+		dispatch(authenticate()).then(() => setIsLoaded(true));
+	}, [dispatch]);
+
+	return (
+		<>
+			<Navigation isLoaded={isLoaded} />
+			{isLoaded && (
+				<Switch>
+					<Route exact path="/login">
+						<LoginFormPage />
+					</Route>
+					<Route exact path="/companies/:company_id">
+						<CompanyDetails />
+					</Route>
+					<Route exact path="/watchlists/current/:watchlist_id">
+						<WatchlistDetails />
+					</Route>
+					<Route exact path="/watchlists/:user_id">
+						<Watchlist />
+					</Route>
+					<Route exact path="/signup">
+						<SignupFormPage />
+					</Route>
+					<Route exact path="/transactions/:user_id">
+						<Transactions />
+					</Route>
+					<Route exact path="/">
+						<Portfolio />
+					</Route>
+				</Switch>
+			)}
+			{!isLoaded && <Landing />}
+		</>
+	);
 }
 
 export default App;
