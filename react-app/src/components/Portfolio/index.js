@@ -14,11 +14,6 @@ const Portfolio = () => {
 	const sessionUser = useSelector((state) => state.session.user);
 	console.log("sessionUser", sessionUser);
 
-	useEffect(() => {
-		dispatch(fetchUserPortfolio(sessionUser?.id));
-		dispatch(fetchAllWatchlists(sessionUser?.id));
-	}, [dispatch, sessionUser?.id]);
-
 	return (
 		<div className="main-portfolio-container">
 			{sessionUser ? (

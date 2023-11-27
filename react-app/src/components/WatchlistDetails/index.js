@@ -5,8 +5,10 @@ import OpenModalButton from "../OpenModalButton";
 import WatchListModal from "../WatchlistModal";
 import "./watchlistDetails.css";
 import Watchlist from "../Watchlists";
+import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 
 const WatchlistDetails = () => {
+	const { watchlist_id } = useParams();
 	const dispatch = useDispatch();
 
 	const sessionUser = useSelector((state) => state.session.user);
@@ -19,8 +21,8 @@ const WatchlistDetails = () => {
 
 	useEffect(() => {
 		dispatch(fetchAllWatchlists(sessionUser?.id));
-		dispatch(fetchWatchlistDetails(currentWatchlist?.id));
-	}, [dispatch, currentWatchlist?.id, sessionUser?.id]);
+		dispatch(fetchWatchlistDetails(watchlist_id));
+	}, [dispatch, watchlist_id, sessionUser?.id]);
 
 	return (
 		<>
@@ -39,12 +41,13 @@ const WatchlistDetails = () => {
 									<th>Today</th>
 									<th>Market Cap</th>
 								</tr>
-								{/* {currentWatchlist.map((company) => (
-									<tr>
-										<th>{company.name}</th>
-										<th>{company.symbol}</th>
-									</tr>
-								))} */}
+								{currentWatchlist.length &&
+									currentWatchlist?.map((company) => (
+										<tr key={company.id}>
+											<th>{company.name}</th>
+											<th>{company.symbol}</th>
+										</tr>
+									))}
 							</table>
 						</div>
 					</div>

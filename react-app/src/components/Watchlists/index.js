@@ -12,13 +12,11 @@ const Watchlist = () => {
 
 	const sessionUser = useSelector((state) => state.session.user);
 	const watchlists = useSelector((state) => Object.values(state.watchlists.allWatchlists));
-	const currentWatchlist = watchlists[0];
 	console.log("watchlists", watchlists);
 
 	useEffect(() => {
 		dispatch(fetchAllWatchlists(sessionUser?.id));
-		dispatch(fetchWatchlistDetails(currentWatchlist?.id));
-	}, [dispatch, sessionUser?.id, currentWatchlist?.id]);
+	}, [dispatch, sessionUser?.id]);
 
 	return (
 		<div className="main-watchlist-container">
@@ -48,7 +46,9 @@ const Watchlist = () => {
 						{sessionUser &&
 							watchlists?.map((list) => (
 								<div key={list?.id} className="watchlist-container">
-									<NavLink to={`/watchlists/current/${list?.id}`}>{list?.name}</NavLink>
+									<NavLink exact to={`/watchlists/current/${list?.id}`}>
+										{list?.name}
+									</NavLink>
 								</div>
 							))}
 					</div>
