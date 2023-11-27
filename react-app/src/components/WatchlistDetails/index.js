@@ -21,9 +21,11 @@ const WatchlistDetails = () => {
 	const currentWatchlistDetails = useSelector((state) => state.watchlists.currentWatchlist);
 	console.log("currentWatchlistDetails ========>", currentWatchlistDetails);
 
+	// const currentWatchlist = Object.values(watchlists).filter((watchlist) => (watchlist.id = watchlist_id));
+
 	let currentWatchlist;
 
-	if (watchlists.length) {
+	if (watchlists?.length) {
 		watchlists?.forEach((watchlist) => {
 			console.log("watchlist", watchlist.name);
 			if (watchlist.id == watchlist_id) currentWatchlist = watchlist.name;

@@ -1,14 +1,17 @@
-import { useState } from "react"
-import { useModal } from "../../context/Modal"
-import { useDispatch } from "react-redux";
-import { addNewWatchlistThunk } from "../../store/watchlists";
+import { useEffect, useState } from "react";
+import { useModal } from "../../context/Modal";
+import { useDispatch, useSelector } from "react-redux";
+import { addNewWatchlistThunk, fetchAllWatchlists, fetchWatchlistDetails } from "../../store/watchlists";
+import "./watchlistModal.css";
 
-function WatchListModal() {
+function WatchListModal(user_id) {
 	const dispatch = useDispatch();
 	const [watchlistName, setWatchlistName] = useState("");
 	const [errors, setErrors] = useState([]);
-	// const [companySymbols, setCompanySymbols] = useState([]);
 	const { closeModal } = useModal();
+
+	const sessionUser = useSelector((state) => state.session.user);
+	const currentWatchlist = useSelector((state) => state.watchlists.currentWatchlist);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -16,15 +19,19 @@ function WatchListModal() {
 		if (data) {
 			setErrors(data);
 		}
-		closeModal();
-
 		setWatchlistName("");
+		closeModal();
 	};
+
+	useEffect(() => {
+		dispatch(fetchAllWatchlists(sessionUser?.id));
+		dispatch(fetchWatchlistDetails(sessionUser?.id));
+	}, [dispatch, sessionUser?.id]);
 
 	return (
 		<>
 			<h1>Create a Watchlist</h1>
-			<form onSubmit={handleSubmit}>
+			<form onSubmit={handleSubmit} className="form-container">
 				<input
 					placeholder="Watchlist name"
 					type="text"
@@ -32,17 +39,10 @@ function WatchListModal() {
 					onChange={(e) => setWatchlistName(e.target.value)}
 					required
 				/>
-				{/* <input
-                placeholder="Company name's (seperated by commas)"
-                type="text"
-                value={companySymbols}
-                onChange={(e) => setCompanySymbols(e.target.value)}
-                required
-            /> */}
 				<button type="submit">Create Watchlist</button>
 			</form>
 		</>
 	);
 }
 
-export default WatchListModal
+export default WatchListModal;

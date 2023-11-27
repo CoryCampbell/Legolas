@@ -66,7 +66,7 @@ const initialState = {
 
 // Reducer
 export const watchlistReducer = (state = initialState, action) => {
-	const allWatchlistsAfterAddition = { ...state.allWatchlists };
+	const allWatchlistsAfterAddition = { ...state.allWatchlists, newWatchlist: action.payload };
 	switch (action.type) {
 		case GET_WATCHLIST:
 			return {
@@ -75,7 +75,6 @@ export const watchlistReducer = (state = initialState, action) => {
 			};
 
 		case GET_ALL_WATCHLISTS:
-			console.log("action.payload", action.payload);
 			return {
 				...state,
 				allWatchlists: action.payload
