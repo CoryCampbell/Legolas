@@ -14,17 +14,31 @@ const Portfolio = () => {
 	const sessionUser = useSelector((state) => state.session.user);
 	console.log("sessionUser", sessionUser);
 
+	const userPortfolio = useSelector((state) => Object.values(state.portfolio?.currentUserPortfolio));
+	console.log("userPortfolio", userPortfolio);
+
+	let totalPortfolioValue = 0;
+
+	userPortfolio?.map((stock) => {
+		totalPortfolioValue += stock.price * stock.shares;
+		console.log("totalPortfolioValue", totalPortfolioValue);
+	});
+
+	useEffect(() => {
+		dispatch(fetchUserPortfolio(sessionUser?.id));
+	}, [dispatch, sessionUser?.id]);
+
 	return (
 		<div className="main-portfolio-container">
-			{sessionUser ? (
+			{sessionUser && userPortfolio ? (
 				<>
 					<div className="main-left-container">
 						<div className="user-info">
-							<h2 className="portfolio-value">${sessionUser.balance}</h2>
+							<h2 className="portfolio-value">${totalPortfolioValue.toFixed(2)}</h2>
 						</div>
 						<LineChart />
 
-						<div>Buying Power: ${sessionUser.balance}</div>
+						<div>Buying Power: ${sessionUser.balance.toFixed(2)}</div>
 
 						<div className="mod discover-mod">
 							DISCOVER

@@ -18,6 +18,8 @@ def current_user_portfolio(user_id):
     if not user:
         return jsonify({"error": "User not found"}), 404
 
-    portfolio = Portfolio.query.filter_by(user_id=user_id).first()
+    portfolioItems = Portfolio.query.filter_by(user_id=user_id).all()
 
-    return jsonify(portfolio.to_dict())
+    portfolio = {data.id: data.to_dict() for data in portfolioItems}
+
+    return jsonify(portfolio)

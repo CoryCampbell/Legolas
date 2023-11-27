@@ -60,6 +60,7 @@ def purchase(company_id):
         updated_at=datetime.now(),
     )
     db.session.add(new_transaction)
+    db.session.add(new_stock)
 
     print(new_transaction, "===========> NEW TRANSACTION")
 
