@@ -1,6 +1,6 @@
 const GET_WATCHLIST = "watchlists/getWatchlist";
 const GET_ALL_WATCHLISTS = "watchlists/getAllWatchlists";
-const ADD_NEW_WATCHLIST = "watchlists/getAllWatchlists";
+const ADD_NEW_WATCHLIST = "watchlists/getWatchlistsDetails";
 const DELETE_COMPANY ='watchlists/deleteCompany';
 const DELETE_WATCHLIST ='watchlists/deleteWatchlist'
 
@@ -110,7 +110,7 @@ const initialState = {
 
 // Reducer
 export const watchlistReducer = (state = initialState, action) => {
-	const allWatchlistsAfterAddition = { ...state.allWatchlists, newWatchlist: action.payload };
+	// const allWatchlistsAfterAddition = { ...state.allWatchlists, newWatchlist: action.payload };
 	switch (action.type) {
 		case GET_WATCHLIST:
 			return {
@@ -128,6 +128,12 @@ export const watchlistReducer = (state = initialState, action) => {
 				// 		[watchlist.name]: watchlist
 				// 	})
 				// };
+			};
+		case ADD_NEW_WATCHLIST:
+				// console.log(action.payload, 'payload ----------------')
+				return {
+				...state,
+				allWatchlists: [...state.allWatchlists, action.payload]
 			};
 		case DELETE_COMPANY:
 			const newState = {...state}
