@@ -5,7 +5,7 @@ import OpenModalButton from "../OpenModalButton";
 import WatchListModal from "../WatchlistModal";
 import "./watchlistDetails.css";
 import Watchlist from "../Watchlists";
-import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import { NavLink, useParams } from "react-router-dom/cjs/react-router-dom.min";
 
 const WatchlistDetails = () => {
 	const { watchlist_id } = useParams();
@@ -41,23 +41,24 @@ const WatchlistDetails = () => {
 				<div className="watchlist-details-container">
 					<div className="current-watchlist-left-container">
 						<div className="current-watchlist-header-container">
-							<div>{currentWatchlist}</div>
+							<div className="current-watchlist-header">{currentWatchlist}</div>
 						</div>
 						<div className="watchlist-table-container">
 							<table>
+								<thead className="legend-row">
+									<th>Name</th>
+									<th>Symbol</th>
+									<th>Price</th>
+								</thead>
 								<tbody>
-									<tr>
-										<th>Name</th>
-										<th>Symbol</th>
-										<th>Price</th>
-										<th>Today</th>
-										<th>Market Cap</th>
-									</tr>
 									{currentWatchlistDetails.length &&
 										currentWatchlistDetails?.map((company) => (
-											<tr key={company.id}>
-												<th>{company.name}</th>
-												<th>{company.symbol}</th>
+											<tr key={company.id} className="company-row-container">
+												<NavLink exact to={`/companies/${company.id}`}>
+													<td className="listdet-company-name">{company.name}</td>
+													<td className="listdet-company-symbol">{company.symbol}</td>
+													<td className="listdet-company-price">{company.price}</td>
+												</NavLink>
 											</tr>
 										))}
 								</tbody>
