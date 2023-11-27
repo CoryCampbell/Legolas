@@ -25,17 +25,16 @@ const initialState = {
 
 // Reducer
 export const portfolioReducer = (state = initialState, action) => {
-  console.log("portoflio ------->", action.type);
-  switch (action.type) {
-    case GET_USER_PORTFOLIO:
-      return {
-        ...state,
-        currentUserPortfolio: action.payload,
-      };
+	switch (action.type) {
+		case GET_USER_PORTFOLIO:
+			return {
+				...state,
+				currentUserPortfolio: action.payload
+			};
 
-    default:
-      return state;
-  }
+		default:
+			return state;
+	}
 };
 
 export default portfolioReducer;
