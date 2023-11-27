@@ -27,7 +27,12 @@ export default function CompanyDetails() {
   };
 
   const handleDollarChange = (event) => {
+    const amount = event.target.value;
     setDollarAmount(event.target.value);
+
+    const calculatedShares =
+      amount > 0 ? (amount / company.price).toFixed(6) : 0;
+    setSharesAmount(calculatedShares);
   };
 
   const handleShareChange = (event) => {
@@ -39,11 +44,9 @@ export default function CompanyDetails() {
   };
 
   const handleConfirmOrder = async () => {
-    // TODO Implement the logic to confirm the order and send the transaction to the backend, and wherever else it needs to be updated
-
     const numberOfShares = selectedOption === "shares" ? sharesAmount || 0 : 0;
 
-    console.log(sharesAmount);
+    // console.log(sharesAmount);
     try {
       const res = await fetch(`/api/purchases/${company_id}`, {
         method: "POST",
@@ -54,10 +57,10 @@ export default function CompanyDetails() {
           number_of_shares: numberOfShares,
         }),
       });
-      console.log("res------>", res);
+      //   console.log("res------>", res);
       const data = await res.json();
 
-      console.log("data ------>", data);
+      //   console.log("data ------>", data);
 
       setDollarAmount("");
       setSharesAmount("");
@@ -126,7 +129,9 @@ export default function CompanyDetails() {
                     <div className="est-box">
                       <div className="est-quantity">Est. Quantity:</div>
                       <div className="est-quantity-num">
-                        {(dollarAmount / company.price).toFixed(6)}
+                        {dollarAmount > 0
+                          ? (dollarAmount / company.price).toFixed(6)
+                          : 0}
                       </div>
                     </div>
                   </div>
@@ -149,7 +154,10 @@ export default function CompanyDetails() {
                     <div className="est-box">
                       <div className="est-quantity">Est. Cost:</div>
                       <div className="est-quantity-num">
-                        ${(company.price * sharesAmount).toFixed(2)}
+                        $
+                        {sharesAmount > 0
+                          ? (company.price * sharesAmount).toFixed(2)
+                          : 0}
                       </div>
                     </div>
                   </div>
@@ -171,7 +179,9 @@ export default function CompanyDetails() {
                 </div>
                 <div className="buy-power-box">
                   <div className="buy-power">
-                    {`$${sessionUser.balance} buying power available`}
+                    {`$${sessionUser.balance.toFixed(
+                      2
+                    )} buying power available`}
                   </div>
                 </div>
               </div>
