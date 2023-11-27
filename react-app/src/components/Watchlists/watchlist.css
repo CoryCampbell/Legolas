@@ -9,6 +9,18 @@
   height: 100px;
 }
 
+.watchlist-container > button {
+  background-color: rgb(255, 0, 0);
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 10px 10px 10px 10px;
+  margin-right: 5px;
+  padding: 10px;
+}
+
+.watchlist-container > button:hover {
+  color: green;
+  cursor: pointer
+}
 .list-header {
   display: flex;
   align-items: center;

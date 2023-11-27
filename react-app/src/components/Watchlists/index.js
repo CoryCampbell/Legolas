@@ -6,6 +6,7 @@ import WatchListModal from "../WatchlistModal";
 import MiniChart from "../Chart/MiniChart";
 import "./watchlist.css";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
+import DeleteWatchListModal from "./DeleteModal";
 
 const Watchlist = () => {
 	const dispatch = useDispatch();
@@ -51,6 +52,7 @@ const Watchlist = () => {
 									<NavLink exact to={`/watchlists/current/${list?.id}`}>
 										{list?.name}
 									</NavLink>
+									<OpenModalButton className='delete-watchlist-button' buttonText="X" modalComponent={<DeleteWatchListModal companyId={list.id} />}></OpenModalButton>
 								</div>
 							))}
 					</div>
