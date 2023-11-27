@@ -68,6 +68,19 @@ tbody {
   /* width: 100%; */
 }
 
+.listdet-company-delete > button {
+  background-color: rgb(255, 0, 0);
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 10px 10px 10px 10px;
+  margin-right: 5px;
+  padding: 10px;
+}
+
+.listdet-company-delete > button:hover{
+  color: green;
+  cursor: pointer
+}
+
 .legend-row {
   text-decoration: underline;
   width: 100%;

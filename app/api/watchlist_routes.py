@@ -86,7 +86,7 @@ def delete_watchlist(watchlist_id):
     if watchlist:
         db.session.delete(watchlist)
         db.session.commit()
-        return 'Watchlist sucessfully deleted'
+        return {"message": "Watchlist succesfully deleted"}
     else:
         return {"error": "Watchlist not found or does not belong to the user"}, 404
 
@@ -105,7 +105,7 @@ def delete_from_user_watchlist(watchlist_id, company_id):
     if watchlist:
         db.session.delete(watchlist)
         db.session.commit()
-        return 'Company succesfully deleted from watchlist'
+        return {"message": "Company succesfully deleted from watchlist"}
     else:
         return {"error": "Watchlist not found or does not belong to the user"}, 404
 
