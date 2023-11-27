@@ -27,13 +27,13 @@ const Watchlist = () => {
 							<div className="my-shares-header">My Shares</div>
 							<div className="main-share-container">
 								<div className="shares-info-container">
-									<div>shares symbol</div>
-									<div>shares owned</div>
+									<div>symbol</div>
+									<div>#owned</div>
 								</div>
 								<MiniChart className={"user-chart"} />
 								<div className="shares-stats-container">
-									<div>share price</div>
-									<div>percent change</div>
+									<div>$/share</div>
+									<div>% -/+</div>
 								</div>
 							</div>
 						</div>
