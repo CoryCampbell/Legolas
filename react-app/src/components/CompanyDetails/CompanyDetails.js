@@ -7,6 +7,7 @@ import {
 } from "react-router-dom/cjs/react-router-dom.min";
 import LineChart from "../Chart/LineChart";
 import "./CompanyDetails.css";
+import { fetchUserPortfolio } from "../../store/portfolio";
 
 export default function CompanyDetails() {
   const { company_id } = useParams();
@@ -114,7 +115,8 @@ export default function CompanyDetails() {
 
   useEffect(() => {
     dispatch(fetchCompany(company_id));
-  }, [dispatch, company_id]);
+    dispatch(fetchUserPortfolio(sessionUser?.id));
+  }, [dispatch, company_id, sessionUser?.id]);
 
   return (
     <>
@@ -320,9 +322,15 @@ export default function CompanyDetails() {
                   </div>
                   <div className="buy-power-box">
                     <div className="buy-power">
-                      {selectedOption === "dollars"
-                        ? `$${portfolio[0]?.price.toFixed(2)} Available`
-                        : `${portfolio[0]?.shares.toFixed(6)} Shares Available`}
+                      {portfolio.price
+                        ? selectedOption === "dollars"
+                          ? `$${portfolio[0]?.price.toFixed(2)} Available`
+                          : `${portfolio[0]?.shares.toFixed(
+                              6
+                            )} Shares Available`
+                        : selectedOption === "dollars"
+                        ? "0 Available"
+                        : "0 Shares Available"}
                     </div>
                   </div>
                 </div>

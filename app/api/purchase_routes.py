@@ -77,7 +77,7 @@ def purchase(company_id):
     new_transaction = Transaction(
         user_id=user_id,
         company_id=company_id,
-        total=price_per_share,
+        total=round(price_per_share, 2),
         type="buy",
         created_at=datetime.now(),
         updated_at=datetime.now(),

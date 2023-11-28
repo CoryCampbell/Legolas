@@ -27,8 +27,8 @@ const Portfolio = () => {
   });
 
   useEffect(() => {
-    dispatch(fetchUserPortfolio(sessionUser.id));
-  }, [dispatch, sessionUser.id]);
+    dispatch(fetchUserPortfolio(sessionUser?.id));
+  }, [dispatch, sessionUser?.id]);
 
   return (
     <div className="main-portfolio-container">
