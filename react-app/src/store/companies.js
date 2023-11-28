@@ -19,12 +19,12 @@ const getAllCompanies = (payload) => {
 //Thunk
 
 export const fetchCompany = (company_id) => async (dispatch) => {
-  //   console.log("company id -------->", company_id);
-  const res = await fetch(`/api/companies/${company_id}`);
+	//   console.log("company id -------->", company_id);
+	const res = await fetch(`/api/companies/${company_id}`);
 
-  const data = await res.json();
-  dispatch(getCompany(data));
-  return data;
+	const data = await res.json();
+	dispatch(getCompany(data));
+	return data;
 };
 
 export const fetchAllCompanies = () => async (dispatch) => {
@@ -36,7 +36,8 @@ export const fetchAllCompanies = () => async (dispatch) => {
 };
 
 const initialState = {
-  company: {},
+	company: {},
+	allCompanies: {}
 };
 
 // Reducer
