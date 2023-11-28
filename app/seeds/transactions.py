@@ -9,7 +9,7 @@ def seed_transactions():
     demo_transaction2 = Transaction(total=233.77, user_id=2, company_id=2, type="buy")
     demo_transaction3 = Transaction(total=367.49, user_id=3, company_id=3, type="buy")
     demo_transaction4 = Transaction(total=145.37, user_id=4, company_id=4, type="buy")
-    demo_transaction5 = Transaction(total=13.02, user_id=5, company_id=5, type="buy")
+    demo_transaction5 = Transaction(total=145.37, user_id=5, company_id=5, type="buy")
     demo_transaction6 = Transaction(total=465.88, user_id=6, company_id=6, type="buy")
     demo_transaction7 = Transaction(total=360.69, user_id=7, company_id=7, type="buy")
 

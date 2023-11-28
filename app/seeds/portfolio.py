@@ -9,7 +9,7 @@ def seed_portfolio():
     demo_portfolio2 = Portfolio(user_id=2, company_id=2, price=233.77, shares=1)
     demo_portfolio3 = Portfolio(user_id=3, company_id=3, price=367.49, shares=1)
     demo_portfolio4 = Portfolio(user_id=4, company_id=4, price=145.37, shares=1)
-    demo_portfolio5 = Portfolio(user_id=5, company_id=5, price=13.02, shares=1)
+    demo_portfolio5 = Portfolio(user_id=5, company_id=5, price=145.37, shares=1)
     demo_portfolio6 = Portfolio(user_id=6, company_id=6, price=465.88, shares=1)
     demo_portfolio7 = Portfolio(user_id=7, company_id=7, price=360.69, shares=1)
 

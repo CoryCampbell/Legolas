@@ -23,9 +23,9 @@ const Watchlist = () => {
     (state) => state.portfolio.currentUserPortfolio
   );
   const allCompanies = useSelector((state) => state.companies.allCompanies);
-  console.log("allCompanies", allCompanies);
+//   console.log("allCompanies", allCompanies);
   const userObj = Object.values(userPortfolio);
-  console.log("==============> USER OBJECT: ", userObj);
+//   console.log("==============> USER OBJECT: ", userObj);
 
   //This newValue attribute will be used in future features to calculate the total percent change in stock value based on the price of the stock at the time of purchase compared to the price of the stock at the current time. For now we will use a newValue of Zero to indicate no change in value.
 
@@ -33,7 +33,7 @@ const Watchlist = () => {
   let formattedSharesData = [];
 
   userObj.forEach((share) => {
-    console.log("share", share);
+    // console.log("share", share);
     // const company = await fetch(`/api/companies/${share.company_id}`);
     const shareObj = {
       company_id: share.company_id,
@@ -83,12 +83,16 @@ const Watchlist = () => {
                       key={share.company_id}
                     >
                       <div className="shares-info-container">
-                        <div>{company?.symbol}</div>
+                        <div>
+                          <NavLink to={`/companies/${company?.id}`}>
+                            {company?.symbol}
+                          </NavLink>
+                        </div>
                         <div>{share.shares.toFixed(2)} Share(s)</div>
                       </div>
                       <MiniChart className={"user-chart"} />
                       <div className="shares-stats-container">
-                        <div>${(share.price * share.shares).toFixed(2)}</div>
+                        <div>${(company.price * share.shares).toFixed(2)}</div>
                         <div>
                           {(share.newValue - share.price) * share.shares}%
                         </div>
