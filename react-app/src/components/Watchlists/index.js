@@ -68,16 +68,23 @@ const Watchlist = () => {
               <div className="my-shares-header">My Shares</div>
               {sessionUser &&
                 formattedSharesData?.map((share) => {
-                  const company = allCompanies.find(
-                    (company) => company.id === share.company_id
-                  );
+                  const company = allCompanies.length
+                    ? allCompanies.find(
+                        (company) => company.id === share.company_id
+                      )
+                    : null;
+
+                  if (!company) {
+                    // Handle the case when company is not found
+                    return null; // or any placeholder, message, or fallback content
+                  }
                   return (
                     <div
                       className="main-share-container"
                       key={share.company_id}
                     >
                       <div className="shares-info-container">
-                        <div>{company.symbol}</div>
+                        <div>{company?.symbol}</div>
                         <div>{share.shares.toFixed(2)} Share(s)</div>
                       </div>
                       <MiniChart className={"user-chart"} />
