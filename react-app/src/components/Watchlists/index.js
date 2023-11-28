@@ -59,6 +59,11 @@ const Watchlist = () => {
     dispatch(fetchUserPortfolio(sessionUser?.id));
   }, [dispatch, sessionUser?.id]);
 
+  if (!sessionUser) {
+    // If there's no user, you can display a message or take any other action
+    return <div>No user found. Please log in.</div>;
+  }
+
   return (
     <div className="main-watchlist-container">
       {sessionUser && (

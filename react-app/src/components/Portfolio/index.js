@@ -17,7 +17,7 @@ const Portfolio = () => {
   const userPortfolio = useSelector((state) =>
     Object.values(state.portfolio?.currentUserPortfolio)
   );
-//   console.log("userPortfolio", userPortfolio);
+  //   console.log("userPortfolio", userPortfolio);
 
   let totalPortfolioValue = 0;
 
@@ -28,8 +28,10 @@ const Portfolio = () => {
   });
 
   useEffect(() => {
-    dispatch(fetchUserPortfolio(sessionUser?.id));
-    dispatch(fetchAllCompanies());
+    if (sessionUser) {
+      dispatch(fetchUserPortfolio(sessionUser?.id));
+      dispatch(fetchAllCompanies());
+    }
   }, [dispatch, sessionUser?.id]);
 
   return (
@@ -44,55 +46,63 @@ const Portfolio = () => {
             </div>
             <LineChart />
 
-						<div className="portfolio-buying-power-container">
-							<p>Buying Power:</p>
-							<div>${sessionUser.balance.toFixed(2)}</div>
-						</div>
+            <div className="portfolio-buying-power-container">
+              <p>Buying Power:</p>
+              <div>${sessionUser?.balance.toFixed(2)}</div>
+            </div>
 
-						<div className="mod discover-mod">
-							<h4 className="section-header">DISCOVER</h4>
-							<div>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-								dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-								ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-								fugiat nulla
-							</div>
-						</div>
-						<div className="mod trending-mod">
-							<h4 className="section-header">TRENDING</h4>
-							<div>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-								dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-								ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-								fugiat nulla
-							</div>
-						</div>
-						<div className="mod learning-mod">
-							<h4 className="section-header">LEARNING</h4>
-							<div>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-								dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-								ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-								fugiat nulla
-							</div>
-						</div>
-						<div className="mod news-mod">
-							<h4 className="section-header">NEWS</h4>
-							<div>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-								dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-								ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-								fugiat nulla
-							</div>
-						</div>
-					</div>
-					<Watchlist />
-				</>
-			) : (
-				<Landing />
-			)}
-		</div>
-	);
+            <div className="mod discover-mod">
+              <h4 className="section-header">DISCOVER</h4>
+              <div>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                nulla
+              </div>
+            </div>
+            <div className="mod trending-mod">
+              <h4 className="section-header">TRENDING</h4>
+              <div>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                nulla
+              </div>
+            </div>
+            <div className="mod learning-mod">
+              <h4 className="section-header">LEARNING</h4>
+              <div>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                nulla
+              </div>
+            </div>
+            <div className="mod news-mod">
+              <h4 className="section-header">NEWS</h4>
+              <div>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                nulla
+              </div>
+            </div>
+          </div>
+          <Watchlist />
+        </>
+      ) : (
+        <Landing />
+      )}
+    </div>
+  );
 };
 
 export default Portfolio;
