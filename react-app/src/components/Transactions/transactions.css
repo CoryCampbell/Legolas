@@ -1,5 +1,8 @@
 .users-transactions > h1 {
-    padding-top: 50px;
+    padding-top: 67px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
 }
 .transactions-history-container {
     width: 50%;
@@ -32,15 +35,19 @@
 }
 /* css to title of transactions */
 .users-transactions > h1 {
-    margin: auto;
-    width: 50%;
+    width: 100%;
     padding-bottom: 20px;
 }
+
+div.transactions-container {
+    width: 1024px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
 /* adds spacing for the navlinks */
 .transactions-container > div {
-    padding-left: 40px;
-    padding-bottom: 10px;
-    /* text-decoration: none; */
 }
 /* gets rid of default css for navlinks so we can change them */
 a:-webkit-any-link {
@@ -51,4 +58,12 @@ a:-webkit-any-link {
 a:-webkit-any-link:hover {
     text-decoration: none;
     color: green;
+}
+
+.transaction-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
 }

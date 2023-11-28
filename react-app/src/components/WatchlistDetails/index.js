@@ -42,64 +42,58 @@ const WatchlistDetails = () => {
   }, [dispatch, watchlist_id, sessionUser?.id]);
 
   return (
-    <>
-      {sessionUser &&  currentWatchlistDetails && (
-        <div className="watchlist-details-container">
-          <div className="current-watchlist-left-container">
-            <div className="current-watchlist-header-container">
-              <div className="current-watchlist-header">{currentWatchlist}</div>
-            </div>
-            {currentWatchlistDetails ? (
-              <div className="watchlist-table-container">
-                <table>
-                  <thead className="legend-row">
-                    <th>Name</th>
-                    <th>Symbol</th>
-                    <th>Price</th>
-                  </thead>
-                  <tbody>
-                    {currentWatchlistDetails.length ? (
-                      currentWatchlistDetails?.map((company) => (
-                        <tr key={company.id} className="company-row-container">
-                          <NavLink exact to={`/companies/${company.id}`}>
-                            <td className="listdet-company-name">
-                              {company.name}
-                            </td>
-                            <td className="listdet-company-symbol">
-                              {company.symbol}
-                            </td>
-                            <td className="listdet-company-price">
-                              {company.price}
-                            </td>
-                          </NavLink>
-                          <td className="listdet-company-delete">
-                            <OpenModalButton
-                              buttonText="X"
-                              modalComponent={
-                                <DeleteCompanyFromWatchListModal
-                                  companyId={company.id}
-                                  watchlistId={watchlist_id}
-                                />
-                              }
-                            ></OpenModalButton>
-                          </td>
-                        </tr>
-                      ))
-                    ) : (
-                      <p>Add companies to your watchlist to view here</p>
-                    )}
-                  </tbody>
-                </table>
-              </div>
-            ) : (
-              <p>no data</p>
-            )}
-          </div>
-          <Watchlist />
-        </div>
-      )}
-    </>
-  );
+		<>
+			{sessionUser && currentWatchlistDetails && (
+				<div className="watchlist-details-container">
+					<div className="current-watchlist-left-container">
+						<div className="current-watchlist-header-container">
+							<div className="current-watchlist-header">{currentWatchlist}</div>
+						</div>
+						{currentWatchlistDetails ? (
+							<div className="watchlist-table-container">
+								<table>
+									<thead className="legend-row">
+										<th>Name</th>
+										<th>Symbol</th>
+										<th>Price</th>
+									</thead>
+									<tbody>
+										{currentWatchlistDetails.length ? (
+											currentWatchlistDetails?.map((company) => (
+												<tr key={company.id} className="company-row-container">
+													<NavLink exact to={`/companies/${company.id}`}>
+														<td className="listdet-company-name">{company.name}</td>
+														<td className="listdet-company-symbol">{company.symbol}</td>
+														<td className="listdet-company-price">{company.price}</td>
+													</NavLink>
+													<td className="listdet-company-delete">
+														<OpenModalButton
+															buttonText="X"
+															modalComponent={
+																<DeleteCompanyFromWatchListModal companyId={company.id} watchlistId={watchlist_id} />
+															}
+														></OpenModalButton>
+													</td>
+												</tr>
+											))
+										) : (
+											<>
+												<h2 className="empty-list-message-header">Seems a little empty in here...</h2>
+												<p>Search a company and add it to your list!</p>
+											</>
+										)}
+									</tbody>
+								</table>
+							</div>
+						) : (
+							<p>no data</p>
+						)}
+					</div>
+					<Watchlist />
+				</div>
+			)}
+		</>
+	);
 };
 
 export default WatchlistDetails;

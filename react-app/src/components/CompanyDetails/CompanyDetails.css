@@ -20,7 +20,15 @@
   width: 70%;
 }
 
+.company-about-header {
+  margin: 0px;
+  margin-top: 10px;
+
+  padding: 0px;
+}
+
 .buy-or-sell-view {
+  padding: 10px;
   position: fixed;
   left: 70%;
   top: 10%;

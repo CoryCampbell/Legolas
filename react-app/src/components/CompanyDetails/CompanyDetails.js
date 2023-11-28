@@ -144,8 +144,10 @@ export default function CompanyDetails() {
 					<div className="company-detail-chart">
 						<LineChart />
 					</div>
-
-					<div className="company-detail-about">{company.about}</div>
+					<div className="company-about-section">
+						<h4 className="company-about-header">About</h4>
+						<div className="company-detail-about">{company.about}</div>
+					</div>
 				</div>
 
 				<div className="buy-or-sell-view">

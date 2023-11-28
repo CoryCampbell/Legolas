@@ -50,10 +50,12 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  border-bottom: solid green 1px;
 }
 
 .mod > h4 {
   margin: 0px;
+  margin-top: 40px;
   padding: 5px;
-  text-decoration: underline;
+  border-bottom: solid green 1px;
 }
