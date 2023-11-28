@@ -23,13 +23,13 @@ const WatchlistDetails = () => {
   console.log("watchlists", watchlists);
 
   const currentWatchlistDetails = useSelector(
-    (state) => state.watchlists.currentWatchlist
+    (state) => state.watchlists?.currentWatchlist
   );
   console.log("currentWatchlistDetails ========>", currentWatchlistDetails);
 
   let currentWatchlist;
 
-  if (watchlists.length) {
+  if (watchlists?.length) {
     watchlists?.forEach((watchlist) => {
       console.log("watchlist", watchlist.name);
       if (watchlist.id == watchlist_id) currentWatchlist = watchlist.name;
@@ -43,7 +43,7 @@ const WatchlistDetails = () => {
 
   return (
     <>
-      {sessionUser && (
+      {sessionUser &&  currentWatchlistDetails && (
         <div className="watchlist-details-container">
           <div className="current-watchlist-left-container">
             <div className="current-watchlist-header-container">

@@ -117,9 +117,25 @@ export const watchlistReducer = (state = initialState, action) => {
 				...state,
 				currentWatchlist: action.payload
 			};
-		// case DELETE_WATCHLIST:
-		// 	const newDeleteState = {...state}
-		// 	console.log(newDeleteState, 'delete watchlist state')
+		case DELETE_WATCHLIST: {
+			const newState = {...state}
+			const newArray = newState.allWatchlists
+			console.log(newArray, 'old, not deleted')
+			const toDelete = newArray.find((ele) => ele.id == action.watchlistId)
+			for (let i = 0; i <newArray.length; i++) {
+				const currObj = newArray[i]
+				if (currObj.id == toDelete.id) {
+					newArray.splice(i,1)
+				}
+			}
+			console.log(newArray, 'newdeleted')
+			// console.log(toDelete, 'todelelelele')
+			// console.log(state, 'delete state')
+			return {
+				...state,
+				allWatchlists: [...newArray]
+			}
+		}
 		case GET_ALL_WATCHLISTS:
 			return {
 				...state,
