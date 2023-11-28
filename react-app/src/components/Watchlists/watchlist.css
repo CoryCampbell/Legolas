@@ -3,6 +3,7 @@
   align-items: center;
   height: 50px;
   padding-left: 10px;
+  z-index: 1;
 }
 
 .shares-owned-preview-container {
@@ -10,17 +11,28 @@
 }
 
 .watchlist-container > button {
-  background-color: rgb(255, 0, 0);
-  border: 2px solid rgb(0, 0, 0);
+  background-color: white;
+  border: none;
+  color: red;
+  font-size: 10px;
   border-radius: 10px 10px 10px 10px;
   margin-right: 5px;
   padding: 10px;
+  width: 5px;
+  height: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .watchlist-container > button:hover {
-  color: green;
+  color: black;
+  background-color: red;
+  width: 10px;
+  height: 10px;
   cursor: pointer
 }
+
 .list-header {
   display: flex;
   align-items: center;
@@ -30,11 +42,6 @@
   height: 50px;
   padding-left: 10px;
   padding-right: 10px;
-}
-
-.user-chart {
-  width: 2000px;
-  height: 50px;
 }
 
 .my-shares-header {
@@ -52,10 +59,23 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  font-size: 12px;
 }
 
 .shares-info-container {
     padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.shares-stats-container {
+    padding-right: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
 }
 
 .list-header > button {

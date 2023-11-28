@@ -16,7 +16,7 @@ def seed_stocks_owned():
     demo_stocks_owned4 = Stocks_owned(
         user_id=4, company_id=4, amt_shares=1, stock_price=145.37)
     demo_stocks_owned5 = Stocks_owned(
-        user_id=5, company_id=5, amt_shares=1, stock_price=13.02)
+        user_id=5, company_id=5, amt_shares=1, stock_price=145.37)
     demo_stocks_owned6 = Stocks_owned(
         user_id=6, company_id=6, amt_shares=1, stock_price=465.88)
     demo_stocks_owned7 = Stocks_owned(

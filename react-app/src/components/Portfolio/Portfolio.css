@@ -44,3 +44,18 @@
 .main-landing-container {
   margin-top: 67px;
 }
+
+.portfolio-buying-power-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: solid green 1px;
+}
+
+.mod > h4 {
+  margin: 0px;
+  margin-top: 40px;
+  padding: 5px;
+  border-bottom: solid green 1px;
+}
