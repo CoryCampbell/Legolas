@@ -14,14 +14,14 @@ export default function Transactions() {
 		dispatch(getUserTransactionsThunk(user_id));
 	}, [dispatch, user_id]);
 
-	return (
+	return sessionUser && (
 		<div className="users-transactions">
 			<h1 className="transaction-title">
 				{sessionUser.first_name} {sessionUser.last_name}
 			</h1>
 			<div className="transactions-container">
 				<div className="investing-container">
-					<NavLink exact to={`/${user_id}/investing`}>
+					<NavLink to={`/${user_id}/investing`}>
 						Investing
 					</NavLink>
 				</div>
@@ -41,12 +41,12 @@ export default function Transactions() {
 					</NavLink>
 				</div>
 				<div className="tax-container">
-					<NavLink exact to={`/${user_id}/Tax`}>
+					<NavLink exact to={`/${user_id}/tax`}>
 						Tax center
 					</NavLink>
 				</div>
 				<div className="history-container">
-					<NavLink exact to={`/${user_id}/history`}>
+					<NavLink to={`/${user_id}/history`}>
 						History
 					</NavLink>
 				</div>
@@ -63,4 +63,4 @@ export default function Transactions() {
 			</div>
 		</div>
 	);
-}
+};

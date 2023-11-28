@@ -16,3 +16,10 @@ def current_company(company_id):
         return jsonify({"error": "Company not found"}), 404
 
     return jsonify(company.to_dict())
+
+@company_routes.route('/all')
+@login_required
+def get_companies():
+    companies = Company.query.all()
+    print(companies, 'companies---------------')
+    return jsonify([company.to_dict() for company in companies])
