@@ -68,7 +68,7 @@ form {
   display: flex;
 }
 .nav-login-button {
-  background-color: black;
+  background-color: green;
   color: gold;
   border-radius: 20px;
   /* width: 20%; */
@@ -79,8 +79,8 @@ form {
   cursor: pointer;
 }
 .nav-signup-button {
-  background-color: gold;
-  color: black;
+  background-color: rgb(0, 41, 0);
+  color: gold;
   border-radius: 20px;
   /* width: 20%; */
   padding: 10px;
