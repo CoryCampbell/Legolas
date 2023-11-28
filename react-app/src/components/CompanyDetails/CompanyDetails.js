@@ -8,6 +8,8 @@ import {
 import LineChart from "../Chart/LineChart";
 import "./CompanyDetails.css";
 import { fetchUserPortfolio } from "../../store/portfolio";
+import AddToWatchlistModal from "../AddToWatchlistModal";
+import OpenModalButton from "../OpenModalButton";
 
 export default function CompanyDetails() {
   const { company_id } = useParams();
@@ -28,7 +30,7 @@ export default function CompanyDetails() {
       (stock) => stock.company_id == company_id
     )
   );
-  console.log("portfolio======>", portfolio[0]);
+  console.log("portfolio======>", portfolio);
 
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
@@ -70,17 +72,25 @@ export default function CompanyDetails() {
 
       console.log("data ------>", data);
 
-      setDollarAmount("");
-      setSharesAmount("");
-      setShowButtons(false);
-      //   history.push("/");
+      if (res.ok) {
+        window.alert("Purchase successful!");
+        setDollarAmount("");
+        setSharesAmount("");
+        setShowButtons(false);
+      } else {
+        window.alert(`Error: ${data.error}`);
+      }
     } catch (error) {
       console.error("Error:", error);
     }
   };
 
   const handleConfirmOrderSell = async () => {
-    console.log(sharesAmount);
+    const decimalVal = parseFloat(sharesAmount);
+    const formattedVal = decimalVal.toFixed(6);
+
+    // console.log(sharesAmount);
+    console.log(formattedVal);
 
     try {
       const res = await fetch(`/api/sell/${company_id}`, {
@@ -89,7 +99,7 @@ export default function CompanyDetails() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          number_of_shares_to_sell: sharesAmount,
+          number_of_shares_to_sell: formattedVal,
         }),
       });
       console.log("res------>", res);
@@ -97,9 +107,14 @@ export default function CompanyDetails() {
 
       console.log("data ------>", data);
 
-      setDollarAmount("");
-      setSharesAmount("");
-      setShowButtons(false);
+      if (res.ok) {
+        window.alert("Transaction successful!");
+        setDollarAmount("");
+        setSharesAmount("");
+        setShowButtons(false);
+      } else {
+        window.alert(`Error: ${data.error}`);
+      }
     } catch (error) {
       console.error("Error:", error);
     }
@@ -322,7 +337,7 @@ export default function CompanyDetails() {
                   </div>
                   <div className="buy-power-box">
                     <div className="buy-power">
-                      {portfolio.price
+                      {portfolio[0].price > 0
                         ? selectedOption === "dollars"
                           ? `$${portfolio[0]?.price.toFixed(2)} Available`
                           : `${portfolio[0]?.shares.toFixed(
@@ -337,6 +352,13 @@ export default function CompanyDetails() {
               </div>
             </div>
           )}
+
+          <div>
+            <OpenModalButton
+              buttonText={"+ Add to Lists"}
+              modalComponent={<AddToWatchlistModal company_id={company_id} />}
+            />
+          </div>
         </div>
       </div>
     </>

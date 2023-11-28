@@ -1,0 +1,59 @@
+.add-to-watchlists-lists {
+  list-style-type: none;
+  cursor: pointer;
+  border: solid black 1px;
+}
+
+/* AddToWatchlist.css */
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.modal-content {
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.add-to-watchlists-lists {
+  cursor: pointer;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.add-to-watchlists-lists:hover {
+  background-color: #f0f0f0;
+}
+
+.close-modal-button {
+  cursor: pointer;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: green;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.close-modal-button:hover {
+  background-color: darkgreen;
+}
