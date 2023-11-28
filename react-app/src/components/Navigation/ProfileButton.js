@@ -6,6 +6,7 @@ import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import { NavLink } from "react-router-dom";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import AddFunds from "../AddFunds.js";
 
 function ProfileButton({ user, isLoaded }) {
 	const dispatch = useDispatch();
@@ -39,6 +40,7 @@ function ProfileButton({ user, isLoaded }) {
 		history.push("/");
 	};
 
+
 	const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
 	const closeMenu = () => setShowMenu(false);
 
@@ -55,6 +57,9 @@ function ProfileButton({ user, isLoaded }) {
 						<li>
 							<button onClick={handleLogout}>Log Out</button>
 						</li>
+						<div style={{width:"100px"}}>
+							<AddFunds />
+						</div>
 					</>
 				) : (
 					<>
