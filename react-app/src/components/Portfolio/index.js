@@ -39,10 +39,13 @@ const Portfolio = () => {
 						</div>
 						<LineChart />
 
-						<div>Buying Power: ${sessionUser.balance.toFixed(2)}</div>
+						<div className="portfolio-buying-power-container">
+							<p>Buying Power:</p>
+							<div>${sessionUser.balance.toFixed(2)}</div>
+						</div>
 
 						<div className="mod discover-mod">
-							DISCOVER
+							<h4 className="section-header">DISCOVER</h4>
 							<div>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
 								dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
@@ -51,7 +54,7 @@ const Portfolio = () => {
 							</div>
 						</div>
 						<div className="mod trending-mod">
-							TRENDING
+							<h4 className="section-header">TRENDING</h4>
 							<div>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
 								dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
@@ -60,7 +63,7 @@ const Portfolio = () => {
 							</div>
 						</div>
 						<div className="mod learning-mod">
-							LEARNING
+							<h4 className="section-header">LEARNING</h4>
 							<div>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
 								dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
@@ -69,7 +72,7 @@ const Portfolio = () => {
 							</div>
 						</div>
 						<div className="mod news-mod">
-							NEWS
+							<h4 className="section-header">NEWS</h4>
 							<div>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
 								dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
