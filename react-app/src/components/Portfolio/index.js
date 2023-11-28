@@ -28,6 +28,7 @@ const Portfolio = () => {
 
   useEffect(() => {
     dispatch(fetchUserPortfolio(sessionUser?.id));
+    dispatch(fetchAllCompanies());
   }, [dispatch, sessionUser?.id]);
 
   return (

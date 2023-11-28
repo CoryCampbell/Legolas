@@ -9,12 +9,12 @@ const getCompany = (payload) => {
   };
 };
 
-// const getAllCompanies = (payload) => {
-//   return {
-//     type: GET_ALL_COMPANIES,
-//     payload,
-//   };
-// };
+const getAllCompanies = (payload) => {
+  return {
+    type: GET_ALL_COMPANIES,
+    payload,
+  };
+};
 
 //Thunk
 
@@ -27,13 +27,13 @@ export const fetchCompany = (company_id) => async (dispatch) => {
   return data;
 };
 
-// export const fetchAllCompanies = () => async (dispatch) => {
-//   const res = await fetch(`/api/companies`);
+export const fetchAllCompanies = () => async (dispatch) => {
+  const res = await fetch(`/api/companies/all`);
 
-//   const data = await res.json();
-//   dispatch(getAllCompanies(data));
-//   return data;
-// };
+  const data = await res.json();
+  dispatch(getAllCompanies(data));
+  return data;
+};
 
 const initialState = {
   company: {},
@@ -49,11 +49,11 @@ export const companyReducer = (state = initialState, action) => {
         company: action.payload,
       };
 
-    // case GET_ALL_COMPANIES:
-    //   return {
-    //     ...state,
-    //     // allCompanies: action.payload,
-    //   };
+    case GET_ALL_COMPANIES:
+      return {
+        ...state,
+        allCompanies: action.payload,
+      };
 
     default:
       return state;
