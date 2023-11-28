@@ -9,61 +9,60 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import AddFunds from "../AddFunds.js";
 
 function ProfileButton({ user, isLoaded }) {
-	const dispatch = useDispatch();
-	const [showMenu, setShowMenu] = useState(false);
-	const ulRef = useRef();
-	const history = useHistory();
+  const dispatch = useDispatch();
+  const [showMenu, setShowMenu] = useState(false);
+  const ulRef = useRef();
+  const history = useHistory();
 
-	const openMenu = () => {
-		if (showMenu) return;
-		setShowMenu(true);
-	};
+  const openMenu = () => {
+    if (showMenu) return;
+    setShowMenu(true);
+  };
 
-	useEffect(() => {
-		if (!showMenu) return;
+  useEffect(() => {
+    if (!showMenu) return;
 
-		const closeMenu = (e) => {
-			if (!ulRef.current.contains(e.target)) {
-				setShowMenu(false);
-			}
-		};
+    const closeMenu = (e) => {
+      if (!ulRef.current.contains(e.target)) {
+        setShowMenu(false);
+      }
+    };
 
-		document.addEventListener("click", closeMenu);
+    document.addEventListener("click", closeMenu);
 
-		return () => document.removeEventListener("click", closeMenu);
-	}, [showMenu]);
+    return () => document.removeEventListener("click", closeMenu);
+  }, [showMenu]);
 
-	const handleLogout = (e) => {
-		e.preventDefault();
-		dispatch(logout());
-		closeMenu();
-		history.push("/");
-	};
+  const handleLogout = (e) => {
+    e.preventDefault();
+    dispatch(logout());
+    closeMenu();
+    history.push("/");
+  };
 
+  const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
+  const closeMenu = () => setShowMenu(false);
 
-	const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
-	const closeMenu = () => setShowMenu(false);
-
-	return (
-		<>
-			<button className="account-button" onClick={openMenu}>
-				{/* <i className="fas fa-user-circle" /> */}
-				Account
-			</button>
-			<ul className={ulClassName} ref={ulRef}>
-				{isLoaded && user ? (
-					<>
-						<NavLink to={`/transactions/${user.id}`}>History</NavLink>
-						<li>
-							<button onClick={handleLogout}>Log Out</button>
-						</li>
-						<div style={{width:"100px"}}>
-							<AddFunds />
-						</div>
-					</>
-				) : (
-					<>
-						{/* <OpenModalButton
+  return (
+    <>
+      <button className="account-button" onClick={openMenu}>
+        {/* <i className="fas fa-user-circle" /> */}
+        Account
+      </button>
+      <ul className={ulClassName} ref={ulRef}>
+        {isLoaded && user ? (
+          <>
+            <NavLink to={`/transactions/${user.id}`}>Profile</NavLink>
+            <li>
+              <button onClick={handleLogout}>Log Out</button>
+            </li>
+            <div style={{ width: "100px" }}>
+              <AddFunds />
+            </div>
+          </>
+        ) : (
+          <>
+            {/* <OpenModalButton
               buttonText="Log In"
               onItemClick={closeMenu}
               // modalComponent={<LoginFormModal />}
@@ -74,11 +73,11 @@ function ProfileButton({ user, isLoaded }) {
               onItemClick={closeMenu}
               modalComponent={<SignupFormModal />}
             /> */}
-					</>
-				)}
-			</ul>
-		</>
-	);
+          </>
+        )}
+      </ul>
+    </>
+  );
 }
 
 export default ProfileButton;
