@@ -12,14 +12,15 @@ def sell(company_id):
     user = current_user
     # number_of_shares = request.json.get("number_of_shares")
     company = Company.query.get(company_id)
-    number_of_shares_to_sell = request.json.get("number_of_shares_to_sell")
+    number_of_shares_to_sell = float(request.json.get("number_of_shares_to_sell"))
 
     # Validate the data
+    print("---------->", number_of_shares_to_sell)
 
     if current_user.id != user.id:
         return jsonify({"error": "User not authorized"}), 403
 
-    if float(number_of_shares_to_sell) <= 0:
+    if number_of_shares_to_sell <= 0:
         return jsonify({"error": "Invalid number of shares"}), 400
 
     if not company:
@@ -30,12 +31,12 @@ def sell(company_id):
         user_id=user.id, company_id=company_id
     ).first()
 
-    if not user_stock or int(user_stock.shares) < int(number_of_shares_to_sell):
+    if not user_stock or user_stock.shares < number_of_shares_to_sell:
         return jsonify({"error": "Not enough shares to sell"}), 400
 
     # Update UserStock
-    user_stock.shares -= int(number_of_shares_to_sell)
-    user_stock.price -= int(number_of_shares_to_sell) * company.price
+    user_stock.shares -= number_of_shares_to_sell
+    user_stock.price -= (number_of_shares_to_sell) * company.price
     if user_stock.shares == 0:
         db.session.delete(user_stock)
 
@@ -44,7 +45,7 @@ def sell(company_id):
         user_id=user.id, company_id=company_id
     ).first()
 
-    stocks_owned.amt_shares -= int(number_of_shares_to_sell)
+    stocks_owned.amt_shares -= number_of_shares_to_sell
 
     if stocks_owned.amt_shares <= 0:
         db.session.delete(stocks_owned)
@@ -53,13 +54,13 @@ def sell(company_id):
     sale_transaction = Transaction(
         user_id=user.id,
         company_id=company_id,
-        total=company.price * int(number_of_shares_to_sell),
+        total=company.price * (number_of_shares_to_sell),
         type="sell",
     )
     db.session.add(sale_transaction)
 
     # Update user's balance
-    user.balance += company.price * int(number_of_shares_to_sell)
+    user.balance += company.price * (number_of_shares_to_sell)
 
     try:
         db.session.commit()

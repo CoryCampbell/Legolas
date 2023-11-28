@@ -45,7 +45,7 @@ const Watchlist = () => {
 	if (watchlists) {
 		watchlistArray = Object.values(watchlists);
 	}
-	console.log("========> watchlists", watchlists);
+	// console.log("========> watchlists", watchlists);
 
 	useEffect(() => {
 		// dispatch(fetchAllCompanies());
