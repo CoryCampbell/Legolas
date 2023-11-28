@@ -13,7 +13,11 @@ const Watchlist = () => {
 
 	const sessionUser = useSelector((state) => state.session.user);
 	const watchlists = useSelector((state) => state.watchlists.allWatchlists);
-	let watchlistArray = Object.values(watchlists);
+	let watchlistArray;
+
+	if (watchlists) {
+		watchlistArray = Object.values(watchlists);
+	}
 	console.log("========> watchlists", watchlists);
 
 	useEffect(() => {
