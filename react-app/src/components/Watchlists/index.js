@@ -75,8 +75,7 @@ const Watchlist = () => {
                     : null;
 
                   if (!company) {
-                    // Handle the case when company is not found
-                    return null; // or any placeholder, message, or fallback content
+                    return null;
                   }
                   return (
                     <div
