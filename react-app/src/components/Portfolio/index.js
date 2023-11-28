@@ -44,60 +44,55 @@ const Portfolio = () => {
             </div>
             <LineChart />
 
-            <div>Buying Power: ${sessionUser.balance.toFixed(2)}</div>
+						<div className="portfolio-buying-power-container">
+							<p>Buying Power:</p>
+							<div>${sessionUser.balance.toFixed(2)}</div>
+						</div>
 
-            <div className="mod discover-mod">
-              DISCOVER
-              <div>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla
-              </div>
-            </div>
-            <div className="mod trending-mod">
-              TRENDING
-              <div>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla
-              </div>
-            </div>
-            <div className="mod learning-mod">
-              LEARNING
-              <div>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla
-              </div>
-            </div>
-            <div className="mod news-mod">
-              NEWS
-              <div>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla
-              </div>
-            </div>
-          </div>
-          <Watchlist />
-        </>
-      ) : (
-        <Landing />
-      )}
-    </div>
-  );
+						<div className="mod discover-mod">
+							<h4 className="section-header">DISCOVER</h4>
+							<div>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+								dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+								ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+								fugiat nulla
+							</div>
+						</div>
+						<div className="mod trending-mod">
+							<h4 className="section-header">TRENDING</h4>
+							<div>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+								dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+								ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+								fugiat nulla
+							</div>
+						</div>
+						<div className="mod learning-mod">
+							<h4 className="section-header">LEARNING</h4>
+							<div>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+								dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+								ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+								fugiat nulla
+							</div>
+						</div>
+						<div className="mod news-mod">
+							<h4 className="section-header">NEWS</h4>
+							<div>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+								dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+								ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+								fugiat nulla
+							</div>
+						</div>
+					</div>
+					<Watchlist />
+				</>
+			) : (
+				<Landing />
+			)}
+		</div>
+	);
 };
 
 export default Portfolio;
