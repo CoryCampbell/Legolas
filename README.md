@@ -1,4 +1,7 @@
 # Legolas
+![Legolas]: https://legolas.onrender.com
+
+Our Stock-Trading Application, based off the popular Robinhood site.
 
 https://legolas.onrender.com
 
