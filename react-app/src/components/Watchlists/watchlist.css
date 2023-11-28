@@ -3,6 +3,7 @@
   align-items: center;
   height: 50px;
   padding-left: 10px;
+  z-index: 1;
 }
 
 .shares-owned-preview-container {
@@ -43,11 +44,6 @@
   padding-right: 10px;
 }
 
-.user-chart {
-  width: 2000px;
-  height: 50px;
-}
-
 .my-shares-header {
   display: flex;
   align-items: center;
@@ -63,10 +59,23 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  font-size: 12px;
 }
 
 .shares-info-container {
     padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.shares-stats-container {
+    padding-right: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
 }
 
 .list-header > button {

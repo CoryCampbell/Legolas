@@ -18,7 +18,7 @@ export default function HistoryTransactions() {
   console.log(transactions, "hello there");
   useEffect(() => {
     dispatch(getUserTransactionsThunk(user_id));
-    // dispatch(fetchUserPortfolio(user_id))
+    dispatch(fetchUserPortfolio(user_id));
     dispatch(fetchAllCompanies())
   }, [dispatch, user_id]);
 

@@ -24,6 +24,7 @@
 
 .profile-dropdown button {
   background-color: green;
+  font-size: 10px;
   color: white;
   padding: 8px 12px;
   border: 1px black;
@@ -69,7 +70,6 @@
   right: 0;
   left: 20px;
   bottom: 0;
-  opacity: 0;
   height: 60px;
 }
 
