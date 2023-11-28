@@ -6,7 +6,7 @@
 }
 
 .shares-owned-preview-container {
-  height: 100px;
+  height: fit-content;
 }
 
 .watchlist-container > button {

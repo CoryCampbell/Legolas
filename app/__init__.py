@@ -14,6 +14,7 @@ from .api.purchase_routes import purchase_routes
 from .api.watchlist_routes import watchlist_routes
 from .api.search_companies import search_companies_routes
 from .api.sell_routes import sell_routes
+from .api.add_funds_routes import add_funds_routes
 from .seeds import seed_commands
 from .config import Config
 
@@ -41,6 +42,7 @@ app.register_blueprint(company_routes, url_prefix="/api/companies")
 app.register_blueprint(purchase_routes, url_prefix="/api/purchases")
 app.register_blueprint(watchlist_routes, url_prefix="/api/watchlists")
 app.register_blueprint(sell_routes, url_prefix="/api/sell")
+app.register_blueprint(add_funds_routes, url_prefix="/api/addfunds")
 
 app.register_blueprint(search_companies_routes, url_prefix="/api/search")
 

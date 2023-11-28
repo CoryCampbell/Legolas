@@ -24,9 +24,10 @@ const Portfolio = () => {
 		console.log("totalPortfolioValue", totalPortfolioValue);
 	});
 
-	useEffect(() => {
-		dispatch(fetchUserPortfolio(sessionUser?.id));
-	}, [dispatch, sessionUser?.id]);
+  useEffect(() => {
+    dispatch(fetchUserPortfolio(sessionUser?.id));
+    dispatch(fetchAllCompanies());
+  }, [dispatch, sessionUser?.id]);
 
 	return (
 		<div className="main-portfolio-container">

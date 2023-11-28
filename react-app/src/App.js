@@ -11,6 +11,14 @@ import Landing from "./components/Portfolio/Landing";
 import CompanyDetails from "./components/CompanyDetails/CompanyDetails";
 import Watchlist from "./components/Watchlists";
 import WatchlistDetails from "./components/WatchlistDetails";
+import HistoryTransactions from "./components/Transactions/History";
+import HistoryHelp from "./components/Transactions/Help";
+import HistoryTax from "./components/Transactions/Tax";
+import HistorySettings from "./components/Transactions/Settings";
+import HistoryReports from "./components/Transactions/Reports";
+import HistoryRecurring from "./components/Transactions/Recurring";
+import HistoryInvesting from "./components/Transactions/Investing";
+import HistoryTransfers from "./components/Transactions/Transfers";
 
 function App() {
 	const dispatch = useDispatch();
@@ -27,6 +35,30 @@ function App() {
 				<Switch>
 					<Route exact path="/login">
 						<LoginFormPage />
+					</Route>
+					<Route exacth path='/:user_id/investing'>
+						<HistoryInvesting />
+					</Route>
+					<Route exacth path='/:user_id/transfers'>
+						<HistoryTransfers />
+					</Route>
+					<Route exacth path='/:user_id/recurring'>
+						<HistoryRecurring />
+					</Route>
+					<Route exacth path='/:user_id/reports'>
+						<HistoryReports />
+					</Route>
+					<Route exacth path='/:user_id/tax'>
+						<HistoryTax />
+					</Route>
+					<Route exacth path='/:user_id/history'>
+						<HistoryTransactions />
+					</Route>
+					<Route exacth path='/:user_id/settings'>
+						<HistorySettings />
+					</Route>
+					<Route exacth path='/:user_id/help'>
+						<HistoryHelp />
 					</Route>
 					<Route exact path="/companies/:company_id">
 						<CompanyDetails />

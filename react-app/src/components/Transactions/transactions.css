@@ -1,4 +1,26 @@
-
+.users-transactions > h1 {
+    padding-top: 50px;
+}
+.transactions-history-container {
+    width: 50%;
+    margin: auto;
+}
+.transaction-left-title,
+.transaction-right-total {
+    font-weight: bold;
+}
+.transaction-left-created {
+    color: gray;
+}
+.transaction {
+    border-top: 1px solid rgb(244 230 230);
+    border-bottom: 1px solid rgb(244 230 230);
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
 .users-transactions {
     border-bottom: 0.5px solid rgb(244 230 230);
 }
