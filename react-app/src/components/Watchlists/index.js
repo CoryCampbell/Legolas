@@ -41,6 +41,7 @@ const Watchlist = () => {
 
 	console.log("formattedSharesData", formattedSharesData);
 
+	//test
 	let watchlistArray;
 
 	if (watchlists) {
