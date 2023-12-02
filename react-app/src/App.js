@@ -36,28 +36,28 @@ function App() {
 					<Route exact path="/login">
 						<LoginFormPage />
 					</Route>
-					<Route exacth path='/:user_id/investing'>
+					<Route exact path="/:user_id/investing">
 						<HistoryInvesting />
 					</Route>
-					<Route exacth path='/:user_id/transfers'>
+					<Route exact path="/:user_id/transfers">
 						<HistoryTransfers />
 					</Route>
-					<Route exacth path='/:user_id/recurring'>
+					<Route exact path="/:user_id/recurring">
 						<HistoryRecurring />
 					</Route>
-					<Route exacth path='/:user_id/reports'>
+					<Route exact path="/:user_id/reports">
 						<HistoryReports />
 					</Route>
-					<Route exacth path='/:user_id/tax'>
+					<Route exact path="/:user_id/tax">
 						<HistoryTax />
 					</Route>
-					<Route exacth path='/:user_id/history'>
+					<Route exact path="/:user_id/history">
 						<HistoryTransactions />
 					</Route>
-					<Route exacth path='/:user_id/settings'>
+					<Route exact path="/:user_id/settings">
 						<HistorySettings />
 					</Route>
-					<Route exacth path='/:user_id/help'>
+					<Route exact path="/:user_id/help">
 						<HistoryHelp />
 					</Route>
 					<Route exact path="/companies/:company_id">
