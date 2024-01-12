@@ -119,7 +119,7 @@ export const watchlistReducer = (state = initialState, action) => {
 		case DELETE_WATCHLIST: {
 			const newState = {...state}
 			const newArray = newState.allWatchlists
-			console.log(newArray, 'old, not deleted')
+
 			const toDelete = newArray.find((ele) => ele.id == action.watchlistId)
 			for (let i = 0; i <newArray.length; i++) {
 				const currObj = newArray[i]
@@ -127,9 +127,8 @@ export const watchlistReducer = (state = initialState, action) => {
 					newArray.splice(i,1)
 				}
 			}
-			console.log(newArray, 'newdeleted')
-			// console.log(toDelete, 'todelelelele')
-			// console.log(state, 'delete state')
+
+
 			return {
 				...state,
 				allWatchlists: [...newArray]
@@ -147,7 +146,6 @@ export const watchlistReducer = (state = initialState, action) => {
 				// };
 			};
 		case ADD_NEW_WATCHLIST:
-				// console.log(action.payload, 'payload ----------------')
 				return {
 				...state,
 				allWatchlists: [...state.allWatchlists, action.payload]
@@ -155,7 +153,7 @@ export const watchlistReducer = (state = initialState, action) => {
 		case DELETE_COMPANY:
 			const newState = {...state}
 			const obj = newState.currentWatchlist
-			// console.log('oldstate', newState)
+
 			const toDelete = newState.currentWatchlist.find((ele)=> ele.id == action.comnpanyId)
 			for (let i = 0; i < obj.length; i++) {
 				const currObj = obj[i]
@@ -163,10 +161,7 @@ export const watchlistReducer = (state = initialState, action) => {
 					obj.splice(i,1)
 				}
 			}
-			// console.log('new obj', obj)
-			// console.log(action.comnpanyId,'action')
-			// console.log(toDelete, 'toDelete')
-			// console.log('newstate',newState)
+
 			return {...state, currentWatchlist: [...obj]}
 		default:
 			return state;
