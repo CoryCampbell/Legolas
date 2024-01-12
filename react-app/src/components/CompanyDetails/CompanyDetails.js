@@ -22,15 +22,12 @@ export default function CompanyDetails() {
   const history = useHistory();
 
   const sessionUser = useSelector((state) => state.session.user);
-  //   console.log("sessionUser", sessionUser);
   const company = useSelector((state) => state.companies.company);
-  //   console.log(company);
   const portfolio = useSelector((state) =>
     Object.values(state.portfolio.currentUserPortfolio)?.filter(
       (stock) => stock.company_id == company_id
     )
   );
-  console.log("portfolio======>", portfolio);
 
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
@@ -56,7 +53,6 @@ export default function CompanyDetails() {
   const handleConfirmOrderBuy = async () => {
     // const numberOfShares = selectedOption === "shares" ? sharesAmount || 0 : 0;
 
-    // console.log(sharesAmount);
     try {
       const res = await fetch(`/api/purchases/${company_id}`, {
         method: "POST",
@@ -67,10 +63,8 @@ export default function CompanyDetails() {
           number_of_shares: sharesAmount,
         }),
       });
-      console.log("res------>", res);
-      const data = await res.json();
 
-      console.log("data ------>", data);
+      const data = await res.json();
 
       if (res.ok) {
         window.alert("Purchase successful!");
@@ -89,8 +83,6 @@ export default function CompanyDetails() {
     const decimalVal = parseFloat(sharesAmount);
     const formattedVal = decimalVal.toFixed(6);
 
-    // console.log(sharesAmount);
-    console.log(formattedVal);
 
     try {
       const res = await fetch(`/api/sell/${company_id}`, {
@@ -102,10 +94,9 @@ export default function CompanyDetails() {
           number_of_shares_to_sell: formattedVal,
         }),
       });
-      console.log("res------>", res);
+
       const data = await res.json();
 
-      console.log("data ------>", data);
 
       if (res.ok) {
         window.alert("Transaction successful!");

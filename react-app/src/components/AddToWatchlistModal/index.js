@@ -14,7 +14,6 @@ const AddToWatchlistModal = ({ company_id }) => {
   if (watchlists) {
     watchlistArray = Object.values(watchlists);
   }
-  console.log("========> watchlists", watchlists);
 
   const handleWatchlistClick = async (watchlist) => {
     const watchlist_id = watchlist.id;

@@ -13,25 +13,25 @@ import DeleteCompanyFromWatchListModal from "./DeleteModal";
 
 const WatchlistDetails = () => {
   const { watchlist_id } = useParams();
-  console.log("watchlist_id", watchlist_id);
+
 
   const dispatch = useDispatch();
 
   const sessionUser = useSelector((state) => state.session.user);
 
   const watchlists = useSelector((state) => state.watchlists.allWatchlists);
-  console.log("watchlists", watchlists);
+
 
   const currentWatchlistDetails = useSelector(
     (state) => state.watchlists?.currentWatchlist
   );
-  console.log("currentWatchlistDetails ========>", currentWatchlistDetails);
+
 
   let currentWatchlist;
 
   if (watchlists?.length) {
     watchlists?.forEach((watchlist) => {
-      console.log("watchlist", watchlist.name);
+
       if (watchlist.id == watchlist_id) currentWatchlist = watchlist.name;
     });
   }

@@ -15,7 +15,7 @@ export default function HistoryTransactions() {
   const sessionUser = useSelector((state) => state.session.user);
   const companies = useSelector((state)=> state.companies.allCompanies)
   const dispatch = useDispatch();
-  console.log(transactions, "hello there");
+
   useEffect(() => {
     dispatch(getUserTransactionsThunk(user_id));
     dispatch(fetchUserPortfolio(user_id));
@@ -24,7 +24,7 @@ export default function HistoryTransactions() {
 
   return (
 		sessionUser &&
-		transactions && (
+		transactions && companies.length > 0 && (
 			<div>
 				<div className="users-transactions">
 					<h1 className="transaction-title">
@@ -74,8 +74,7 @@ export default function HistoryTransactions() {
 						<div className="transaction">
 							<div className="transaction-left-container">
 								<div className="transaction-left-title">
-									{companies?.find((company) => company.id == ele.company_id)?.name}{" "}
-									{ele.type[0].toUpperCase() + ele.type.slice(1)}
+									{companies?.find((company) => company.id == ele.company_id)?.name} {ele.type[0].toUpperCase() + ele.type.slice(1)}
 								</div>
 								<div className="transaction-left-created">{ele.created_at}</div>
 							</div>

@@ -15,6 +15,13 @@
 .transaction-left-created {
     color: gray;
 }
+.socials-container {
+    display: flex;
+    justify-content: space-between;
+}
+.socials-container> div {
+    padding-bottom: 5px;
+}
 .transaction {
     border-top: 1px solid rgb(244 230 230);
     border-bottom: 1px solid rgb(244 230 230);

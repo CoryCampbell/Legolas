@@ -13,6 +13,10 @@ function WatchListModal(user_id) {
 	const sessionUser = useSelector((state) => state.session.user);
 	const currentWatchlist = useSelector((state) => state.watchlists.currentWatchlist);
 
+	const handleCancel = () => {
+		closeModal();
+	};
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		const data = await dispatch(addNewWatchlistThunk(watchlistName));
@@ -25,11 +29,10 @@ function WatchListModal(user_id) {
 
 	useEffect(() => {
 		dispatch(fetchAllWatchlists(sessionUser?.id));
-		dispatch(fetchWatchlistDetails(sessionUser?.id));
 	}, [dispatch, sessionUser?.id]);
 
 	return (
-		<>
+		<div className="add-watchlist-container">
 			<h1>Create a Watchlist</h1>
 			<form onSubmit={handleSubmit} className="form-container">
 				<input
@@ -37,11 +40,15 @@ function WatchListModal(user_id) {
 					type="text"
 					value={watchlistName}
 					onChange={(e) => setWatchlistName(e.target.value)}
-					required
 				/>
-				<button type="submit">Create Watchlist</button>
+				<button type="submit" className="submit-new-watchlist">
+					Create Watchlist
+				</button>
+				<button type="button" className="cancel-new-watchlist" onClick={handleCancel}>
+					Cancel
+				</button>
 			</form>
-		</>
+		</div>
 	);
 }
 

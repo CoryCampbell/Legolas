@@ -24,7 +24,6 @@ const MiniChart = () => {
   // useEffect(() => {
   //   const n = Math.floor(Math.random(3)) + 1;
   //   setShowRandomChart(n.toString());
-  //   console.log("============>", n);
   // }, []);
 
   return (
