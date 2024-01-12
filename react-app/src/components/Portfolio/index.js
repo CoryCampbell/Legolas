@@ -12,17 +12,13 @@ const Portfolio = () => {
 	const dispatch = useDispatch();
 
 	const sessionUser = useSelector((state) => state.session?.user);
-	// console.log("sessionUser", sessionUser);
 
 	const userPortfolio = useSelector((state) => Object.values(state.portfolio?.currentUserPortfolio));
-	//   console.log("userPortfolio", userPortfolio);
 
 	let totalPortfolioValue = 0;
 
 	userPortfolio?.map((stock) => {
-		console.log("stockkkkkkkk", stock);
 		totalPortfolioValue += stock.price;
-		// console.log("totalPortfolioValue", totalPortfolioValue);
 	});
 
 	useEffect(() => {

@@ -22,7 +22,6 @@ export const fetchUserPortfolio = (user_id) => async (dispatch) => {
     }
 
     const userPortfolio = await response.json();
-    console.log("USER PORTFOLIO: ", userPortfolio);
     dispatch(getUserPortfolio(userPortfolio));
     return userPortfolio;
   } catch (error) {

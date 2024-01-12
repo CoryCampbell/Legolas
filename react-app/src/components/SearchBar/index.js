@@ -9,7 +9,6 @@ const SearchBar = () => {
   const [results, setResults] = useState([]);
   const [showResults, setShowResults] = useState(false);
 
-  // console.log("result--------->", results);
 
   useEffect(() => {
     setShowResults(true);

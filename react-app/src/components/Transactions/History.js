@@ -15,7 +15,7 @@ export default function HistoryTransactions() {
   const sessionUser = useSelector((state) => state.session.user);
   const companies = useSelector((state)=> state.companies.allCompanies)
   const dispatch = useDispatch();
-  console.log(transactions, "hello there");
+
   useEffect(() => {
     dispatch(getUserTransactionsThunk(user_id));
     dispatch(fetchUserPortfolio(user_id));

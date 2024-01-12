@@ -42,7 +42,7 @@ const deleteWatchlist = (watchlistId) => {
 }
 //Thunk
 export const fetchWatchlistDetails = (watchlist_id) => async (dispatch) => {
-	console.log("watchlist_id", watchlist_id);
+
 	const res = await fetch(`/api/watchlists/current/${watchlist_id}`);
 
 	const data = await res.json();
@@ -59,7 +59,6 @@ export const fetchAllWatchlists = (user_id) => async (dispatch) => {
 };
 
 export const addNewWatchlistThunk = (watchlistName) => async (dispatch) => {
-	// console.log("=====================> watchlistName", watchlistName);
 	const res = await fetch(`/api/watchlists/new`, {
 		method: "POST",
 		headers: {
