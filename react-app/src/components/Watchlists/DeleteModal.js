@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { deleteWatchlistThunk } from "../../store/watchlists";
 
 function DeleteWatchListModal({companyId}) {
-    // console.log(companyId)
+
     const [watchlistName, setWatchlistName] = useState("");
     const [companySymbols, setCompanySymbols] = useState([])
     const { closeModal } = useModal()

@@ -11,9 +11,9 @@ const getUserTransactions = (payload) => {
 // Thunk
 export const getUserTransactionsThunk = (user_id) => async (dispatch) => {
 	const response = await fetch(`/api/transactions/${user_id}`);
-	console.log("response -------->", response);
+
 	const data = await response.json();
-	console.log("data -------->", data);
+
 	dispatch(getUserTransactions(data));
 };
 
@@ -24,7 +24,7 @@ const initialState = {
 
 // Reducer
 const transactionsReducer = (state = initialState, action) => {
-  // console.log("action -------->", action);
+
   switch (action.type) {
     case GET_USER_TRANSACTIONS:
       return {

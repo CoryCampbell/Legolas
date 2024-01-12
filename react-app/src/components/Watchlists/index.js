@@ -23,9 +23,9 @@ const Watchlist = () => {
     (state) => state.portfolio.currentUserPortfolio
   );
   const allCompanies = useSelector((state) => state.companies.allCompanies);
-  //   console.log("allCompanies", allCompanies);
+
   const userObj = Object.values(userPortfolio);
-  //   console.log("==============> USER OBJECT: ", userObj);
+
 
   //This newValue attribute will be used in future features to calculate the total percent change in stock value based on the price of the stock at the time of purchase compared to the price of the stock at the current time. For now we will use a newValue of Zero to indicate no change in value.
 
@@ -33,7 +33,7 @@ const Watchlist = () => {
   let formattedSharesData = [];
 
   userObj.forEach((share) => {
-    // console.log("share", share);
+
     // const company = await fetch(`/api/companies/${share.company_id}`);
     const shareObj = {
       company_id: share.company_id,
@@ -45,13 +45,11 @@ const Watchlist = () => {
     formattedSharesData.push(shareObj);
   });
 
-  console.log("formattedSharesData", formattedSharesData);
   let watchlistArray;
 
   if (watchlists) {
     watchlistArray = Object.values(watchlists);
   }
-  // console.log("========> watchlists", watchlists);
 
   useEffect(() => {
     // dispatch(fetchAllCompanies());
