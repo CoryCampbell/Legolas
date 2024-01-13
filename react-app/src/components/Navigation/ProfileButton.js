@@ -44,25 +44,24 @@ function ProfileButton({ user, isLoaded }) {
   const closeMenu = () => setShowMenu(false);
 
   return (
-    <>
-      <button className="account-button" onClick={openMenu}>
-        {/* <i className="fas fa-user-circle" /> */}
-        Account
-      </button>
-      <ul className={ulClassName} ref={ulRef}>
-        {isLoaded && user ? (
-          <>
-            <NavLink to={`/transactions/${user.id}`}>Profile</NavLink>
-            <li>
-              <button onClick={handleLogout}>Log Out</button>
-            </li>
-            <div style={{ width: "100px" }}>
-              <AddFunds />
-            </div>
-          </>
-        ) : (
-          <>
-            {/* <OpenModalButton
+		<>
+			<button className="account-button" onClick={openMenu}>
+				Account
+			</button>
+			<ul className={ulClassName} ref={ulRef}>
+				{isLoaded && user ? (
+					<>
+						<NavLink to={`/transactions/${user.id}`}>Profile</NavLink>
+						<li>
+							<button onClick={handleLogout}>Log Out</button>
+						</li>
+						<div style={{ width: "100px" }}>
+							<AddFunds />
+						</div>
+					</>
+				) : (
+					<>
+						{/* <OpenModalButton
               buttonText="Log In"
               onItemClick={closeMenu}
               // modalComponent={<LoginFormModal />}
@@ -73,11 +72,11 @@ function ProfileButton({ user, isLoaded }) {
               onItemClick={closeMenu}
               modalComponent={<SignupFormModal />}
             /> */}
-          </>
-        )}
-      </ul>
-    </>
-  );
+					</>
+				)}
+			</ul>
+		</>
+	);
 }
 
 export default ProfileButton;
