@@ -13,9 +13,11 @@ form{
     object-fit: cover;
     overflow: hidden;
 }
+
 .login-img-container{
     width: 50%;
     height: 99vh;
+    padding-top: 60px;
 }
 .login-page-container{
     display: flex;

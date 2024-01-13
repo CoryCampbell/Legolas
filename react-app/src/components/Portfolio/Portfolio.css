@@ -42,7 +42,13 @@
 }
 
 .main-landing-container {
-  margin-top: 67px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25px;
 }
 
 .portfolio-buying-power-container {
@@ -58,4 +64,25 @@
   margin-top: 40px;
   padding: 5px;
   border-bottom: solid green 1px;
+}
+
+.about-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  height: 200px;
+}
+
+.about-title {
+  text-align: center;
+}
+
+.asquare {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 25%;
 }
