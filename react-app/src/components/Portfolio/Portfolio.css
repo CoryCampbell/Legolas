@@ -86,3 +86,14 @@
   align-items: center;
   width: 25%;
 }
+
+.arow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 25%;
+}
+
+.me {
+  margin: 0px;
+}
