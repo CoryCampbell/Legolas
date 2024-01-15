@@ -14,24 +14,53 @@ const Landing = () => {
 				</h4>
 			</div>
 			<div className="about-container">
-				<h2 className="about-title">About Us</h2>
+				<h2 className="about-title">Our Team</h2>
 				<div className="socials-container">
 					<div className="ali-about asquare">
-						Ali <a href="https://www.linkedin.com/in/alirezakeshanian/">linkedin</a>
+						<h4 className="me">Ali Keshanian</h4>
+						<div className="arow">
+							<a href="https://www.linkedin.com/in/alirezakeshanian/">
+								<i class="fa-brands fa-linkedin"></i>
+							</a>
+							<a href="https://github.com/ark1980">
+								<i class="fa-brands fa-github"></i>
+							</a>
+						</div>
 					</div>
 					<div className="malcolm-about asquare">
-						Malcolm Caleb
-						<a>email: malcolmcaleb01@gmail.com</a>
-						<a>github: @malcolmc22</a>
+						<h4 className="me">Malcolm Caleb</h4>
+						<div className="arow">
+							<a href="https://www.linkedin.com/in/malcolm-caleb-7928722a5/">
+								<i class="fa-brands fa-linkedin"></i>
+							</a>
+							<a href="https://github.com/malcolmc22">
+								<i class="fa-brands fa-github"></i>
+							</a>
+						</div>
+						{/* <a>malcolmcaleb01@gmail.com</a> */}
 					</div>
 					<div className="cory-about asquare">
-						Cory Campbell
-						<a>email: corycampbell20@yahoo.com</a>
-						<a>github: @CoryCampbell</a>
-						<a>discord: monkeydcory</a>
+						<h4 className="me">Cory Campbell</h4>
+						<div className="arow">
+							<a href="https://www.linkedin.com/in/cory-campbell-67694b2a5/">
+								<i class="fa-brands fa-linkedin"></i>
+							</a>
+							<a href="https://github.com/CoryCampbell">
+								<i class="fa-brands fa-github"></i>
+							</a>
+						</div>
+						{/* <p>corycampbell20@yahoo.com</p> */}
 					</div>
 					<div className="quinn-about asquare">
-						Quinn Bush <a href="https://www.linkedin.com/in/quinlan-bush/">linkedin</a>
+						<h4 className="me">Quinn Bush</h4>
+						<div className="arow">
+							<a href="https://www.linkedin.com/in/quinlan-bush/">
+								<i class="fa-brands fa-linkedin"></i>
+							</a>
+							<a href="https://github.com/Quinn5545">
+								<i class="fa-brands fa-github"></i>
+							</a>
+						</div>
 					</div>
 				</div>
 			</div>
