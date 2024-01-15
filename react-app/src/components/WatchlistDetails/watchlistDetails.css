@@ -73,7 +73,69 @@ font-size: 15px;
 .listdet-company-price {
   /* width: 100%; */
 }
-
+.company-delete-modal-container {
+  width: 600px;
+  height: 181px;
+  border-radius: 5px 5px 5px 5px;
+  color: #212124;
+}
+.company-delete-upper-container > svg:hover{
+  color: #212124;
+  cursor: pointer;
+}
+.company-delete-upper-container > svg {
+  float: right;
+  color: #999999;
+  height: 45px;
+  padding-right: 20px;
+}
+.company-cancel-delete-button{
+  border: none;
+  margin-right: 15px;
+  color: white;
+  border-radius: 5px 5px 5px 5px;
+  background-color: #979EA2;
+}
+.company-confirm-delete-button{
+  border: none;
+  margin-right: 15px;
+  color: white;
+  border-radius: 5px 5px 5px 5px;
+  background-color: #E2292B;
+}
+.company-cancel-ok{
+  margin-top: 30px;
+  float: right;
+  display: flex;
+  margin-right: 15px;
+  flex-direction: row;
+}
+.company-cancel-ok > form {
+  display: flex;
+  flex-direction: row;
+}
+.company-cancel-delete-button:hover{
+  background-color: #A4ACB0;
+  cursor: pointer;
+}
+.company-confirm-delete-button:hover{
+  background-color: #EF2B2D;
+  cursor: pointer;
+}
+.company-delete-title{
+  margin-left: 15px;
+}
+.company-confirmation{
+  margin-left: 15px;
+}
+.company-cancel-delete-button{
+  width:89px;
+  height:32px;
+}
+.company-confirm-delete-button{
+  width:89px;
+  height:32px;
+}
 .listdet-company-delete {
   display: flex;
   justify-content: center;
