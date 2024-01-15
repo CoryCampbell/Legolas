@@ -17,6 +17,10 @@
   align-items: center;
 }
 
+.main-list-container {
+  z-index: 100;
+}
+
 .profile-dropdown li {
   margin: 8px 0;
   color: black;
