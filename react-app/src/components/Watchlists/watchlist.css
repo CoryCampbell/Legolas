@@ -97,3 +97,46 @@
 .main-list-container::-webkit-scrollbar {
     display: none;
 }
+
+.delete-watchlist-modal {
+  width: 600px;
+  height: 181px;
+  margin: 15px;
+}
+
+.delete-watchlist-confirm {
+  margin-bottom: 25px;
+}
+
+.delete-watchlist-button {
+  background-color: red;
+  border-radius: 10px;
+  border: none;
+  width: 100px;
+  height: 30px;
+  margin: 5px;
+}
+
+.delete-watchlist-button:hover {
+  background-color: rgb(255, 66, 66);
+}
+
+.dont-delete-watchlist-button {
+  background-color: gray;
+  border-radius: 10px;
+  border: none;
+  width: 100px;
+  height: 30px;
+  margin: 5px;
+}
+
+.dont-delete-watchlist-button:hover {
+  background-color: rgb(163, 163, 163);
+}
+
+.delete-watchlist-button-container {
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
