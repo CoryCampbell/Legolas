@@ -10,7 +10,55 @@
   height: 100vh;
   padding-top: 67px;
 }
-
+.review-order-button {
+  border: none;
+  background-color:rgb(3, 191, 3);
+  border-radius: 5px 5px 5px 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  height: 32px;
+  min-width: 80px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-weight: 700;
+}
+.review-order-button:hover{
+  cursor: pointer;
+  background-color: rgb(1, 123, 1);
+}
+.confirm-order-button {
+  border: none;
+  background-color:rgb(3, 191, 3);
+  border-radius: 5px 5px 5px 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  height: 32px;
+  min-width: 80px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-weight: 700;
+}
+.confirm-order-button:hover {
+  cursor: pointer;
+  background-color: rgb(1, 123, 1);
+}
+.cancel-order-button {
+  border: none;
+  background-color:rgb(3, 191, 3);
+  border-radius: 5px 5px 5px 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  height: 32px;
+  min-width: 80px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-weight: 700;
+  margin-left: 10px;
+}
+.cancel-order-button:hover {
+  cursor: pointer;
+  background-color: rgb(1, 123, 1);
+}
 .chart img {
   margin-top: 30px;
   width: 700px;
@@ -26,7 +74,14 @@
 
   padding: 0px;
 }
-
+.amount-text {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.buy-box-top {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 .buy-or-sell-view {
   padding: 10px;
   position: fixed;
@@ -37,22 +92,32 @@
   left: 70%;
   top: 10%;
   width: 20%;
-  height: 50%;
+  height: 400px;
   border: solid green 1px;
   box-sizing: content-box;
   overflow-y: none;
 }
-
-.buy-in-box {
-  height: 70%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+.buy-power{
+  padding-top: 10px;
 }
-
-.add-to-list-button {
-  display: flex;
-  justify-content: center;
+.order-type-box{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.add-to-list-button > button {
+  border: none;
+  background-color:rgb(3, 191, 3);
+  border-radius: 5px 5px 5px 5px;
+  margin-top: 25px;
+  margin-bottom: 5px;
+  height: 32px;
+  min-width: 80px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-weight: 700;
+}
+.add-to-list-button > button:hover {
+  cursor: pointer;
 }
 
 .add-to-list-button > button {

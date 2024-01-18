@@ -1,15 +1,21 @@
-import { useState } from "react"
-import { useModal } from "../../context/Modal"
+import { useState } from "react";
+import { useModal } from "../../context/Modal";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteWatchlistThunk } from "../../store/watchlists";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
-function DeleteWatchListModal({companyId}) {
+function DeleteWatchListModal({ companyId }) {
+	const [watchlistName, setWatchlistName] = useState("");
+	const [companySymbols, setCompanySymbols] = useState([]);
+	const { closeModal } = useModal();
+	const dispatch = useDispatch();
 
-    const [watchlistName, setWatchlistName] = useState("");
-    const [companySymbols, setCompanySymbols] = useState([])
-    const { closeModal } = useModal()
-    const dispatch = useDispatch();
-
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		const deleteWatchlist = await dispatch(deleteWatchlistThunk(companyId));
+		closeModal();
+	};
     const handleSubmit = async (e) => {
 			e.preventDefault();
             const deleteWatchlist = await dispatch(deleteWatchlistThunk(companyId))
@@ -34,4 +40,4 @@ function DeleteWatchListModal({companyId}) {
 		);
 }
 
-export default DeleteWatchListModal
+export default DeleteWatchListModal;

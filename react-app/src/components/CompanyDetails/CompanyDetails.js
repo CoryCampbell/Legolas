@@ -152,7 +152,7 @@ export default function CompanyDetails() {
 						</div>
 					</div>
 					<div className="order-type-box">
-						<div>Order Type: Market Order</div>
+						<div>Order Type : Market Order</div>
 					</div>
 					{action === "buy" ? (
 						<div className="buy-in-box">
@@ -166,54 +166,70 @@ export default function CompanyDetails() {
 									{selectedOption === "dollars" ? (
 										<div className="dollars-box">
 											<div>
-												<div className="amount-text">Amount:</div>
-												<input
+												<div className="amount-text">
+													Amount : <input
 													type="number"
 													placeholder="$0.00"
 													className="input-dollars"
 													value={dollarAmount}
 													onChange={handleDollarChange}
-												></input>
+												/>
+												</div>
+												{/* <input
+													type="number"
+													placeholder="$0.00"
+													className="input-dollars"
+													value={dollarAmount}
+													onChange={handleDollarChange}
+												></input> */}
 											</div>
 											<div className="est-box">
-												<div className="est-quantity">Est. Quantity:</div>
-												<div className="est-quantity-num">
+												<div className="est-quantity">Est. Quantity : {dollarAmount > 0 ? (dollarAmount / company.price).toFixed(6) : 0}</div>
+												{/* <div className="est-quantity-num">
 													{dollarAmount > 0 ? (dollarAmount / company.price).toFixed(6) : 0}
-												</div>
+												</div> */}
 											</div>
 										</div>
 									) : (
 										<div className="shares-box">
 											<div>
-												<div className="amount-text">Shares:</div>
-												<input
+												<div className="amount-text">
+													Shares : <input
 													type="number"
 													placeholder="0"
 													className="input-shares"
 													value={sharesAmount}
 													onChange={handleShareChange}
-												></input>
+												/>
+												</div>
+												{/* <input
+													type="number"
+													placeholder="0"
+													className="input-shares"
+													value={sharesAmount}
+													onChange={handleShareChange}
+												></input> */}
 											</div>
 											<div className="market-price-box">
-												<div className="market-price-box-text">Market Price:</div>
-												<div>${company.price}</div>
+												<div className="market-price-box-text">Market Price : ${company.price}</div>
+												{/* <div>${company.price}</div> */}
 											</div>
 											<div className="est-box">
-												<div className="est-quantity">Est. Cost:</div>
-												<div className="est-quantity-num">
+												<div className="est-quantity">Est. Cost : ${sharesAmount > 0 ? (company.price * sharesAmount).toFixed(2) : 0}</div>
+												{/* <div className="est-quantity-num">
 													${sharesAmount > 0 ? (company.price * sharesAmount).toFixed(2) : 0}
-												</div>
+												</div> */}
 											</div>
 										</div>
 									)}
 									<div className="review-order-box">
 										<div className="rev-button">
-											{!showButtons && <button onClick={handleReviewOrder}>Review Order</button>}
+											{!showButtons && <button className='review-order-button' onClick={handleReviewOrder}>Review Order</button>}
 										</div>
 										{showButtons && (
 											<div className="confirm-cancel-buttons">
-												<button onClick={handleConfirmOrderBuy}>Confirm Order</button>
-												<button onClick={handleCancelOrder}>Cancel Order</button>
+												<button className='confirm-order-button' onClick={handleConfirmOrderBuy}>Confirm Order</button>
+												<button className='cancel-order-button' onClick={handleCancelOrder}>Cancel Order</button>
 											</div>
 										)}
 									</div>
@@ -226,8 +242,7 @@ export default function CompanyDetails() {
 					) : (
 						<div className="buy-in-box">
 							<div>
-								Sell In:
-								<select id="dropdown" value={selectedOption} onChange={handleOptionChange}>
+								Sell In : <select id="dropdown" value={selectedOption} onChange={handleOptionChange}>
 									<option value="dollars">Dollars</option>
 									<option value="shares">Shares</option>
 								</select>
@@ -235,54 +250,70 @@ export default function CompanyDetails() {
 									{selectedOption === "dollars" ? (
 										<div className="dollars-box">
 											<div>
-												<div className="amount-text">Amount:</div>
-												<input
+												<div className="amount-text">
+													Amount : <input
 													type="number"
 													placeholder="$0.00"
 													className="input-dollars"
 													value={dollarAmount}
 													onChange={handleDollarChange}
-												></input>
+												/>
+												</div>
+												{/* <input
+													type="number"
+													placeholder="$0.00"
+													className="input-dollars"
+													value={dollarAmount}
+													onChange={handleDollarChange}
+												></input> */}
 											</div>
 											<div className="est-box">
-												<div className="est-quantity">Est. Quantity:</div>
-												<div className="est-quantity-num">
+												<div className="est-quantity">Est. Quantity : {dollarAmount > 0 ? (dollarAmount / company.price).toFixed(6) : 0}</div>
+												{/* <div className="est-quantity-num">
 													{dollarAmount > 0 ? (dollarAmount / company.price).toFixed(6) : 0}
-												</div>
+												</div> */}
 											</div>
 										</div>
 									) : (
 										<div className="shares-box">
 											<div>
-												<div className="amount-text">Shares:</div>
-												<input
+												<div className="amount-text">
+													Shares : <input
 													type="number"
 													placeholder="0"
 													className="input-shares"
 													value={sharesAmount}
 													onChange={handleShareChange}
-												></input>
+												/>
+												</div>
+												{/* <input
+													type="number"
+													placeholder="0"
+													className="input-shares"
+													value={sharesAmount}
+													onChange={handleShareChange}
+												></input> */}
 											</div>
 											<div className="market-price-box">
-												<div className="market-price-box-text">Market Price:</div>
-												<div>${company.price}</div>
+												<div className="market-price-box-text">Market Price : ${company.price}</div>
+												{/* <div>${company.price}</div> */}
 											</div>
 											<div className="est-box">
-												<div className="est-quantity">Est. Credit:</div>
-												<div className="est-quantity-num">
+												<div className="est-quantity">Est. Credit : ${sharesAmount > 0 ? (company.price * sharesAmount).toFixed(2) : 0}</div>
+												{/* <div className="est-quantity-num">
 													${sharesAmount > 0 ? (company.price * sharesAmount).toFixed(2) : 0}
-												</div>
+												</div> */}
 											</div>
 										</div>
 									)}
 									<div className="review-order-box">
 										<div className="rev-button">
-											{!showButtons && <button onClick={handleReviewOrder}>Review Order</button>}
+											{!showButtons && <button className='review-order-button' onClick={handleReviewOrder}>Review Order</button>}
 										</div>
 										{showButtons && (
 											<div className="confirm-cancel-buttons">
-												<button onClick={handleConfirmOrderSell}>Confirm Order</button>
-												<button onClick={handleCancelOrder}>Cancel Order</button>
+												<button className='confirm-order-button' onClick={handleConfirmOrderSell}>Confirm Order</button>
+												<button className='cancel-order-button' onClick={handleCancelOrder}>Cancel Order</button>
 											</div>
 										)}
 									</div>
