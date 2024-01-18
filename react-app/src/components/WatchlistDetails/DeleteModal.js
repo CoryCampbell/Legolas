@@ -20,22 +20,24 @@ function DeleteCompanyFromWatchListModal({companyId, watchlistId}) {
 		};
 
     return (
-			<>
-                <div className="company-delete-modal-container">
-                    <div className="company-delete-upper-container">
-                        <FontAwesomeIcon onClick={() => closeModal()}icon={faXmark} />
-                        {/* <i onClick={() => {closeModal()}} className="fa-solid fa-xmark fa-2xl"></i> */}
-                        <h1 className="company-delete-title">Delete Company</h1>
-                    </div>
-                    <div className="company-confirmation">Are you sure you want to delete this company?</div>
-                    <div className='company-cancel-ok'>
-                        <form  onSubmit={handleSubmit}>
-                            <button type="submit" className="company-confirm-delete-button">Yes</button>
-                            <button className="company-cancel-delete-button" onClick={closeModal}>No</button>
-                        </form>
-                    </div>
-                </div>
-			</>
+			<div className="company-delete-modal-container">
+				<div className="company-delete-upper-container">
+					<FontAwesomeIcon onClick={() => closeModal()} icon={faXmark} />
+					{/* <i onClick={() => {closeModal()}} className="fa-solid fa-xmark fa-2xl"></i> */}
+					<h1 className="company-delete-title">Delete Company</h1>
+				</div>
+				<div className="company-confirmation">Are you sure you want to delete this company?</div>
+				<div className="company-cancel-ok">
+					<form onSubmit={handleSubmit}>
+						<button type="submit" className="company-confirm-delete-button">
+							Yes
+						</button>
+						<button className="company-cancel-delete-button" onClick={closeModal}>
+							No
+						</button>
+					</form>
+				</div>
+			</div>
 		);
 }
 

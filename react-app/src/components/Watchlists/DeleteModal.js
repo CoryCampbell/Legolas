@@ -17,14 +17,20 @@ function DeleteWatchListModal({companyId}) {
 		};
 
     return (
-			<>
-				<h1>Delete Watchlist</h1>
-                <div>Are you sure you want to delete this watchlist?</div>
+			<div className="delete-watchlist-modal">
+				<h1 className="delete-watchlist-title">Delete Watchlist</h1>
+				<div className="delete-watchlist-confirm">Are you sure you want to delete this watchlist?</div>
 				<form onSubmit={handleSubmit}>
-					<button type="submit" className="delete-watchlist-button">Yes</button>
-                    <button className="dont-delete-watchlist-button" onClick={closeModal}>No</button>
+					<div className="delete-watchlist-button-container">
+						<button type="submit" className="delete-watchlist-button">
+							Yes
+						</button>
+						<button className="dont-delete-watchlist-button" onClick={closeModal}>
+							No
+						</button>
+					</div>
 				</form>
-			</>
+			</div>
 		);
 }
 

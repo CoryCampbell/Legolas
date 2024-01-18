@@ -89,21 +89,21 @@ font-size: 15px;
   height: 45px;
   padding-right: 20px;
 }
-.company-cancel-delete-button{
+.company-cancel-delete-button {
   border: none;
   margin-right: 15px;
   color: white;
   border-radius: 5px 5px 5px 5px;
   background-color: #979EA2;
 }
-.company-confirm-delete-button{
+.company-confirm-delete-button {
   border: none;
   margin-right: 15px;
   color: white;
   border-radius: 5px 5px 5px 5px;
   background-color: #E2292B;
 }
-.company-cancel-ok{
+.company-cancel-ok {
   margin-top: 30px;
   float: right;
   display: flex;
@@ -114,25 +114,25 @@ font-size: 15px;
   display: flex;
   flex-direction: row;
 }
-.company-cancel-delete-button:hover{
+.company-cancel-delete-button:hover {
   background-color: #A4ACB0;
   cursor: pointer;
 }
-.company-confirm-delete-button:hover{
+.company-confirm-delete-button:hover {
   background-color: #EF2B2D;
   cursor: pointer;
 }
-.company-delete-title{
+.company-delete-title {
   margin-left: 15px;
 }
-.company-confirmation{
+.company-confirmation {
   margin-left: 15px;
 }
-.company-cancel-delete-button{
+.company-cancel-delete-button {
   width:89px;
   height:32px;
 }
-.company-confirm-delete-button{
+.company-confirm-delete-button {
   width:89px;
   height:32px;
 }

@@ -15,53 +15,54 @@ export default function HistoryHelp() {
 		dispatch(getUserTransactionsThunk(user_id));
 	}, [dispatch, user_id]);
 
-	return sessionUser && (
-		<div className="users-transactions">
-			<h1 className="transaction-title">
-				{sessionUser.first_name} {sessionUser.last_name}
-			</h1>
-			<div className="transactions-container">
-				<div className="investing-container">
-					<NavLink to={`/${user_id}/investing`}>
-						Investing
-					</NavLink>
+	return (
+		sessionUser && (
+			<>
+				<div className="users-transactions">
+					<h1 className="transaction-title">
+						{sessionUser.first_name} {sessionUser.last_name}
+					</h1>
+					<div className="transactions-container">
+						<div className="investing-container">
+							<NavLink to={`/${user_id}/investing`}>Investing</NavLink>
+						</div>
+						<div className="transfers-container">
+							<NavLink exact to={`/${user_id}/transfers`}>
+								Transfers
+							</NavLink>
+						</div>
+						<div className="recurring-container">
+							<NavLink exact to={`/${user_id}/recurring`}>
+								Recurring
+							</NavLink>
+						</div>
+						<div className="reports-container">
+							<NavLink exact to={`/${user_id}/reports`}>
+								Reports
+							</NavLink>
+						</div>
+						<div className="tax-container">
+							<NavLink exact to={`/${user_id}/Tax`}>
+								Tax center
+							</NavLink>
+						</div>
+						<div className="history-container">
+							<NavLink to={`/${user_id}/history`}>History</NavLink>
+						</div>
+						<div className="settings-container">
+							<NavLink exact to={`/${user_id}/settings`}>
+								Settings
+							</NavLink>
+						</div>
+						<div className="help-container">
+							<NavLink exact to={`/${user_id}/help`}>
+								Help
+							</NavLink>
+						</div>
+					</div>
 				</div>
-				<div className="transfers-container">
-					<NavLink exact to={`/${user_id}/transfers`}>
-						Transfers
-					</NavLink>
-				</div>
-				<div className="recurring-container">
-					<NavLink exact to={`/${user_id}/recurring`}>
-						Recurring
-					</NavLink>
-				</div>
-				<div className="reports-container">
-					<NavLink exact to={`/${user_id}/reports`}>
-						Reports
-					</NavLink>
-				</div>
-				<div className="tax-container">
-					<NavLink exact to={`/${user_id}/Tax`}>
-						Tax center
-					</NavLink>
-				</div>
-				<div className="history-container">
-					<NavLink to={`/${user_id}/history`}>
-						History
-					</NavLink>
-				</div>
-				<div className="settings-container">
-					<NavLink exact to={`/${user_id}/settings`}>
-						Settings
-					</NavLink>
-				</div>
-				<div className="help-container">
-					<NavLink exact to={`/${user_id}/help`}>
-						Help
-					</NavLink>
-				</div>
-			</div>
-		</div>
+				<div className="coming-soon">Coming Soon!</div>
+			</>
+		)
 	);
 }
