@@ -63,80 +63,65 @@ const Watchlist = () => {
   }
 
   return (
-    <div className="main-watchlist-container">
-      {sessionUser && (
-        <>
-          <div className="main-list-container">
-            <div className="shares-owned-preview-container">
-              <div className="my-shares-header">My Shares</div>
-              {sessionUser &&
-                formattedSharesData?.map((share) => {
-                  const company = allCompanies.length
-                    ? allCompanies.find(
-                        (company) => company.id === share.company_id
-                      )
-                    : null;
+		<div className="main-watchlist-container">
+			{sessionUser && (
+				<>
+					<div className="main-list-container">
+						<div className="shares-owned-preview-container">
+							<div className="my-shares-header">My Shares</div>
+							{sessionUser &&
+								formattedSharesData?.map((share) => {
+									const company = allCompanies.length
+										? allCompanies.find((company) => company.id === share.company_id)
+										: null;
 
-                  if (!company) {
-                    return null;
-                  }
-                  return (
-                    <div
-                      className="main-share-container"
-                      key={share.company_id}
-                    >
-                      <div className="shares-info-container">
-                        <div>
-                          <NavLink to={`/companies/${company?.id}`}>
-                            {company?.symbol}
-                          </NavLink>
-                        </div>
-                        <div>
-                          {share.shares.toFixed(2)}{" "}
-                          {share.shares === 1 ? "Share" : "Shares"}
-                        </div>
-                      </div>
-                      <MiniChart className={"user-chart"} />
-                      <div className="shares-stats-container">
-                        <div>${(company.price * share.shares).toFixed(2)}</div>
-                        <div>
-                          {(share.newValue - share.price) * share.shares}%
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-            </div>
-            <div className="list-header">
-              Lists
-              <div>
-                <OpenModalButton
-                  buttonText="+"
-                  modalComponent={<WatchListModal />}
-                />
-              </div>
-            </div>
-            {sessionUser &&
-              watchlistArray &&
-              watchlistArray?.map((list) => (
-                <div key={list?.id} className="watchlist-container">
-                  <NavLink exact to={`/watchlists/current/${list?.id}`}>
-                    {list?.name}
-                  </NavLink>
-                  <OpenModalButton
-                    className="delete-watchlist-button"
-                    buttonText="X"
-                    modalComponent={
-                      <DeleteWatchListModal companyId={list.id} />
-                    }
-                  ></OpenModalButton>
-                </div>
-              ))}
-          </div>
-        </>
-      )}
-    </div>
-  );
+									if (!company) {
+										return null;
+									}
+									return (
+										<div className="main-share-container" key={share.company_id}>
+											<div className="shares-info-container">
+												<div>
+													<NavLink to={`/companies/${company?.id}`}>{company?.symbol}</NavLink>
+												</div>
+												<div>
+													{share.shares.toFixed(2)} {share.shares === 1 ? "Share" : "Shares"}
+												</div>
+											</div>
+											<MiniChart className={"user-chart"} />
+											<div className="shares-stats-container">
+												<div>${(company.price * share.shares).toFixed(2)}</div>
+												<div>{(share.newValue - share.price) * share.shares}%</div>
+											</div>
+										</div>
+									);
+								})}
+						</div>
+						<div className="list-header">
+							Lists
+							<div className="add-new-watchlist-button">
+								<OpenModalButton buttonText="+" modalComponent={<WatchListModal />} />
+							</div>
+						</div>
+						{sessionUser &&
+							watchlistArray &&
+							watchlistArray?.map((list) => (
+								<div key={list?.id} className="watchlist-container">
+									<NavLink exact to={`/watchlists/current/${list?.id}`}>
+										{list?.name}
+									</NavLink>
+									<OpenModalButton
+										className="delete-watchlist-button"
+										buttonText="X"
+										modalComponent={<DeleteWatchListModal companyId={list.id} />}
+									></OpenModalButton>
+								</div>
+							))}
+					</div>
+				</>
+			)}
+		</div>
+	);
 };
 
 export default Watchlist;
