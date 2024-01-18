@@ -16,29 +16,28 @@ function DeleteWatchListModal({ companyId }) {
 		const deleteWatchlist = await dispatch(deleteWatchlistThunk(companyId));
 		closeModal();
 	};
+    const handleSubmit = async (e) => {
+			e.preventDefault();
+            const deleteWatchlist = await dispatch(deleteWatchlistThunk(companyId))
+			closeModal();
+		};
 
-	return (
-		<>
-			<div className="watchlist-delete-modal-container">
-				<div className="watchlist-delete-upper-container">
-					<FontAwesomeIcon onClick={() => closeModal()} icon={faXmark} />
-					{/* <i onClick={() => {closeModal()}} className="fa-solid fa-xmark fa-2xl"></i> */}
-					<h1 className="watchlist-delete-title">Delete Watchlist</h1>
-				</div>
-				<div className="watchlist-confirmation">Are you sure you want to delete this watchlist?</div>
-				<div className="watchlist-cancel-ok">
-					<form onSubmit={handleSubmit}>
-						<button type="submit" className="watchlist-confirm-delete-button">
+    return (
+			<div className="delete-watchlist-modal">
+				<h1 className="delete-watchlist-title">Delete Watchlist</h1>
+				<div className="delete-watchlist-confirm">Are you sure you want to delete this watchlist?</div>
+				<form onSubmit={handleSubmit}>
+					<div className="delete-watchlist-button-container">
+						<button type="submit" className="delete-watchlist-button">
 							Yes
 						</button>
-						<button className="watchlist-cancel-delete-button" onClick={closeModal}>
+						<button className="dont-delete-watchlist-button" onClick={closeModal}>
 							No
 						</button>
-					</form>
-				</div>
+					</div>
+				</form>
 			</div>
-		</>
-	);
+		);
 }
 
 export default DeleteWatchListModal;
