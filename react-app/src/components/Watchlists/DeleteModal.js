@@ -16,11 +16,6 @@ function DeleteWatchListModal({ companyId }) {
 		const deleteWatchlist = await dispatch(deleteWatchlistThunk(companyId));
 		closeModal();
 	};
-    const handleSubmit = async (e) => {
-			e.preventDefault();
-            const deleteWatchlist = await dispatch(deleteWatchlistThunk(companyId))
-			closeModal();
-		};
 
     return (
 			<div className="delete-watchlist-modal">

@@ -5,11 +5,10 @@ import {
   fetchWatchlistDetails,
 } from "../../store/watchlists";
 import OpenModalButton from "../OpenModalButton";
-import DeleteWatchListModalWatchListModal from "./DeleteModal";
+import DeleteCompanyFromWatchListModal from "./DeleteModal";
 import "./watchlistDetails.css";
 import Watchlist from "../Watchlists";
 import { NavLink, useParams } from "react-router-dom/cjs/react-router-dom.min";
-import DeleteCompanyFromWatchListModal from "./DeleteModal";
 
 const WatchlistDetails = () => {
   const { watchlist_id } = useParams();
