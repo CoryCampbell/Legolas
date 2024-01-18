@@ -130,6 +130,12 @@
   margin: 5px;
 }
 
+.add-new-watchlist-button > button{
+  background-color: rgb(118, 215, 69);
+  border: none;
+  border-radius: 5px;
+}
+
 .dont-delete-watchlist-button:hover {
   background-color: rgb(163, 163, 163);
 }
