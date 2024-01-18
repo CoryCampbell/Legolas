@@ -8,27 +8,26 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 function DeleteCompanyFromWatchListModal({companyId, watchlistId}) {
     const dispatch = useDispatch();
-    const history = useHistory()
-    const [watchlistName, setWatchlistName] = useState("");
-    const [companySymbols, setCompanySymbols] = useState([])
-    const { closeModal } = useModal()
+    const history = useHistory();
+		const [watchlistName, setWatchlistName] = useState("");
+		const [companySymbols, setCompanySymbols] = useState([]);
+		const { closeModal } = useModal();
 
-    const handleSubmit = async (e) => {
+		const handleConfirm = async (e) => {
 			e.preventDefault();
-            const deleteCompany = await dispatch(deleteCompanyThunk(companyId,watchlistId))
+			const deleteCompany = await dispatch(deleteCompanyThunk(companyId, watchlistId));
 			closeModal();
 		};
 
-    return (
+		return (
 			<div className="company-delete-modal-container">
 				<div className="company-delete-upper-container">
 					<FontAwesomeIcon onClick={() => closeModal()} icon={faXmark} />
-					{/* <i onClick={() => {closeModal()}} className="fa-solid fa-xmark fa-2xl"></i> */}
 					<h1 className="company-delete-title">Delete Company</h1>
 				</div>
 				<div className="company-confirmation">Are you sure you want to delete this company?</div>
 				<div className="company-cancel-ok">
-					<form onSubmit={handleSubmit}>
+					<form onSubmit={handleConfirm}>
 						<button type="submit" className="company-confirm-delete-button">
 							Yes
 						</button>
