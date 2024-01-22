@@ -65,8 +65,12 @@ Searchbar feature
 
 Frontend Routes:
 
+![image](https://github.com/CoryCampbell/Legolas/assets/110738538/ea6691a6-d7f7-4c94-9ca7-d4b38cc67367)
+
+
 Backend Routes:
 
+![image](https://github.com/CoryCampbell/Legolas/assets/110738538/3bc68f58-f730-4862-8270-922954f356ca)
 
 
 
