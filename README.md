@@ -1,7 +1,5 @@
 # Legolas
 
-https://legolas.onrender.com
-
 Our Stock-Trading Application, based off the popular Robinhood site.
 
 This was a group project for App Academy.
