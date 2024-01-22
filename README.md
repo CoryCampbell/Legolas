@@ -42,10 +42,11 @@ Hosted by: Render
 # Index
 
 feature list
+[Features List]('')
 
-db diagram
+[Database Schema](https://github.com/CoryCampbell/Legolas/wiki/Database-Schema)
 
-user stories
+[User Stories](https://github.com/CoryCampbell/Legolas/wiki/User-Stories)
 
 
 
