@@ -42,11 +42,23 @@ user stories
 
 # Screenshots
 
-1
-2
-3
+Login and Signup - custom user authentication using BCrypt Hashing Function
+
+![image](https://github.com/CoryCampbell/Legolas/assets/110738538/6e734b84-2bb2-4c25-872d-9cbb726688b0)
+![image](https://github.com/CoryCampbell/Legolas/assets/110738538/2ed7c27f-4e41-4469-a568-f15a27e35e2f)
 
 
+Buy or Sell stocks
+
+![image](https://github.com/CoryCampbell/Legolas/assets/110738538/ab391d8b-3f7d-46e4-a3c5-99e2c10ff9e0)
+
+Track purchase history
+
+![image](https://github.com/CoryCampbell/Legolas/assets/110738538/81d080b4-4076-4536-a6ef-1d84f3b97cf7)
+
+Searchbar feature
+
+![image](https://github.com/CoryCampbell/Legolas/assets/110738538/2532367d-5fe7-44a6-87cc-8ca137083b0c)
 
 
 # Endpoints
