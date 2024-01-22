@@ -4,6 +4,16 @@ https://legolas.onrender.com
 
 Our Stock-Trading Application, based off the popular Robinhood site.
 
+This was a group project for App Academy.
+
+## Our Team
+
+Cory Campbell - https://github.com/CoryCampbell
+Malcolm Caleb - https://github.com/malcolmc22
+Ali Kehanian - https://github.com/ark1980
+Quinn Bush - https://github.com/Quinn5545
+
+
 
 
 
@@ -79,9 +89,3 @@ Backend Routes:
 
 This collaborative project has helped us familiarize ourselves with the process of successfully creating a full stack application together as a team. It was a great learning experience of overcoming issues that commonly appear while working as a team such as: Resolving Merge conflicts, Scheduling time to work together as a group, Assigning tasks to each member of the team, Managing time to deep work and resolve bugs efficiently, Communication skills, and more.
 
-# Connect with Our Team
-
-Cory Campbell:
-Malcolm 
-Ali K
-Quinn Bush
