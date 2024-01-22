@@ -9,8 +9,11 @@ This was a group project for App Academy.
 ## Our Team
 
 Cory Campbell - https://github.com/CoryCampbell
+
 Malcolm Caleb - https://github.com/malcolmc22
+
 Ali Kehanian - https://github.com/ark1980
+
 Quinn Bush - https://github.com/Quinn5545
 
 
