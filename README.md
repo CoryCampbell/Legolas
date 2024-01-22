@@ -42,7 +42,7 @@ Hosted by: Render
 # Index
 
 feature list
-[Features List]('')
+[Features List](https://github.com/CoryCampbell/Legolas/wiki/Features-List)
 
 [Database Schema](https://github.com/CoryCampbell/Legolas/wiki/Database-Schema)
 
