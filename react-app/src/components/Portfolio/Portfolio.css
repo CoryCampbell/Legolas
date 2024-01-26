@@ -41,6 +41,18 @@
   box-sizing: border-box;
 }
 
+.landing-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-suggestion {
+  display: flex;
+  justify-content: center;
+}
+
 .main-landing-container {
   display: flex;
   flex-direction: column;
@@ -96,4 +108,8 @@
 
 .me {
   margin: 0px;
+}
+
+.landing-picture {
+  width: 50%;
 }

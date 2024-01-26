@@ -21,7 +21,7 @@ function Navigation({ isLoaded }) {
 					</NavLink>
 				</div>
 			</div>
-			<SearchBar />
+			{sessionUser && <SearchBar />}
 			{!sessionUser ? (
 				<div className="auth-container">
 					<div className="nav-buttons-container">
