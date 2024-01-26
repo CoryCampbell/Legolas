@@ -33,7 +33,7 @@ function WatchListModal(user_id) {
 
 	return (
 		<div className="add-watchlist-container">
-			<h1>Create a Watchlist</h1>
+			<h1 className="add-watchlist-header">Create a Watchlist</h1>
 			<form onSubmit={handleSubmit} className="form-container">
 				<input
 					placeholder="Watchlist name"
@@ -41,12 +41,14 @@ function WatchListModal(user_id) {
 					value={watchlistName}
 					onChange={(e) => setWatchlistName(e.target.value)}
 				/>
-				<button type="submit" className="submit-new-watchlist">
-					Create Watchlist
-				</button>
-				<button type="button" className="cancel-new-watchlist" onClick={handleCancel}>
-					Cancel
-				</button>
+				<div className="buttons-container">
+					<button type="submit" className="submit-new-watchlist">
+						Create
+					</button>
+					<button type="button" className="cancel-new-watchlist" onClick={handleCancel}>
+						Cancel
+					</button>
+				</div>
 			</form>
 		</div>
 	);
