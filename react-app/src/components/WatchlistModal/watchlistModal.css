@@ -1,50 +1,75 @@
 .add-watchlist-container {
-  height: 300px;
-  width: 400px;
+  height: 250px;
+  width: 650px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   margin: auto;
-  background-color: #91D142;
+  border-radius: 25px;
+  background-color: white;
+}
+
+.add-watchlist-header {
+  margin-left: 35px;
+  margin-bottom: 15px;
 }
 
 .form-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   margin: 5px;
+  width: 100%;
+  height: 100px;
 }
 
 .submit-new-watchlist {
   width: 150px;
   height: 30px;
-  background-color: #88ff00;
+  background-color: red;
+  border-radius: 10px;
+  border: none;
 }
 
 .submit-new-watchlist:hover {
-  background-color: #88ff00;
-    box-shadow: white 0px 0px 15px;
+  background-color: rgb(255, 41, 41);
+  border-radius: 10px;
+  border: none;
 }
 
 .cancel-new-watchlist {
   width: 150px;
   height: 30px;
-  background-color: rgb(255, 166, 166);
+  background-color: gray;
+  border-radius: 10px;
+  border: none;
 }
 
 .cancel-new-watchlist:hover {
-  background-color: rgb(255, 166, 166);
-    box-shadow: white 0px 0px 15px;
+  background-color: rgb(179, 179, 179);
+  box-shadow: white 0px 0px 15px;
+  border-radius: 10px;
+  border: none;
 }
 
 .form-container > input {
   width: 300px;
   height: 30px;
-  margin: 30px;
+  margin-left: 35px;
+  margin-bottom: 25px;
 }
 
-.form-container > button {
+
+
+.buttons-container {
+  width: 92%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.buttons-container > button {
   margin: 5px;
+  width: 100px;
 }
