@@ -48,9 +48,13 @@ function ProfileButton({ user, isLoaded }) {
 			<ul className={ulClassName} ref={ulRef}>
 				{isLoaded && user && (
 					<div className="user-options">
-						<NavLink to={`/transactions/${user.id}`}>Profile</NavLink>
-						<button onClick={handleLogout}>Log Out</button>
-						<div style={{ width: "100px" }}>
+						<NavLink to={`/transactions/${user.id}`} className="nav-to-profile">
+							Profile
+						</NavLink>
+						<button className="logout-button" onClick={handleLogout}>
+							Log Out
+						</button>
+						<div className="add-funds-container">
 							<AddFunds />
 						</div>
 					</div>
