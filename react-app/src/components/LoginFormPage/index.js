@@ -3,26 +3,25 @@ import { login } from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import "./LoginForm.css";
-import { fetchAllCompanies } from "../../store/companies";
 
 function LoginFormPage() {
-  const dispatch = useDispatch();
-  const sessionUser = useSelector((state) => state.session.user);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState([]);
+	const dispatch = useDispatch();
+	const sessionUser = useSelector((state) => state.session.user);
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+	const [errors, setErrors] = useState([]);
 
-  if (sessionUser) return <Redirect to="/" />;
+	if (sessionUser) return <Redirect to="/" />;
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const data = await dispatch(login(email, password));
-    if (data) {
-      setErrors(data);
-    }
-  };
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		const data = await dispatch(login(email, password));
+		if (data) {
+			setErrors(data);
+		}
+	};
 
-  const demoUser = () => {
+	const demoUser = () => {
 		setEmail("demo@aa.io");
 		setPassword("password");
 	};
@@ -36,14 +35,12 @@ function LoginFormPage() {
 					src="https://cdn.robinhood.com/assets/generated_assets/webapp/web-platform-prefetch-sdp/member/9435691b466061dc75b0.jpg"
 				/>
 			</div>
-			<div className="form-container">
+			<div className="login-form-container">
 				<h1 className="login-title">Log in to Legolas</h1>
 				<form className="login-form" onSubmit={handleSubmit}>
-					<ul>
-						{errors.map((error, idx) => (
-							<li key={idx}>{error}</li>
-						))}
-					</ul>
+					{errors.map((error, idx) => (
+						<li key={idx}>{error}</li>
+					))}
 					<label>
 						Email
 						<input

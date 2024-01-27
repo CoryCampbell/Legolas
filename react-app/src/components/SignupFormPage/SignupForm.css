@@ -6,7 +6,7 @@ form {
 .signup-page-container {
   display: flex;
   flex-direction: row;
-  height: 99vh;
+  padding-top: 60px;
 }
 .signup-title > h2 {
   font-size: 50px;
