@@ -142,18 +142,20 @@ export default function CompanyDetails() {
 				</div>
 
 				<div className="buy-or-sell-view">
+					<div className="add-to-list-button">
+						<OpenModalButton
+							buttonText={"Add Company to Watchlist"}
+							modalComponent={<AddToWatchlistModal company_id={company_id} />}
+						/>
+					</div>
 					<div className="buy-box-top">
-						<div>
-							<select value={action} onChange={handleActionChange}>
-								<option value="buy">Buy</option>
-								<option value="sell">Sell</option>
-							</select>
-							{` ${company.symbol}`}
-						</div>
+						<select value={action} onChange={handleActionChange}>
+							<option value="buy">Buy</option>
+							<option value="sell">Sell</option>
+						</select>
+						{` ${company.symbol}`}
 					</div>
-					<div className="order-type-box">
-						<div>Order Type : Market Order</div>
-					</div>
+					<div className="order-type-box">Order Type : Market Order</div>
 					{action === "buy" ? (
 						<div className="buy-in-box">
 							<div>
@@ -167,13 +169,14 @@ export default function CompanyDetails() {
 										<div className="dollars-box">
 											<div>
 												<div className="amount-text">
-													Amount : <input
-													type="number"
-													placeholder="$0.00"
-													className="input-dollars"
-													value={dollarAmount}
-													onChange={handleDollarChange}
-												/>
+													Amount :{" "}
+													<input
+														type="number"
+														placeholder="$0.00"
+														className="input-dollars"
+														value={dollarAmount}
+														onChange={handleDollarChange}
+													/>
 												</div>
 												{/* <input
 													type="number"
@@ -184,7 +187,9 @@ export default function CompanyDetails() {
 												></input> */}
 											</div>
 											<div className="est-box">
-												<div className="est-quantity">Est. Quantity : {dollarAmount > 0 ? (dollarAmount / company.price).toFixed(6) : 0}</div>
+												<div className="est-quantity">
+													Est. Quantity : {dollarAmount > 0 ? (dollarAmount / company.price).toFixed(6) : 0}
+												</div>
 												{/* <div className="est-quantity-num">
 													{dollarAmount > 0 ? (dollarAmount / company.price).toFixed(6) : 0}
 												</div> */}
@@ -194,13 +199,14 @@ export default function CompanyDetails() {
 										<div className="shares-box">
 											<div>
 												<div className="amount-text">
-													Shares : <input
-													type="number"
-													placeholder="0"
-													className="input-shares"
-													value={sharesAmount}
-													onChange={handleShareChange}
-												/>
+													Shares :{" "}
+													<input
+														type="number"
+														placeholder="0"
+														className="input-shares"
+														value={sharesAmount}
+														onChange={handleShareChange}
+													/>
 												</div>
 												{/* <input
 													type="number"
@@ -215,7 +221,9 @@ export default function CompanyDetails() {
 												{/* <div>${company.price}</div> */}
 											</div>
 											<div className="est-box">
-												<div className="est-quantity">Est. Cost : ${sharesAmount > 0 ? (company.price * sharesAmount).toFixed(2) : 0}</div>
+												<div className="est-quantity">
+													Est. Cost : ${sharesAmount > 0 ? (company.price * sharesAmount).toFixed(2) : 0}
+												</div>
 												{/* <div className="est-quantity-num">
 													${sharesAmount > 0 ? (company.price * sharesAmount).toFixed(2) : 0}
 												</div> */}
@@ -224,12 +232,20 @@ export default function CompanyDetails() {
 									)}
 									<div className="review-order-box">
 										<div className="rev-button">
-											{!showButtons && <button className='review-order-button' onClick={handleReviewOrder}>Review Order</button>}
+											{!showButtons && (
+												<button className="review-order-button" onClick={handleReviewOrder}>
+													Review Order
+												</button>
+											)}
 										</div>
 										{showButtons && (
 											<div className="confirm-cancel-buttons">
-												<button className='confirm-order-button' onClick={handleConfirmOrderBuy}>Confirm Order</button>
-												<button className='cancel-order-button' onClick={handleCancelOrder}>Cancel Order</button>
+												<button className="confirm-order-button" onClick={handleConfirmOrderBuy}>
+													Confirm Order
+												</button>
+												<button className="cancel-order-button" onClick={handleCancelOrder}>
+													Cancel Order
+												</button>
 											</div>
 										)}
 									</div>
@@ -242,7 +258,8 @@ export default function CompanyDetails() {
 					) : (
 						<div className="buy-in-box">
 							<div>
-								Sell In : <select id="dropdown" value={selectedOption} onChange={handleOptionChange}>
+								Sell In :{" "}
+								<select id="dropdown" value={selectedOption} onChange={handleOptionChange}>
 									<option value="dollars">Dollars</option>
 									<option value="shares">Shares</option>
 								</select>
@@ -251,13 +268,14 @@ export default function CompanyDetails() {
 										<div className="dollars-box">
 											<div>
 												<div className="amount-text">
-													Amount : <input
-													type="number"
-													placeholder="$0.00"
-													className="input-dollars"
-													value={dollarAmount}
-													onChange={handleDollarChange}
-												/>
+													Amount :{" "}
+													<input
+														type="number"
+														placeholder="$0.00"
+														className="input-dollars"
+														value={dollarAmount}
+														onChange={handleDollarChange}
+													/>
 												</div>
 												{/* <input
 													type="number"
@@ -268,7 +286,9 @@ export default function CompanyDetails() {
 												></input> */}
 											</div>
 											<div className="est-box">
-												<div className="est-quantity">Est. Quantity : {dollarAmount > 0 ? (dollarAmount / company.price).toFixed(6) : 0}</div>
+												<div className="est-quantity">
+													Est. Quantity : {dollarAmount > 0 ? (dollarAmount / company.price).toFixed(6) : 0}
+												</div>
 												{/* <div className="est-quantity-num">
 													{dollarAmount > 0 ? (dollarAmount / company.price).toFixed(6) : 0}
 												</div> */}
@@ -278,13 +298,14 @@ export default function CompanyDetails() {
 										<div className="shares-box">
 											<div>
 												<div className="amount-text">
-													Shares : <input
-													type="number"
-													placeholder="0"
-													className="input-shares"
-													value={sharesAmount}
-													onChange={handleShareChange}
-												/>
+													Shares :{" "}
+													<input
+														type="number"
+														placeholder="0"
+														className="input-shares"
+														value={sharesAmount}
+														onChange={handleShareChange}
+													/>
 												</div>
 												{/* <input
 													type="number"
@@ -299,7 +320,9 @@ export default function CompanyDetails() {
 												{/* <div>${company.price}</div> */}
 											</div>
 											<div className="est-box">
-												<div className="est-quantity">Est. Credit : ${sharesAmount > 0 ? (company.price * sharesAmount).toFixed(2) : 0}</div>
+												<div className="est-quantity">
+													Est. Credit : ${sharesAmount > 0 ? (company.price * sharesAmount).toFixed(2) : 0}
+												</div>
 												{/* <div className="est-quantity-num">
 													${sharesAmount > 0 ? (company.price * sharesAmount).toFixed(2) : 0}
 												</div> */}
@@ -308,12 +331,20 @@ export default function CompanyDetails() {
 									)}
 									<div className="review-order-box">
 										<div className="rev-button">
-											{!showButtons && <button className='review-order-button' onClick={handleReviewOrder}>Review Order</button>}
+											{!showButtons && (
+												<button className="review-order-button" onClick={handleReviewOrder}>
+													Review Order
+												</button>
+											)}
 										</div>
 										{showButtons && (
 											<div className="confirm-cancel-buttons">
-												<button className='confirm-order-button' onClick={handleConfirmOrderSell}>Confirm Order</button>
-												<button className='cancel-order-button' onClick={handleCancelOrder}>Cancel Order</button>
+												<button className="confirm-order-button" onClick={handleConfirmOrderSell}>
+													Confirm Order
+												</button>
+												<button className="cancel-order-button" onClick={handleCancelOrder}>
+													Cancel Order
+												</button>
 											</div>
 										)}
 									</div>
@@ -332,12 +363,6 @@ export default function CompanyDetails() {
 							</div>
 						</div>
 					)}
-					<div className="add-to-list-button">
-						<OpenModalButton
-							buttonText={"+ Add to Lists"}
-							modalComponent={<AddToWatchlistModal company_id={company_id} />}
-						/>
-					</div>
 				</div>
 			</div>
 		</>
