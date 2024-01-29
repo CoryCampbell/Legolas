@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { logout } from "../../store/session";
 import { NavLink } from "react-router-dom";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import AddFunds from "../AddFunds.js";
+import AddFunds from "../AddFunds/index.js";
 
 function ProfileButton({ user, isLoaded }) {
 	const dispatch = useDispatch();
@@ -48,12 +48,14 @@ function ProfileButton({ user, isLoaded }) {
 			<ul className={ulClassName} ref={ulRef}>
 				{isLoaded && user && (
 					<div className="user-options">
-						<NavLink to={`/transactions/${user.id}`} className="nav-to-profile">
-							Profile
-						</NavLink>
-						<button className="logout-button" onClick={handleLogout}>
-							Log Out
-						</button>
+						<div className="profile-options">
+							<NavLink to={`/transactions/${user.id}`} className="nav-to-profile">
+								Profile
+							</NavLink>
+							<button className="logout-button" onClick={handleLogout}>
+								Log Out
+							</button>
+						</div>
 						<div className="add-funds-container">
 							<AddFunds />
 						</div>

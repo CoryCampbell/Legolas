@@ -1,4 +1,5 @@
 .watchlist-container {
+    background-color: rgb(218, 255, 179);
   display: flex;
   align-items: center;
   height: 50px;
@@ -8,6 +9,11 @@
 
 .shares-owned-preview-container {
   height: fit-content;
+}
+
+.watchlist-container:hover {
+    background-color: rgb(189, 255, 118);
+
 }
 
 .watchlist-container > button {
@@ -34,10 +40,11 @@
 }
 
 .list-header {
+  background-color: rgb(166, 255, 72);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: solid green 1px;
+  border-top: solid green 3px;
   box-sizing: border-box;
   height: 50px;
   padding-left: 10px;
@@ -45,15 +52,17 @@
 }
 
 .my-shares-header {
+  background-color: white;
   display: flex;
   align-items: center;
   height: 50px;
   padding-left: 10px;
-  border-bottom: solid green 1px;
+  border-bottom: solid green 3px;
   box-sizing: border-box;
 }
 
 .main-share-container {
+  background-color: white;
   border-bottom: solid green 1px;
   box-sizing: border-box;
   display: flex;
@@ -78,15 +87,20 @@
     align-items: flex-end;
 }
 
+.list-header {
+
+}
+
 .list-header > button {
   width: 25px;
   height: 25px;
 }
 
 .main-list-container {
+  background-color: rgb(218, 255, 179);
   position: fixed;
   left: 70%;
-  top: 75px;
+  top: 140px;
   width: 20%;
   height: 84%;
   border: solid green 1px;
@@ -145,4 +159,8 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+}
+
+.order-type-box {
+  height: 25%;
 }

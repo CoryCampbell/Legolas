@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import "./AddFunds.css";
 
 const AddFunds = () => {
 	const user = useSelector((state) => state.session.user);
@@ -36,12 +37,14 @@ const AddFunds = () => {
 	};
 
 	return (
-		<div className="add-funds-container">
-			<form onSubmit={handleSubmit}>
+		<div className="add-funds-form-container">
+			<form onSubmit={handleSubmit} className="add-funds-form">
 				<input type="number" min={0} value={amount} onChange={(e) => setAmount(e.target.value)} />
-				<button type="submit">Add Funds</button>
+				<button type="submit" className="add-funds-button">
+					Add Funds
+				</button>
 			</form>
-			<p>{message}</p>
+			<p className="funds-added-message">{message}</p>
 		</div>
 	);
 };

@@ -116,13 +116,22 @@
   padding-right: 20px;
   font-weight: 700;
 }
-.add-to-list-button > button:hover {
-  cursor: pointer;
-}
 
 .add-to-list-button > button {
-  background-color: green;
-  width: 130px;
+  background-color: rgb(218, 255, 179);
+  width: 100%;
+  height: 20px;
   border-radius: 15px;
-  height: 50px;
+  margin: 0px;
+}
+
+.add-to-list-button > button:hover {
+  cursor: pointer;
+  background-color: rgb(186, 255, 112);
+}
+
+.add-to-list-button {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
