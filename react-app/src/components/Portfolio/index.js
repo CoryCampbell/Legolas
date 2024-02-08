@@ -2,18 +2,23 @@ import { useSelector, useDispatch } from "react-redux";
 import Landing from "./Landing";
 import "./Portfolio.css";
 import LineChart from "../Chart/LineChart";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { fetchUserPortfolio } from "../../store/portfolio";
 import { fetchAllCompanies } from "../../store/companies";
 import Watchlist from "../Watchlists";
+import { getUserTransactionsThunk } from "../../store/transactions";
+import { getUserThunk } from "../../store/session";
 
 const Portfolio = () => {
 	const dispatch = useDispatch();
 
 	const sessionUser = useSelector((state) => state.session?.user);
 
+	const [currentBalance, setCurrentBalance] = useState(sessionUser?.balance);
+
 	const userPortfolio = useSelector((state) => Object.values(state.portfolio?.currentUserPortfolio));
 
+	console.log(sessionUser?.balance, 'session user balance')
 	let totalPortfolioValue = 0;
 
 	userPortfolio?.map((stock) => {
@@ -24,8 +29,11 @@ const Portfolio = () => {
 		if (sessionUser) {
 			dispatch(fetchUserPortfolio(sessionUser?.id));
 			dispatch(fetchAllCompanies());
+			dispatch(getUserTransactionsThunk(sessionUser?.id))
+			getUserThunk(sessionUser?.id)
+			setCurrentBalance(sessionUser?.balance)
 		}
-	}, [dispatch, sessionUser, totalPortfolioValue]);
+	}, [dispatch, sessionUser, totalPortfolioValue, sessionUser?.balance]);
 
 	return (
 		<div className="main-portfolio-container">
@@ -33,7 +41,7 @@ const Portfolio = () => {
 				<>
 					<div className="main-left-container">
 						<div className="user-info">
-							<h2 className="portfolio-value">${totalPortfolioValue.toFixed(2)}</h2>
+							<h2 className="portfolio-value">${sessionUser?.balance.toFixed(2)}</h2>
 						</div>
 						<LineChart />
 
